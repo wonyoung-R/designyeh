@@ -1,5 +1,6 @@
 "use client"
 
+import { useState } from "react"
 import { Card, CardContent } from "@/components/ui/card"
 import { Input } from "@/components/ui/input"
 import { Label } from "@/components/ui/label"
@@ -7,8 +8,57 @@ import { Textarea } from "@/components/ui/textarea"
 import { Button } from "@/components/ui/button"
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select"
 import AnimateInView from "@/components/animate-in-view"
+import { Loader2 } from "lucide-react"
 
 export default function ContactPage() {
+  const [isLoading, setIsLoading] = useState(false)
+  const [formData, setFormData] = useState({
+    name: "",
+    contact: "",
+    type: "",
+    message: "",
+  })
+
+  const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
+    const { id, value } = e.target
+    setFormData((prev) => ({ ...prev, [id]: value }))
+  }
+
+  const handleSelectChange = (value: string) => {
+    setFormData((prev) => ({ ...prev, type: value }))
+  }
+
+  const handleSubmit = async () => {
+    if (!formData.name || !formData.contact || !formData.type || !formData.message) {
+      alert("모든 항목을 입력해주세요.")
+      return
+    }
+
+    setIsLoading(true)
+
+    try {
+      const response = await fetch("/api/contact", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(formData),
+      })
+
+      if (response.ok) {
+        alert("문의가 성공적으로 접수되었습니다!")
+        setFormData({ name: "", contact: "", type: "", message: "" })
+      } else {
+        alert("문의 접수에 실패했습니다. 다시 시도해주세요.")
+      }
+    } catch (error) {
+      console.error("Error:", error)
+      alert("오류가 발생했습니다.")
+    } finally {
+      setIsLoading(false)
+    }
+  }
+
   return (
     <div className="container mx-auto px-4 pt-8 pb-16 md:px-6">
       <AnimateInView animation="fadeIn" duration={0.7}>
@@ -32,6 +82,8 @@ export default function ContactPage() {
                   id="name" 
                   placeholder="홍길동" 
                   className="h-12 bg-slate-50 dark:bg-slate-900 border-slate-200 dark:border-slate-800"
+                  value={formData.name}
+                  onChange={handleChange}
                 />
               </div>
 
@@ -41,12 +93,14 @@ export default function ContactPage() {
                   id="contact" 
                   placeholder="010-1234-5678" 
                   className="h-12 bg-slate-50 dark:bg-slate-900 border-slate-200 dark:border-slate-800"
+                  value={formData.contact}
+                  onChange={handleChange}
                 />
               </div>
 
               <div className="space-y-2">
                 <Label htmlFor="type" className="text-base">문의 유형</Label>
-                <Select>
+                <Select onValueChange={handleSelectChange} value={formData.type}>
                   <SelectTrigger id="type" className="h-12 bg-slate-50 dark:bg-slate-900 border-slate-200 dark:border-slate-800">
                     <SelectValue placeholder="문의 유형을 선택해주세요" />
                   </SelectTrigger>
@@ -65,11 +119,25 @@ export default function ContactPage() {
                   id="message" 
                   placeholder="문의 내용을 자유롭게 작성해주세요." 
                   className="min-h-[150px] resize-none bg-slate-50 dark:bg-slate-900 border-slate-200 dark:border-slate-800 p-4"
+                  value={formData.message}
+                  onChange={handleChange}
                 />
               </div>
 
-              <Button className="w-full h-12 text-base font-medium mt-4" size="lg">
-                문의하기
+              <Button 
+                className="w-full h-12 text-base font-medium mt-4" 
+                size="lg"
+                onClick={handleSubmit}
+                disabled={isLoading}
+              >
+                {isLoading ? (
+                  <>
+                    <Loader2 className="mr-2 h-4 w-4 animate-spin" />
+                    전송 중...
+                  </>
+                ) : (
+                  "문의하기"
+                )}
               </Button>
             </CardContent>
           </Card>
