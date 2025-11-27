@@ -36,16 +36,14 @@ export function Navbar() {
           : "bg-transparent border-transparent"
       )}
     >
-      <div className="container mx-auto px-4 md:px-6 h-16 flex items-center">
-        {/* 로고 영역 - 왼쪽 정렬을 유지하되 flex-grow를 주지 않음 */}
-        <div className="flex-shrink-0 mr-4">
-          <Link href="/" className="font-bold text-2xl font-poppins tracking-tighter" onClick={() => setIsOpen(false)}>
-            Design<span className="text-primary">YEH</span>
-          </Link>
-        </div>
+      <div className="container relative mx-auto px-4 md:px-6 h-16 flex items-center justify-between">
+        {/* 로고 - 왼쪽 정렬 */}
+        <Link href="/" className="font-bold text-2xl font-poppins tracking-tighter" onClick={() => setIsOpen(false)}>
+          Design<span className="text-primary">YEH</span>
+        </Link>
 
-        {/* Desktop Nav - 중앙 정렬을 위해 flex-1로 공간 차지하고 justify-center */}
-        <nav className="hidden md:flex items-center justify-center flex-1 gap-8">
+        {/* Desktop Nav - 절대 좌표로 정중앙 배치 */}
+        <nav className="hidden md:flex absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 items-center gap-8">
           {navItems.map((item) => (
             <Link
               key={item.href}
@@ -65,18 +63,15 @@ export function Navbar() {
           ))}
         </nav>
 
-        {/* 모바일 토글 버튼과 빈 공간 - 우측 끝으로 배치 */}
-        <div className="flex-shrink-0 ml-auto md:ml-4 md:w-[140px] flex justify-end">
-           {/* 모바일에서는 토글 버튼 보임 */}
-          <Button
-            variant="ghost"
-            size="icon"
-            className="md:hidden"
-            onClick={() => setIsOpen(!isOpen)}
-          >
-            {isOpen ? <X className="h-6 w-6" /> : <Menu className="h-6 w-6" />}
-          </Button>
-        </div>
+        {/* 모바일 토글 버튼 - 오른쪽 정렬 */}
+        <Button
+          variant="ghost"
+          size="icon"
+          className="md:hidden ml-auto"
+          onClick={() => setIsOpen(!isOpen)}
+        >
+          {isOpen ? <X className="h-6 w-6" /> : <Menu className="h-6 w-6" />}
+        </Button>
       </div>
 
       {/* Mobile Nav Menu */}
