@@ -4,7 +4,7 @@ import AnimateInView, { AnimateItem } from "@/components/animate-in-view"
 
 export default function AboutPage() {
   return (
-    <div className="container px-4 pt-8 pb-16 md:px-6">
+    <div className="container mx-auto px-4 pt-8 pb-16 md:px-6">
       <AnimateInView animation="fadeIn" duration={0.7}>
         <div className="space-y-4 text-center mb-16 mt-8">
           <h1 className="font-poppins text-4xl font-bold tracking-tighter sm:text-5xl md:text-6xl bg-gradient-to-r from-primary to-purple-600 text-transparent bg-clip-text">

@@ -10,7 +10,7 @@ import AnimateInView from "@/components/animate-in-view"
 
 export default function ContactPage() {
   return (
-    <div className="container px-4 pt-8 pb-16 md:px-6">
+    <div className="container mx-auto px-4 pt-8 pb-16 md:px-6">
       <AnimateInView animation="fadeIn" duration={0.7}>
         <div className="space-y-4 text-center mb-12 mt-8">
           <h1 className="font-poppins text-4xl font-bold tracking-tighter sm:text-5xl md:text-6xl bg-gradient-to-r from-gray-500 to-black dark:from-gray-400 dark:to-white text-transparent bg-clip-text">
