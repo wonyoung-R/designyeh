@@ -11,7 +11,7 @@ export default function AboutPage() {
             소개
           </h1>
           <p className="text-muted-foreground md:text-xl/relaxed lg:text-base/relaxed xl:text-xl/relaxed max-w-2xl mx-auto">
-            designYEH는 창의적인 디자인과 혁신적인 기술로 <br />고객의 디지털 경험을 향상시키는 웹 에이전시입니다.
+            DesignYEH는 창의적인 디자인과 혁신적인 기술로 <br />고객의 디지털 경험을 향상시키는 웹 에이전시입니다.
           </p>
         </div>
       </AnimateInView>
@@ -24,7 +24,7 @@ export default function AboutPage() {
               <h2 className="font-poppins font-bold text-3xl md:text-4xl text-slate-900 dark:text-slate-100">우리의 이야기</h2>
 
               <p className="text-slate-600 dark:text-slate-300 text-lg leading-relaxed">
-                designYEH는 2024년에 설립된 이후, 다양한 산업 분야의 클라이언트들과 협력하여 <br />
+                DesignYEH는 2024년에 설립된 이후, 다양한 산업 분야의 클라이언트들과 협력하여 <br />
                 혁신적인 디지털 솔루션을 제공해왔습니다.<br />
                 단순한 웹사이트 제작을 넘어, 고객의 비즈니스 목표를 이해하고 이를 달성하기 위해 노력해왔습니다.<br />
                 AI 시대에 고객님들과 전략적 파트너가 되고자 합니다.
@@ -42,7 +42,7 @@ export default function AboutPage() {
         <AnimateInView animation="slideUp" delay={0.2}>
           <section>
             <h2 className="font-poppins text-3xl font-bold text-center mb-8">
-              designYEH를 소개합니다
+              DesignYEH를 소개합니다
             </h2>
 
             <AnimateInView animation="stagger" delay={0.1}>
@@ -52,19 +52,19 @@ export default function AboutPage() {
                     <div className="relative h-80 w-full">
                       <Image
                         src="/images/profile.jpg"
-                        alt="designYEH 프로필"
+                        alt="DesignYEH 프로필"
                         fill
                         className="object-cover grayscale brightness-125 contrast-[0.85] opacity-90"
                       />
                     </div>
                     <CardContent className="p-8 space-y-4">
                       <div>
-                        <h3 className="text-2xl font-bold">designYEH</h3>
+                        <h3 className="text-2xl font-bold">DesignYEH</h3>
                         <p className="text-primary font-medium mt-1">Creative Director YEH</p>
                       </div>
                       <p className="text-slate-600 dark:text-slate-300 leading-relaxed">
-                        10년 이상의 업무자동화, 웹개발 경험을 가진 designYEH는 창의적인 감각으로 비즈니스를 이끌고 있습니다.<br />
-                        designYEH는 주도적이고 혁신적 접근 방식으로 수많은 프로젝트의 성공을 이끌어냈습니다. <br />
+                        10년 이상의 업무자동화, 웹개발 경험을 가진 DesignYEH는 창의적인 감각으로 비즈니스를 이끌고 있습니다.<br />
+                        DesignYEH는 주도적이고 혁신적 접근 방식으로 수많은 프로젝트의 성공을 이끌어냈습니다. <br />
                         사용자 경험에 중점을 둔 디자인으로, 심미적으로 아름답고, 다양한 디자인에 도전적인 시도를 하고 있습니다.
                       </p>
                     </CardContent>

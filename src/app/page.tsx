@@ -13,7 +13,7 @@ export default function Home() {
           </div>
           
           <h1 className="font-poppins text-5xl font-extrabold tracking-tighter sm:text-6xl md:text-7xl lg:text-8xl">
-            design<span className="text-primary bg-clip-text text-transparent bg-gradient-to-r from-primary to-purple-600">YEH</span>
+            Design<span className="text-primary bg-clip-text text-transparent bg-gradient-to-r from-primary to-purple-600">YEH</span>
           </h1>
           
           <p className="mx-auto max-w-[700px] text-slate-500 md:text-xl dark:text-slate-400 leading-relaxed">
@@ -29,7 +29,7 @@ export default function Home() {
             </Button>
             <Button asChild variant="outline" size="lg" className="h-12 px-8 text-base font-medium rounded-full">
               <Link href="/about">
-                designYEH 더 알아보기
+                DesignYEH 더 알아보기
               </Link>
             </Button>
           </div>
