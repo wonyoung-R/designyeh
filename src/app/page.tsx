@@ -17,8 +17,9 @@ export default function Home() {
           </h1>
           
           <p className="mx-auto max-w-[700px] text-slate-500 md:text-xl dark:text-slate-400 leading-relaxed">
-            단순함과 창의성의 조화로 당신의 비즈니스를 디자인합니다.<br className="hidden md:block" />
-            웹사이트 제작부터 브랜딩, 마케팅까지 All-in-One 솔루션을 경험하세요.
+            차가운 기술의 시대, 우리는 가장 따뜻한 아름다움을 코딩합니다.<br className="hidden md:block" />
+            AI가 만드는 효율성과 사람만이 가질 수 있는 감성의 조화로<br className="hidden md:block" />
+            당신의 비즈니스를 완성하세요.
           </p>
           
           <div className="flex flex-col sm:flex-row items-center justify-center gap-4 mt-8">

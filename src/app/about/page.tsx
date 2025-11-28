@@ -7,11 +7,11 @@ export default function AboutPage() {
     <div className="container mx-auto px-4 pt-8 pb-16 md:px-6">
       <AnimateInView animation="fadeIn" duration={0.7}>
         <div className="space-y-4 text-center mb-16 mt-8">
-          <h1 className="font-poppins text-4xl font-bold tracking-tighter sm:text-5xl md:text-6xl bg-gradient-to-r from-primary to-purple-600 text-transparent bg-clip-text">
-            소개
+          <h1 className="font-poppins text-4xl font-bold tracking-tighter sm:text-5xl md:text-6xl text-slate-800 dark:text-slate-100">
+            about
           </h1>
           <p className="text-muted-foreground md:text-xl/relaxed lg:text-base/relaxed xl:text-xl/relaxed max-w-2xl mx-auto">
-            DesignYEH는 창의적인 디자인과 혁신적인 기술로 <br />고객의 디지털 경험을 향상시키는 웹 에이전시입니다.
+            DesignYEH는 미학과 기술의 경계에서 <br />가장 인간적인 디지털 경험을 창조합니다.
           </p>
         </div>
       </AnimateInView>
@@ -24,15 +24,20 @@ export default function AboutPage() {
               <h2 className="font-poppins font-bold text-3xl md:text-4xl text-slate-900 dark:text-slate-100">우리의 이야기</h2>
 
               <p className="text-slate-600 dark:text-slate-300 text-lg leading-relaxed">
-                DesignYEH는 2024년에 설립된 이후, 다양한 산업 분야의 클라이언트들과 협력하여 <br />
-                혁신적인 디지털 솔루션을 제공해왔습니다.<br />
-                단순한 웹사이트 제작을 넘어, 고객의 비즈니스 목표를 이해하고 이를 달성하기 위해 노력해왔습니다.<br />
-                AI 시대에 고객님들과 전략적 파트너가 되고자 합니다.
+                "가장 아름다운 기술은 사람을 향한다."<br />
+                우리는 2024년, 차가운 코드 속에 사람의 온기를 담기 위해 시작되었습니다.
               </p>
 
               <p className="text-slate-600 dark:text-slate-300 text-lg leading-relaxed">
-                우리의 철학은 단순함과 창의성의 조화입니다. <br />복잡한 문제를 단순하고 우아한 솔루션으로 해결하며, <br />
-                항상 최신 트렌드와 기술을 연구하여 고객에게 최상의 결과물을 제공합니다.
+                DesignYEH는 Make, n8n과 같은 최첨단 자동화 도구를 통해 당신을 단순 반복 업무로부터 해방시킵니다.<br />
+                하지만 우리는 효율성만을 쫓지 않습니다. 우리가 빚어내는 모든 결과물에는<br />
+                사람의 향기와 감성이 깊이 배어 있습니다.
+              </p>
+
+              <p className="text-slate-600 dark:text-slate-300 text-lg leading-relaxed">
+                기술이 발전할수록 더욱 중요해지는 것은 '인간다움'입니다.<br />
+                DesignYEH는 AI라는 강력한 도구를, 미학이라는 언어로 번역하여<br />
+                당신의 비즈니스를 하나의 예술 작품으로 만들어 드립니다.
               </p>
             </div>
           </section>
@@ -63,9 +68,10 @@ export default function AboutPage() {
                         <p className="text-primary font-medium mt-1">Creative Director YEH</p>
                       </div>
                       <p className="text-slate-600 dark:text-slate-300 leading-relaxed">
-                        10년 이상의 업무자동화, 웹개발 경험을 가진 DesignYEH는 창의적인 감각으로 비즈니스를 이끌고 있습니다.<br />
-                        DesignYEH는 주도적이고 혁신적 접근 방식으로 수많은 프로젝트의 성공을 이끌어냈습니다. <br />
-                        사용자 경험에 중점을 둔 디자인으로, 심미적으로 아름답고, 다양한 디자인에 도전적인 시도를 하고 있습니다.
+                        "아름다움을 추구하는 개발자"<br />
+                        10년 이상의 경험을 가진 Creative Director YEH는 단순한 개발자가 아닙니다.<br />
+                        AI를 도구 삼아 최대치의 미학적 결과물을 끌어내는 디지털 아티스트입니다.<br />
+                        기술적 완벽함은 기본, 그 위에 감성적인 터치를 더해 사용자의 마음을 움직이는 경험을 설계합니다.
                       </p>
                     </CardContent>
                   </Card>
@@ -90,8 +96,8 @@ export default function AboutPage() {
                     <CardContent className="p-6 space-y-4">
                       <h3 className="text-xl font-bold">웹사이트 디자인 & 개발</h3>
                       <p className="text-sm text-slate-600 dark:text-slate-400 leading-relaxed">
-                        반응형 웹사이트부터 복잡한 웹 애플리케이션까지, 고객의 요구에 맞는 맞춤형 웹 솔루션을
-                        제공합니다. 최신 기술과 디자인 트렌드를 활용하여 사용자 경험을 극대화합니다.
+                        단순한 정보 전달을 넘어, 브랜드의 철학을 담아내는 웹사이트를 제작합니다.
+                        최신 AI 기술과 감각적인 디자인을 결합하여, 사용자에게 깊은 울림을 주는 디지털 경험을 제공합니다.
                       </p>
                     </CardContent>
                   </Card>
@@ -105,8 +111,9 @@ export default function AboutPage() {
                         브랜드 아이덴티티 & 로고
                       </h3>
                       <p className="text-sm text-slate-600 dark:text-slate-400 leading-relaxed">
-                        브랜드의 가치와 비전을 시각적으로 표현하는 로고와 브랜드 아이덴티티를 디자인합니다. 고객의
-                        브랜드가 경쟁에서 돋보이도록 독특하고 기억에 남는 디자인을 제공합니다.
+                        브랜드의 본질을 시각적 언어로 번역합니다.
+                        당신만의 고유한 이야기가 담긴 로고와 아이덴티티 디자인으로,
+                        고객의 마음속에 오래도록 기억될 수 있는 이미지를 구축합니다.
                       </p>
                     </CardContent>
                   </Card>
@@ -116,10 +123,10 @@ export default function AboutPage() {
                   <Card className="overflow-hidden border border-slate-200 dark:border-slate-800 hover:shadow-lg transition-all duration-300 hover:-translate-y-1 rounded-xl h-full">
                     <div className="h-1 bg-gradient-to-r from-primary to-purple-600"></div>
                     <CardContent className="p-6 space-y-4">
-                      <h3 className="text-xl font-bold">디지털 마케팅 & SEO</h3>
+                      <h3 className="text-xl font-bold">자동화 & 컨설팅</h3>
                       <p className="text-sm text-slate-600 dark:text-slate-400 leading-relaxed">
-                        웹사이트 트래픽을 증가시키고 전환율을 높이기 위한 종합적인 디지털 마케팅 전략을 수립합니다. 검색
-                        엔진 최적화(SEO)를 통해 고객의 온라인 가시성을 향상시킵니다.
+                        Make, n8n 등을 활용한 업무 자동화로 반복적인 일에서 당신을 해방시켜 드립니다.
+                        효율적인 시스템 구축을 통해 더 가치 있고 창의적인 일에 집중할 수 있도록 돕습니다.
                       </p>
                     </CardContent>
                   </Card>

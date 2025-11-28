@@ -107,11 +107,11 @@ export default function PortfolioPage() {
     <div className="container mx-auto px-4 pt-8 pb-16 md:px-6">
       <AnimateInView animation="fadeIn" duration={0.7}>
         <div className="space-y-4 text-center mb-16 mt-8">
-          <h1 className="font-poppins text-4xl font-bold tracking-tighter sm:text-5xl md:text-6xl bg-gradient-to-r from-blue-500 to-cyan-500 text-transparent bg-clip-text">
-            포트폴리오
+          <h1 className="font-poppins text-4xl font-bold tracking-tighter sm:text-5xl md:text-6xl text-slate-800 dark:text-slate-100">
+            portfolio
           </h1>
           <p className="text-muted-foreground md:text-xl/relaxed max-w-2xl mx-auto">
-            DesignYEH가 진행한 다양한 프로젝트를 소개합니다.
+            미학과 기능이 조화를 이룬 DesignYEH의 작업물들을 만나보세요.
           </p>
         </div>
       </AnimateInView>
