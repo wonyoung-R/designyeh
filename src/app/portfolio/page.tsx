@@ -7,8 +7,9 @@ import { Badge } from "@/components/ui/badge"
 import { Button } from "@/components/ui/button"
 import AnimateInView, { AnimateItem } from "@/components/animate-in-view"
 import { ExternalLink, Loader2, Link as LinkIcon } from "lucide-react"
-import { useEffect, useState } from "react"
+import { useEffect, useState, useRef } from "react"
 import { supabase } from "@/lib/supabase"
+import { motion, useInView } from "framer-motion"
 
 interface Project {
   id: number
@@ -18,6 +19,61 @@ interface Project {
   image: string
   link: string
   tech: string[]
+}
+
+function ProjectCard({ project }: { project: Project }) {
+  const ref = useRef(null)
+  const isInView = useInView(ref, { margin: "-40% 0px -40% 0px" }) // 화면 중앙에 왔을 때 감지
+
+  return (
+    <Card className="h-full flex flex-col overflow-hidden hover:shadow-lg transition-all duration-300 hover:-translate-y-1 group" ref={ref}>
+      <div 
+        className="relative aspect-[4/3] w-full overflow-hidden cursor-pointer" 
+        onClick={() => window.open(project.link, '_blank')}
+      >
+        <Image
+          src={project.image}
+          alt={project.title}
+          fill
+          className={`object-cover transition-all duration-500 group-hover:scale-105 
+            ${isInView ? 'grayscale-0' : 'grayscale'} 
+            md:grayscale md:group-hover:grayscale-0`}
+        />
+      </div>
+      <CardHeader className="pb-3">
+        <CardTitle className="text-lg font-bold line-clamp-1">{project.title}</CardTitle>
+        
+        {/* URL 표시 추가 */}
+        <a 
+          href={project.link} 
+          target="_blank" 
+          rel="noopener noreferrer"
+          className="text-xs text-muted-foreground hover:text-primary flex items-center gap-1 mt-1 truncate"
+        >
+          <LinkIcon className="h-3 w-3" />
+          {project.link.replace(/^https?:\/\//, '')}
+        </a>
+
+        <div className="flex flex-wrap gap-2 mt-3">
+          {project.tech?.map((t) => (
+            <Badge key={t} variant="secondary" className="text-[10px] px-2 py-0 h-5">
+              {t}
+            </Badge>
+          ))}
+        </div>
+      </CardHeader>
+      <CardContent className="flex-1 space-y-4 text-sm">
+        <p className="text-muted-foreground line-clamp-2">{project.description}</p>
+        {project.details && project.details.length > 0 && (
+          <div className="bg-slate-50 dark:bg-slate-900 p-3 rounded-md space-y-1">
+            {project.details.map((line, i) => (
+              <p key={i} className="text-slate-600 dark:text-slate-400 font-medium text-xs">{line}</p>
+            ))}
+          </div>
+        )}
+      </CardContent>
+    </Card>
+  )
 }
 
 export default function PortfolioPage() {
@@ -69,48 +125,7 @@ export default function PortfolioPage() {
           <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
             {projects.map((project) => (
               <AnimateItem key={project.id}>
-                <Card className="h-full flex flex-col overflow-hidden hover:shadow-lg transition-all duration-300 hover:-translate-y-1 group">
-                  <div className="relative aspect-[4/3] w-full overflow-hidden cursor-pointer" onClick={() => window.open(project.link, '_blank')}>
-                    <Image
-                      src={project.image}
-                      alt={project.title}
-                      fill
-                      className="object-cover transition-all duration-500 group-hover:scale-105 grayscale group-hover:grayscale-0"
-                    />
-                  </div>
-                  <CardHeader className="pb-3">
-                    <CardTitle className="text-lg font-bold line-clamp-1">{project.title}</CardTitle>
-                    
-                    {/* URL 표시 추가 */}
-                    <a 
-                      href={project.link} 
-                      target="_blank" 
-                      rel="noopener noreferrer"
-                      className="text-xs text-muted-foreground hover:text-primary flex items-center gap-1 mt-1 truncate"
-                    >
-                      <LinkIcon className="h-3 w-3" />
-                      {project.link.replace(/^https?:\/\//, '')}
-                    </a>
-
-                    <div className="flex flex-wrap gap-2 mt-3">
-                      {project.tech?.map((t) => (
-                        <Badge key={t} variant="secondary" className="text-[10px] px-2 py-0 h-5">
-                          {t}
-                        </Badge>
-                      ))}
-                    </div>
-                  </CardHeader>
-                  <CardContent className="flex-1 space-y-4 text-sm">
-                    <p className="text-muted-foreground line-clamp-2">{project.description}</p>
-                    {project.details && project.details.length > 0 && (
-                      <div className="bg-slate-50 dark:bg-slate-900 p-3 rounded-md space-y-1">
-                        {project.details.map((line, i) => (
-                          <p key={i} className="text-slate-600 dark:text-slate-400 font-medium text-xs">{line}</p>
-                        ))}
-                      </div>
-                    )}
-                  </CardContent>
-                </Card>
+                <ProjectCard project={project} />
               </AnimateItem>
             ))}
           </div>
