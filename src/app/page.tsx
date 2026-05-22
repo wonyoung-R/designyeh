@@ -1,6 +1,8 @@
 "use client"
 
 import { useEffect, useRef, useState } from "react"
+import Image from "next/image"
+import Link from "next/link"
 import { supabase } from "@/lib/supabase"
 import { FabWax } from "@/components/fab-wax"
 import {
@@ -50,9 +52,16 @@ function Frame({ work, index }: { work: Work; index: number }) {
       <article className={`frame ${frameClass}`}>
         <div className="mat snug">
           <div className="art">
-            {/* plain img keeps static export + lazy loading simple */}
-            {/* eslint-disable-next-line @next/next/no-img-element */}
-            <img className="art-img" src={work.image} alt={`${work.title} 웹사이트 미리보기`} loading="lazy" />
+            {/* next/image applies basePath automatically (works on subpath + custom domain) */}
+            <Image
+              className="art-img"
+              src={work.image}
+              alt={`${work.title} 웹사이트 미리보기`}
+              fill
+              sizes="(max-width: 560px) 88vw, 360px"
+              style={{ objectFit: "cover", objectPosition: "top center" }}
+              unoptimized
+            />
           </div>
         </div>
       </article>
@@ -115,7 +124,7 @@ export default function GalleryHome() {
         <nav className="docent-r">
           <a href="#room-02">Works</a>
           <a href="#room-05">Studio</a>
-          <a href="/contact">Contact</a>
+          <Link href="/contact">Contact</Link>
           <span className="docent-meta">STUDIO — SEOUL</span>
         </nav>
       </header>
