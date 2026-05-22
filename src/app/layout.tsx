@@ -1,21 +1,30 @@
 import type { Metadata } from "next";
-import { Poppins } from "next/font/google";
 import "./globals.css";
-import { Navbar } from "@/components/navbar";
-import { Footer } from "@/components/footer";
-
-const poppins = Poppins({
-  weight: ["400", "500", "600", "700"],
-  subsets: ["latin"],
-  variable: "--font-poppins",
-});
 
 export const metadata: Metadata = {
-  title: "DesignYEH - 웹 에이전시",
-  description: "DesignYEH는 창의적인 디자인과 혁신적인 기술로 고객의 디지털 경험을 향상시키는 웹 에이전시입니다.",
-  icons: {
-    icon: "/favicon.svg",
+  metadataBase: new URL("https://designyeh.kr"),
+  title: {
+    default: "designyeh — studio",
+    template: "%s · designyeh",
   },
+  description:
+    "designyeh는 브랜드의 첫 인상을 짓는 작은 디자인 스튜디오입니다. 홈페이지, 로고, 인쇄물 — 마감된 작업들을 액자에 걸어 전시합니다.",
+  icons: { icon: "/favicon.svg" },
+  openGraph: {
+    type: "website",
+    locale: "ko_KR",
+    url: "https://designyeh.kr",
+    siteName: "designyeh",
+    title: "designyeh — studio",
+    description:
+      "브랜드의 첫 인상을 짓는 작은 디자인 스튜디오. 마감된 작업들을 액자에 걸어 전시합니다.",
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "designyeh — studio",
+    description: "브랜드의 첫 인상을 짓는 작은 디자인 스튜디오.",
+  },
+  robots: { index: true, follow: true },
 };
 
 export default function RootLayout({
@@ -25,15 +34,20 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="ko">
-      <body
-        className={`${poppins.variable} font-poppins antialiased flex flex-col min-h-screen`}
-      >
-        <Navbar />
-        <main className="flex-1 pt-16 flex flex-col w-full">
-          {children}
-        </main>
-        <Footer />
-      </body>
+      <head>
+        <link rel="preconnect" href="https://fonts.googleapis.com" />
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
+        <link
+          href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=JetBrains+Mono:wght@400;500&display=swap"
+          rel="stylesheet"
+        />
+        {/* Pretendard (KR body) — matches the design handoff */}
+        <link
+          rel="stylesheet"
+          href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.min.css"
+        />
+      </head>
+      <body className="gallery antialiased">{children}</body>
     </html>
   );
 }

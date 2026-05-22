@@ -1,148 +1,150 @@
 "use client"
 
 import { useState } from "react"
-import { Card, CardContent } from "@/components/ui/card"
-import { Input } from "@/components/ui/input"
-import { Label } from "@/components/ui/label"
-import { Textarea } from "@/components/ui/textarea"
-import { Button } from "@/components/ui/button"
-import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select"
-import AnimateInView from "@/components/animate-in-view"
-import { Loader2 } from "lucide-react"
+import Link from "next/link"
+
+// Static export has no server runtime, so the form posts directly to the
+// Make.com webhook from the client. This is a public ingest webhook (no secret).
+const WEBHOOK_URL =
+  process.env.NEXT_PUBLIC_MAKE_WEBHOOK_URL ||
+  "https://hook.us1.make.com/4ybr1nqnijslbt2y4fi3wth8ly2ni88n"
+
+type Status = "idle" | "sending" | "ok" | "err"
 
 export default function ContactPage() {
-  const [isLoading, setIsLoading] = useState(false)
-  const [formData, setFormData] = useState({
-    name: "",
-    contact: "",
-    type: "",
-    message: "",
-  })
+  const [status, setStatus] = useState<Status>("idle")
+  const [form, setForm] = useState({ name: "", contact: "", type: "", message: "" })
 
-  const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
+  const onChange = (
+    e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>
+  ) => {
     const { id, value } = e.target
-    setFormData((prev) => ({ ...prev, [id]: value }))
+    setForm((p) => ({ ...p, [id]: value }))
   }
 
-  const handleSelectChange = (value: string) => {
-    setFormData((prev) => ({ ...prev, type: value }))
-  }
-
-  const handleSubmit = async () => {
-    if (!formData.name || !formData.contact || !formData.type || !formData.message) {
-      alert("모든 항목을 입력해주세요.")
+  const onSubmit = async (e: React.FormEvent) => {
+    e.preventDefault()
+    if (!form.name || !form.contact || !form.type || !form.message) {
+      setStatus("err")
       return
     }
-
-    setIsLoading(true)
-
+    setStatus("sending")
     try {
-      const response = await fetch("/api/contact", {
+      const res = await fetch(WEBHOOK_URL, {
         method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify(formData),
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(form),
       })
-
-      if (response.ok) {
-        alert("문의가 성공적으로 접수되었습니다!")
-        setFormData({ name: "", contact: "", type: "", message: "" })
+      if (res.ok) {
+        setStatus("ok")
+        setForm({ name: "", contact: "", type: "", message: "" })
       } else {
-        alert("문의 접수에 실패했습니다. 다시 시도해주세요.")
+        setStatus("err")
       }
-    } catch (error) {
-      console.error("Error:", error)
-      alert("오류가 발생했습니다.")
-    } finally {
-      setIsLoading(false)
+    } catch {
+      setStatus("err")
     }
   }
 
   return (
-    <div className="container mx-auto px-4 pt-8 pb-16 md:px-6">
-      <AnimateInView animation="fadeIn" duration={0.7}>
-        <div className="space-y-4 text-center mb-12 mt-8">
-          <h1 className="font-poppins text-4xl font-bold tracking-tighter sm:text-5xl md:text-6xl text-slate-800 dark:text-slate-100">
-            contact
-          </h1>
-          <p className="text-muted-foreground md:text-xl/relaxed max-w-2xl mx-auto">
-            당신의 비즈니스에 아름다운 혁신이 필요하다면, 언제든 말을 걸어주세요.
-          </p>
+    <>
+      <header className="docent">
+        <div className="docent-l">
+          <span className="dot" />
+          <span className="docent-room">FRONT DESK — INQUIRIES</span>
         </div>
-      </AnimateInView>
+        <Link className="wordmark" href="/">
+          designyeh<span className="wm-period">.</span>
+        </Link>
+        <nav className="docent-r">
+          <Link href="/#room-02">Works</Link>
+          <Link href="/#room-05">Studio</Link>
+          <span className="docent-meta">STUDIO — SEOUL</span>
+        </nav>
+      </header>
 
-      <AnimateInView animation="slideUp" delay={0.2}>
-        <div className="max-w-2xl mx-auto">
-          <Card className="border-slate-200 dark:border-slate-800 shadow-lg bg-white dark:bg-slate-950">
-            <CardContent className="p-6 md:p-8 space-y-6">
-              <div className="space-y-2">
-                <Label htmlFor="name" className="text-base">이름</Label>
-                <Input 
-                  id="name" 
-                  placeholder="홍길동" 
-                  className="h-12 bg-slate-50 dark:bg-slate-900 border-slate-200 dark:border-slate-800"
-                  value={formData.name}
-                  onChange={handleChange}
-                />
-              </div>
-
-              <div className="space-y-2">
-                <Label htmlFor="contact" className="text-base">연락처 (이메일 또는 전화번호)</Label>
-                <Input 
-                  id="contact" 
-                  placeholder="010-1234-5678" 
-                  className="h-12 bg-slate-50 dark:bg-slate-900 border-slate-200 dark:border-slate-800"
-                  value={formData.contact}
-                  onChange={handleChange}
-                />
-              </div>
-
-              <div className="space-y-2">
-                <Label htmlFor="type" className="text-base">문의 유형</Label>
-                <Select onValueChange={handleSelectChange} value={formData.type}>
-                  <SelectTrigger id="type" className="h-12 bg-slate-50 dark:bg-slate-900 border-slate-200 dark:border-slate-800">
-                    <SelectValue placeholder="문의 유형을 선택해주세요" />
-                  </SelectTrigger>
-                  <SelectContent>
-                    <SelectItem value="website">웹사이트 제작</SelectItem>
-                    <SelectItem value="branding">로고/브랜딩</SelectItem>
-                    <SelectItem value="marketing">마케팅/SEO</SelectItem>
-                    <SelectItem value="other">기타 문의</SelectItem>
-                  </SelectContent>
-                </Select>
-              </div>
-
-              <div className="space-y-2">
-                <Label htmlFor="message" className="text-base">메시지</Label>
-                <Textarea 
-                  id="message" 
-                  placeholder="문의 내용을 자유롭게 작성해주세요." 
-                  className="min-h-[150px] resize-none bg-slate-50 dark:bg-slate-900 border-slate-200 dark:border-slate-800 p-4"
-                  value={formData.message}
-                  onChange={handleChange}
-                />
-              </div>
-
-              <Button 
-                className="w-full h-12 text-base font-medium mt-4" 
-                size="lg"
-                onClick={handleSubmit}
-                disabled={isLoading}
-              >
-                {isLoading ? (
-                  <>
-                    <Loader2 className="mr-2 h-4 w-4 animate-spin" />
-                    전송 중...
-                  </>
-                ) : (
-                  "문의하기"
-                )}
-              </Button>
-            </CardContent>
-          </Card>
+      <section className="room room-studio" style={{ minHeight: "calc(100vh - 56px)" }}>
+        <div className="room-tag">
+          <span className="tag-no">—</span>
+          <span className="tag-name">CONTACT</span>
+          <span className="tag-meta">— leave a note at the front desk</span>
         </div>
-      </AnimateInView>
-    </div>
+
+        <div className="contact-wall">
+          <div className="contact-plaque">
+            <h1 className="contact-title">Say hello.</h1>
+            <p className="contact-lead">
+              브랜드의 첫 인상이 필요하시다면 편하게 말을 걸어주세요. 홈페이지·로고·인쇄물 무엇이든 좋습니다.
+              남겨주시면 하루 안에 회신드립니다.
+            </p>
+
+            <form onSubmit={onSubmit}>
+              <div className="field">
+                <label className="field-label" htmlFor="name">이름 / 브랜드</label>
+                <input
+                  id="name"
+                  className="field-input"
+                  placeholder="홍길동 / 브랜드명"
+                  value={form.name}
+                  onChange={onChange}
+                />
+              </div>
+
+              <div className="field">
+                <label className="field-label" htmlFor="contact">연락처 (이메일 또는 전화)</label>
+                <input
+                  id="contact"
+                  className="field-input"
+                  placeholder="hello@example.com / 010-1234-5678"
+                  value={form.contact}
+                  onChange={onChange}
+                />
+              </div>
+
+              <div className="field">
+                <label className="field-label" htmlFor="type">문의 유형</label>
+                <select id="type" className="field-select" value={form.type} onChange={onChange}>
+                  <option value="" disabled>
+                    문의 유형을 선택해주세요
+                  </option>
+                  <option value="website">홈페이지 제작</option>
+                  <option value="branding">로고 · 브랜딩</option>
+                  <option value="automation">업무 자동화</option>
+                  <option value="other">기타 문의</option>
+                </select>
+              </div>
+
+              <div className="field">
+                <label className="field-label" htmlFor="message">메시지</label>
+                <textarea
+                  id="message"
+                  className="field-textarea"
+                  placeholder="만들고 싶은 것, 일정, 예산 — 편하게 적어주세요."
+                  value={form.message}
+                  onChange={onChange}
+                />
+              </div>
+
+              <button type="submit" className="contact-submit" disabled={status === "sending"}>
+                {status === "sending" ? "보내는 중…" : "문의 보내기 →"}
+              </button>
+
+              {status === "ok" && (
+                <p className="contact-note ok">접수되었습니다. 하루 안에 회신드릴게요. 감사합니다.</p>
+              )}
+              {status === "err" && (
+                <p className="contact-note err">
+                  모든 항목을 채워주세요. 계속 안 되면 hello@designyeh.kr 로 보내주셔도 됩니다.
+                </p>
+              )}
+            </form>
+
+            <Link href="/" className="contact-back">← 전시로 돌아가기</Link>
+          </div>
+        </div>
+
+        <div className="baseboard" />
+      </section>
+    </>
   )
 }

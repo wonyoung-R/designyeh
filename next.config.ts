@@ -1,17 +1,18 @@
 import type { NextConfig } from "next";
 
 const nextConfig: NextConfig = {
-  output: 'export',  // Static HTML Export 설정
+  output: "export", // Static HTML Export (GitHub Pages)
+  trailingSlash: true, // emit route/index.html so GitHub Pages serves /contact/ cleanly
+
+  // Pin the workspace root to THIS project. A stray package.json/lockfile in
+  // the home directory makes Next infer the wrong root and pull in sibling
+  // projects' files (e.g. proxy.ts/middleware). process.cwd() is the project
+  // dir both locally and in CI.
+  turbopack: { root: process.cwd() },
+  outputFileTracingRoot: process.cwd(),
+
   images: {
-    unoptimized: true, // GitHub Pages에서는 이미지 최적화 서버를 사용할 수 없으므로 비활성화
-    remotePatterns: [
-      { protocol: "https", hostname: "dcarecenter.kr" },
-      { protocol: "https", hostname: "sukone.kr" },
-      { protocol: "https", hostname: "cdn.litt.ly" },
-      { protocol: "https", hostname: "res.cloudinary.com" },
-      { protocol: "https", hostname: "img.freepik.com" },
-      { protocol: "https", hostname: "ssdwgzhtzbxgxezkomqz.supabase.co" },
-    ],
+    unoptimized: true, // no image optimization server on static export
   },
 };
 
