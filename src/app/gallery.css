@@ -36,7 +36,9 @@ body.gallery {
   background: var(--wall-01);
   -webkit-font-smoothing: antialiased;
   text-rendering: optimizeLegibility;
+  overflow-x: hidden; /* belt + suspenders against any element causing horizontal scroll */
 }
+html { overflow-x: hidden; }
 body.gallery a { color: inherit; text-decoration: none; }
 
 /* ─── DOCENT BAR (top nav) ─────────────────────────────────── */
@@ -664,9 +666,39 @@ body.gallery a { color: inherit; text-decoration: none; }
   .room { padding: 64px clamp(20px, 5vw, 40px) 110px; }
 }
 @media (max-width: 560px) {
-  /* frames scale down: art sizes are clamped via inline style fallback in JS */
-  .frame-link { width: 100%; max-width: 88vw; }
+  /* tighter room padding so content has full breathing room */
+  .room { padding: 56px 20px 96px; }
+  .docent { padding: 12px 16px; }
+  .docent-r { gap: 12px; }
+  .room-tag { font-size: 10px; gap: 10px; flex-wrap: wrap; margin-bottom: 36px; }
+
+  /* HEROES: scale down so long words don't overflow narrow viewports */
+  .exhibition-statement { font-size: clamp(48px, 13.5vw, 72px); }
+  .vinyl-line { font-size: clamp(42px, 11.5vw, 72px); }
+  .vinyl-and { padding-left: 0; }
+  .plq-title { font-size: clamp(26px, 6vw, 40px); }
+
+  /* FRAMES: fit inside the column, never push viewport */
+  .frame-link { width: 100%; max-width: 100%; }
+  .frame-link.offset-down, .frame-link.offset-up,
+  .in-view.offset-down, .in-view.offset-up { transform: none; }
   .art { width: 100% !important; height: auto !important; aspect-ratio: 16 / 10; }
   .label { max-width: 100%; }
-  .salon-grid { gap: 56px 0; }
+  .salon-grid { gap: 48px 0; }
+
+  /* PLAQUES: tighter padding so they fit in narrow screens */
+  .studio-plaque { padding: 36px 24px 32px; }
+  .plq-grid { grid-template-columns: 1fr; gap: 20px; }
+  .contact-plaque { padding: 36px 22px 32px; }
+  .contact-title { font-size: clamp(36px, 11vw, 56px); }
+
+  /* ENTRY WALL: stack and ease the type */
+  .entry-wall { gap: 28px; min-height: auto; padding-top: 8px; }
+
+  /* end label wraps cleanly */
+  .end-label { padding: 22px 16px; flex-direction: column; gap: 8px; text-align: left; }
+
+  /* keep FAB visible but smaller */
+  .fab-wax, .fab-wax-coin { width: 78px; height: 78px; }
+  .fwx-monogram { font-size: 26px; }
 }
