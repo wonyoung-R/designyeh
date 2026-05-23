@@ -1,10 +1,10 @@
 "use client"
 
 import { useEffect, useRef, useState } from "react"
-import Image from "next/image"
 import Link from "next/link"
 import { supabase } from "@/lib/supabase"
 import { FabWax } from "@/components/fab-wax"
+import { asset } from "@/lib/assets"
 import {
   type Work,
   toWork,
@@ -52,15 +52,13 @@ function Frame({ work, index }: { work: Work; index: number }) {
       <article className={`frame ${frameClass}`}>
         <div className="mat snug">
           <div className="art">
-            {/* next/image applies basePath automatically (works on subpath + custom domain) */}
-            <Image
+            {/* next/image with unoptimized doesn't prefix basePath; asset() does. */}
+            {/* eslint-disable-next-line @next/next/no-img-element */}
+            <img
               className="art-img"
-              src={work.image}
+              src={asset(work.image)}
               alt={`${work.title} 웹사이트 미리보기`}
-              fill
-              sizes="(max-width: 560px) 88vw, 360px"
-              style={{ objectFit: "cover", objectPosition: "top center" }}
-              unoptimized
+              loading="lazy"
             />
           </div>
         </div>
