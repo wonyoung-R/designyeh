@@ -144,7 +144,7 @@ export default function GalleryHome() {
           <div className="entry-plate">
             <p className="plate-kicker">designyeh — selected works</p>
             <p className="plate-body">
-              디자인예는 브랜드의 첫 인상을 짓는 작은 스튜디오입니다. 홈페이지, 로고, 인쇄물 — 각각의 작업을
+              designYEH는 브랜드의 첫 인상을 짓는 작은 스튜디오입니다. 홈페이지, 로고, 인쇄물 — 각각의 작업을
               액자에 걸어 두었습니다. 편하게 둘러보시고, 마음에 드는 작품이 있다면 그 액자를 눌러보세요.
             </p>
             <p className="plate-foot">↓&nbsp;&nbsp;scroll to enter&nbsp;&nbsp;·&nbsp;&nbsp;벽을 따라 천천히</p>
