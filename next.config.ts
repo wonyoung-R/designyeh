@@ -1,21 +1,28 @@
 import type { NextConfig } from "next";
 
-// GH Pages serves at https://wonyoung-r.github.io/designyeh/, a subpath.
-// Set basePath explicitly so next/image + next/link + useRouter all prepend it.
-// (configure-pages only sets assetPrefix, which covers /_next/ but not <img>.)
-// Override with NEXT_PUBLIC_BASE_PATH="" when moving to a custom root domain
-// (e.g. designyeh.kr) or Vercel.
-const basePath = process.env.NEXT_PUBLIC_BASE_PATH ?? "/designyeh";
+// Deploy targets:
+//   - GH Pages (subpath /designyeh/) → basePath '/designyeh'
+//   - Vercel (root design-yeh.vercel.app)   → basePath ''  (auto via VERCEL env)
+//   - Custom root domain                    → set NEXT_PUBLIC_BASE_PATH=''
+//
+// VERCEL=1 is injected automatically by Vercel builds. Override always wins.
+const explicit = process.env.NEXT_PUBLIC_BASE_PATH;
+const basePath =
+  explicit !== undefined ? explicit : process.env.VERCEL ? "" : "/designyeh";
 
 const nextConfig: NextConfig = {
   output: "export",
   trailingSlash: true,
 
-  basePath,
+  basePath: basePath || undefined,
   assetPrefix: basePath || undefined,
 
-  // Pin the workspace root so Next doesn't walk up to a stray home-dir lockfile
-  // (was pulling in mybdr's proxy.ts). process.cwd() is the project dir.
+  // Bake the computed basePath into client bundles so asset() / lib code
+  // sees the same value config does (Vercel doesn't pass VERCEL=1 to the
+  // browser). NEXT_PUBLIC_* is inlined at build time.
+  env: { NEXT_PUBLIC_BASE_PATH: basePath },
+
+  // Pin Turbopack root so it doesn't walk up to stray home-dir lockfiles.
   turbopack: { root: process.cwd() },
   outputFileTracingRoot: process.cwd(),
 

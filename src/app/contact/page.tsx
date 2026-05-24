@@ -134,7 +134,7 @@ export default function ContactPage() {
               )}
               {status === "err" && (
                 <p className="contact-note err">
-                  모든 항목을 채워주세요. 계속 안 되면 hello@designyeh.kr 로 보내주셔도 됩니다.
+                  모든 항목을 채워주세요. 계속 안 되면 grizrider@gmail.com 로 보내주셔도 됩니다.
                 </p>
               )}
             </form>
