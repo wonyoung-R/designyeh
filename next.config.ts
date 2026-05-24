@@ -1,14 +1,13 @@
 import type { NextConfig } from "next";
 
 // Deploy targets:
-//   - GH Pages (subpath /designyeh/) → basePath '/designyeh'
-//   - Vercel (root design-yeh.vercel.app)   → basePath ''  (auto via VERCEL env)
-//   - Custom root domain                    → set NEXT_PUBLIC_BASE_PATH=''
-//
-// VERCEL=1 is injected automatically by Vercel builds. Override always wins.
+//   - Vercel (root design-yeh.vercel.app)        → basePath '' (auto via VERCEL=1)
+//   - GH Pages (subpath /designyeh/)             → basePath '/designyeh'
+//   - Custom root domain                         → set NEXT_PUBLIC_BASE_PATH=''
 const explicit = process.env.NEXT_PUBLIC_BASE_PATH;
+const isVercel = !!process.env.VERCEL;
 const basePath =
-  explicit !== undefined ? explicit : process.env.VERCEL ? "" : "/designyeh";
+  explicit !== undefined ? explicit : isVercel ? "" : "/designyeh";
 
 const nextConfig: NextConfig = {
   output: "export",
@@ -17,14 +16,15 @@ const nextConfig: NextConfig = {
   basePath: basePath || undefined,
   assetPrefix: basePath || undefined,
 
-  // Bake the computed basePath into client bundles so asset() / lib code
-  // sees the same value config does (Vercel doesn't pass VERCEL=1 to the
-  // browser). NEXT_PUBLIC_* is inlined at build time.
+  // Bake the computed basePath into client bundles so asset() helper / client
+  // code sees the same value (Vercel doesn't expose VERCEL=1 to browser).
   env: { NEXT_PUBLIC_BASE_PATH: basePath },
 
-  // Pin Turbopack root so it doesn't walk up to stray home-dir lockfiles.
-  turbopack: { root: process.cwd() },
-  outputFileTracingRoot: process.cwd(),
+  // Local-only escape hatch: stray /Users/grizrider/package.json (home-dir
+  // lockfile) makes Turbopack walk up and pull in sibling project files
+  // (mybdr/src/proxy.ts). Vercel CI has a clean checkout so this is unneeded
+  // and may actually confuse the Vercel build container's path tracing.
+  ...(isVercel ? {} : { turbopack: { root: process.cwd() } }),
 
   images: { unoptimized: true },
 };
