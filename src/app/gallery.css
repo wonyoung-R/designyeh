@@ -674,6 +674,68 @@ body.gallery a { color: inherit; text-decoration: none; }
   color: var(--ink-mute);
   text-align: center;
 }
+
+/* "또는" 구분선 */
+.contact-or {
+  display: flex; align-items: center; gap: 12px;
+  margin: 22px 0 14px;
+  font-family: var(--g-mono); font-size: 10px;
+  letter-spacing: 0.18em; text-transform: uppercase;
+  color: var(--ink-mute);
+}
+.contact-or::before,
+.contact-or::after {
+  content: ""; flex: 1; height: 0.5px;
+  background: var(--ink-line);
+}
+
+/* Kakao 오픈채팅 버튼 — 카카오 표준 옐로우 */
+.contact-kakao {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  width: 100%;
+  padding: 14px 18px;
+  background: #FEE500;
+  color: #191919;
+  border-radius: 2px;
+  text-decoration: none;
+  box-shadow:
+    inset 0 0 0 0.5px rgba(0,0,0,.08),
+    0 6px 16px -10px rgba(40,30,0,.35);
+  transition: transform .25s cubic-bezier(.2,.7,.2,1), box-shadow .25s ease;
+}
+.contact-kakao:hover {
+  transform: translateY(-2px);
+  box-shadow:
+    inset 0 0 0 0.5px rgba(0,0,0,.10),
+    0 12px 22px -10px rgba(40,30,0,.45);
+}
+.kakao-icon {
+  font-size: 22px; line-height: 1;
+  filter: grayscale(0.05);
+}
+.kakao-text {
+  display: flex; flex-direction: column; gap: 2px; flex: 1; min-width: 0;
+}
+.kakao-title {
+  font-family: var(--g-sans);
+  font-size: 14px; font-weight: 600;
+  letter-spacing: -0.005em;
+  color: #191919;
+}
+.kakao-sub {
+  font-family: var(--g-mono);
+  font-size: 10px; letter-spacing: 0.04em;
+  color: rgba(25,25,25,.65);
+  white-space: nowrap; overflow: hidden; text-overflow: ellipsis;
+}
+.kakao-arrow {
+  font-family: var(--g-mono);
+  font-size: 16px; line-height: 1;
+  color: #191919; opacity: .7;
+}
+
 .contact-back {
   display: inline-block; margin-top: 28px;
   font-family: var(--g-mono); font-size: 11px;

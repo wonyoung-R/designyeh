@@ -4,6 +4,7 @@ import type { Metadata } from "next"
 const EMAIL = "creativebyyeh@gmail.com"
 const SUBJECT = "designYEH 문의"
 const BODY = "안녕하세요, designYEH에 문의드립니다.\n\n— 만들고 싶은 것:\n— 일정/예산:\n— 연락처:"
+const KAKAO_OPEN_CHAT = "https://open.kakao.com/me/designyeh"
 
 export const metadata: Metadata = {
   title: "Contact",
@@ -52,6 +53,22 @@ export default function ContactPage() {
 
             <a className="contact-submit" href={mailtoHref}>
               이메일 보내기 →
+            </a>
+
+            <div className="contact-or"><span>또는</span></div>
+
+            <a
+              className="contact-kakao"
+              href={KAKAO_OPEN_CHAT}
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              <span className="kakao-icon" aria-hidden="true">💬</span>
+              <span className="kakao-text">
+                <span className="kakao-title">카카오톡 오픈채팅으로 대화하기</span>
+                <span className="kakao-sub">designYEH · 링크를 누르면 카카오톡이 실행됩니다</span>
+              </span>
+              <span className="kakao-arrow" aria-hidden="true">↗</span>
             </a>
 
             <p className="contact-hint">
