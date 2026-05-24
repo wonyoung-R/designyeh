@@ -227,7 +227,7 @@ export default function GalleryHome() {
                 <p>
                   by appointment
                   <br />
-                  grizrider@gmail.com
+                  creativebyyeh@gmail.com
                 </p>
               </div>
             </div>
@@ -242,7 +242,7 @@ export default function GalleryHome() {
       <footer className="end-label">
         <span>END&nbsp;OF&nbsp;EXHIBIT</span>
         <span>designyeh © {new Date().getFullYear()}</span>
-        <a href="mailto:grizrider@gmail.com">grizrider@gmail.com</a>
+        <a href="mailto:creativebyyeh@gmail.com">creativebyyeh@gmail.com</a>
       </footer>
 
       {/* ═══ FLOATING CONTACT — WAX SEAL ═════════════════════════════ */}
