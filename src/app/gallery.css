@@ -147,6 +147,35 @@ body.gallery a { color: inherit; text-decoration: none; }
   letter-spacing: -0.02em;
 }
 
+/* hero + creed stacked in the left column of .entry-wall */
+.entry-headline { display: flex; flex-direction: column; gap: 32px; }
+
+/* artist creed under the hero h1 — small wall-text under the statement */
+.es-creed {
+  margin: 0;
+  display: flex; flex-direction: column; gap: 4px;
+  padding-top: 8px;
+  border-top: 0.5px solid var(--rule);
+  max-width: 640px;
+}
+.es-creed-en {
+  font-family: var(--g-serif);
+  font-style: italic;
+  font-weight: 400;
+  font-size: clamp(20px, 2.4vw, 30px);
+  line-height: 1.15;
+  letter-spacing: -0.01em;
+  color: var(--ink);
+}
+.es-creed-kr {
+  font-family: var(--g-sans);
+  font-weight: 500;
+  font-size: clamp(15px, 1.4vw, 18px);
+  line-height: 1.5;
+  letter-spacing: -0.01em;
+  color: var(--ink-soft);
+}
+
 .entry-plate {
   border-left: 0.5px solid var(--ink);
   padding: 4px 0 4px 28px;
@@ -323,6 +352,29 @@ body.gallery a { color: inherit; text-decoration: none; }
   color: var(--ink);
 }
 
+/* artist's note on each museum label — italic serif, quoted */
+.lbl-note {
+  margin: 12px 0 0;
+  font-family: var(--g-serif);
+  font-style: italic;
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 1.5;
+  letter-spacing: -0.005em;
+  color: var(--ink-soft);
+  text-wrap: pretty;
+}
+.label.sm .lbl-note { font-size: 12.5px; }
+.lbl-note-mark {
+  font-family: var(--g-serif);
+  font-style: italic;
+  color: var(--ink-mute);
+  margin-right: 2px;
+  font-size: 1.2em;
+  line-height: 0;
+  vertical-align: -0.18em;
+}
+
 
 /* ═══════════════════════════════════════════════════════════
    ROOM 02 — SALON-HUNG WEB GRID
@@ -364,6 +416,25 @@ body.gallery a { color: inherit; text-decoration: none; }
   padding-left: 22%;
   color: oklch(0.32 0.012 70);
 }
+/* Korean declaration block paired with the English vinyl lines */
+.vinyl-kr-block {
+  margin: 48px 0 0;
+  padding-left: 12%;
+  border-left: 0.5px solid var(--ink);
+  padding-top: 6px;
+  padding-bottom: 6px;
+  display: flex; flex-direction: column; gap: 4px;
+}
+.vinyl-kr {
+  margin: 0;
+  font-family: var(--g-sans);
+  font-weight: 600;
+  font-size: clamp(28px, 4vw, 52px);
+  line-height: 1.18;
+  letter-spacing: -0.025em;
+  color: var(--ink);
+}
+
 .vinyl-cite {
   margin: 56px 0 0;
   font-family: var(--g-mono);
@@ -416,6 +487,53 @@ body.gallery a { color: inherit; text-decoration: none; }
   letter-spacing: -0.005em;
   color: var(--ink-soft);
 }
+/* artist's statement — 1인칭 서사, plaque 상단 본문 */
+.plq-statement {
+  margin: 0 0 36px;
+  display: flex; flex-direction: column; gap: 14px;
+  font-family: var(--g-sans);
+  font-size: 15px;
+  line-height: 1.7;
+  color: var(--ink-soft);
+  letter-spacing: -0.005em;
+  padding-bottom: 28px;
+  border-bottom: 0.5px solid var(--rule);
+  text-wrap: pretty;
+}
+.plq-statement p { margin: 0; }
+.plq-statement-coda {
+  font-family: var(--g-serif);
+  font-style: italic;
+  font-weight: 400;
+  font-size: 17px;
+  color: var(--ink);
+  margin-top: 6px !important;
+}
+
+/* CTA — wax seal 직전 한 줄 + 영문 짝 */
+.plq-cta {
+  margin: 28px 0 6px;
+  padding-top: 28px;
+  border-top: 0.5px solid var(--rule);
+  display: flex; flex-direction: column; gap: 4px;
+  text-align: center;
+}
+.plq-cta-kr {
+  font-family: var(--g-sans);
+  font-weight: 600;
+  font-size: clamp(17px, 1.7vw, 22px);
+  letter-spacing: -0.01em;
+  color: var(--ink);
+}
+.plq-cta-en {
+  font-family: var(--g-serif);
+  font-style: italic;
+  font-weight: 400;
+  font-size: clamp(13px, 1.2vw, 16px);
+  color: var(--ink-soft);
+  letter-spacing: -0.005em;
+}
+
 .plq-grid {
   display: grid;
   grid-template-columns: repeat(4, 1fr);
@@ -758,7 +876,10 @@ body.gallery a { color: inherit; text-decoration: none; }
   .docent-r { gap: 14px; }
   .docent-meta { display: none; }
   .entry-wall { grid-template-columns: 1fr; gap: 40px; }
+  .entry-headline { gap: 24px; }
   .plq-grid { grid-template-columns: 1fr 1fr; }
+  .plq-statement { font-size: 14.5px; line-height: 1.68; }
+  .vinyl-kr-block { padding-left: 0; margin-top: 36px; }
   .salon-grid { gap: 64px 32px; }
   .offset-down, .offset-up,
   .in-view.offset-down, .in-view.offset-up { transform: none; }
@@ -775,7 +896,11 @@ body.gallery a { color: inherit; text-decoration: none; }
   .exhibition-statement { font-size: clamp(48px, 13.5vw, 72px); }
   .vinyl-line { font-size: clamp(42px, 11.5vw, 72px); }
   .vinyl-and { padding-left: 0; }
+  .vinyl-kr { font-size: clamp(22px, 6vw, 32px); }
   .plq-title { font-size: clamp(26px, 6vw, 40px); }
+  .plq-statement { font-size: 14px; line-height: 1.65; gap: 12px; margin-bottom: 28px; padding-bottom: 22px; }
+  .plq-statement-coda { font-size: 15.5px; }
+  .es-creed { gap: 3px; padding-top: 6px; }
 
   /* FRAMES: fit inside the column, never push viewport */
   .frame-link { width: 100%; max-width: 100%; }

@@ -14,6 +14,7 @@ export interface Work {
   image: string       // /works/{slug}.png (local) or remote URL
   tech?: string[]
   category?: string   // "website" (default) | "logo"
+  note?: string       // artist's note — 1~2 sentence intent shown on the label
 }
 
 // Map a DB row (snake_case-ish, loose) into a Work.
@@ -27,6 +28,7 @@ export function toWork(row: Record<string, unknown>, i: number): Work {
     image: (row.image as string) ?? "",
     tech: (row.tech as string[]) ?? [],
     category: (row.category as string) ?? "website",
+    note: (row.note as string) ?? undefined,
   }
 }
 
@@ -65,6 +67,7 @@ export const FALLBACK_WORKS: Work[] = [
     url: "https://designluka.co.kr",
     image: "/works/designluka.png",
     tech: ["Next.js", "Tailwind", "Admin"],
+    note: "공간을 파는 브랜드에는, 공간을 담은 웹이 필요했다.",
   },
   {
     id: "dcare",
@@ -74,6 +77,7 @@ export const FALLBACK_WORKS: Work[] = [
     url: "https://dcarecenter.kr",
     image: "/works/dcare.png",
     tech: ["React", "Tailwind"],
+    note: "병원이 아닌 인상이 먼저였다. 환자가 아니라 손님으로 맞이하는 첫 화면.",
   },
   {
     id: "mavs",
@@ -83,6 +87,7 @@ export const FALLBACK_WORKS: Work[] = [
     url: "https://mavs.kr",
     image: "/works/mavs.png",
     tech: ["Next.js", "Supabase", "AI"],
+    note: "팬덤은 24시간 깨어 있다. AI가 밤새 쓰고, 사람은 아침에 같이 읽는다.",
   },
   {
     id: "sdngazer",
@@ -92,6 +97,7 @@ export const FALLBACK_WORKS: Work[] = [
     url: "https://sdngazer.art",
     image: "/works/sdngazer.png",
     tech: ["Next.js", "Supabase"],
+    note: "큐레이터의 사이트는 작품을 가리키는 손이다. 손이 너무 크면 작품이 가려진다.",
   },
   {
     id: "mybdr",
@@ -101,6 +107,7 @@ export const FALLBACK_WORKS: Work[] = [
     url: "https://mybdr.kr",
     image: "/works/mybdr.png",
     tech: ["Next.js", "Supabase"],
+    note: "코트 위의 1초가 데이터로 바뀌는 곳. 기록원이 한 손으로, 한 박자에 누를 수 있어야 했다.",
   },
   {
     id: "hoopnote",
@@ -110,5 +117,6 @@ export const FALLBACK_WORKS: Work[] = [
     url: "https://hoopnote.kr",
     image: "/works/hoopnote.png",
     tech: ["Next.js", "AI"],
+    note: "원장님의 '응' 한 마디가 학원을 움직인다. AI는 보이지 않고, 결과만 남는다.",
   },
 ]
