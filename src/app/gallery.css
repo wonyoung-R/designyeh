@@ -39,7 +39,8 @@ body.gallery {
   overflow-x: hidden; /* belt + suspenders against any element causing horizontal scroll */
 }
 html { overflow-x: hidden; }
-body.gallery a { color: inherit; text-decoration: none; }
+/* :where() drops specificity to 0 so any .class on <a> overrides this base. */
+:where(body.gallery) a { color: inherit; text-decoration: none; }
 
 /* ─── DOCENT BAR (top nav) ─────────────────────────────────── */
 .docent {
