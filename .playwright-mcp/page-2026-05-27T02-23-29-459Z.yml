@@ -1,0 +1,166 @@
+- generic [active] [ref=e1]:
+  - banner [ref=e2]:
+    - generic [ref=e5]: ROOM 01 — ENTRY
+    - link "designyeh." [ref=e6] [cursor=pointer]:
+      - /url: "#room-01"
+    - navigation [ref=e7]:
+      - link "Works" [ref=e8] [cursor=pointer]:
+        - /url: "#room-02"
+      - link "Studio" [ref=e9] [cursor=pointer]:
+        - /url: "#room-05"
+      - link "Contact" [ref=e10] [cursor=pointer]:
+        - /url: /designyeh/contact/
+      - generic [ref=e11]: STUDIO — SEOUL
+  - generic [ref=e12]:
+    - generic [ref=e13]:
+      - generic [ref=e14]: "01"
+      - generic [ref=e15]: ENTRY HALL
+      - generic [ref=e16]: — a permanent collection of finished work
+    - generic [ref=e17]:
+      - generic [ref=e18]:
+        - heading "This must be the studio." [level=1] [ref=e19]:
+          - generic [ref=e20]: This must be
+          - generic [ref=e21]: the studio.
+        - paragraph [ref=e22]:
+          - generic [ref=e23]: Every homepage is a work of art.
+          - generic [ref=e24]: 나는 홈페이지 하나하나를 작품으로 생각한다.
+      - generic [ref=e25]:
+        - paragraph [ref=e26]: designyeh — selected works
+        - paragraph [ref=e27]: designYEH는 브랜드의 첫 인상을 짓는 작은 스튜디오입니다. 홈페이지·로고·인쇄물 — 각각의 작업을 하나의 작품으로 빚어 액자에 걸어 두었습니다. 천천히 둘러보시고, 마음에 드는 작품이 있다면 그 액자를 눌러보세요.
+        - paragraph [ref=e28]: ↓ scroll to enter · 벽을 따라 천천히
+  - generic [ref=e30]:
+    - generic [ref=e31]:
+      - generic [ref=e32]: "02"
+      - generic [ref=e33]: 웹사이트
+      - generic [ref=e34]: — homepages, hung on the wall
+    - generic [ref=e35]:
+      - link "No. 001 2024 Design LUKA 인테리어 브랜드 사이트 · 문의 자동 분류 designluka.co.kr ↗" [ref=e176] [cursor=pointer]:
+        - /url: https://designluka.co.kr
+        - article [ref=e177]:
+          - img "Design LUKA 웹사이트 미리보기" [ref=e180]
+        - generic [ref=e181]:
+          - generic [ref=e182]:
+            - generic [ref=e183]: No. 001
+            - generic [ref=e184]: "2024"
+          - heading "Design LUKA" [level=3] [ref=e185]
+          - paragraph [ref=e186]: 인테리어 브랜드 사이트 · 문의 자동 분류
+          - paragraph [ref=e187]: designluka.co.kr ↗
+      - link "No. 002 2024 디케어 건강검진센터 대구 프리미엄 검진센터 브랜드 랜딩 dcarecenter.kr ↗" [ref=e188] [cursor=pointer]:
+        - /url: https://dcarecenter.kr
+        - article [ref=e189]:
+          - img "디케어 건강검진센터 웹사이트 미리보기" [ref=e192]
+        - generic [ref=e193]:
+          - generic [ref=e194]:
+            - generic [ref=e195]: No. 002
+            - generic [ref=e196]: "2024"
+          - heading "디케어 건강검진센터" [level=3] [ref=e197]
+          - paragraph [ref=e198]: 대구 프리미엄 검진센터 브랜드 랜딩
+          - paragraph [ref=e199]: dcarecenter.kr ↗
+      - link "No. 003 2025 MAVS.KR 댈러스 매버릭스 팬 커뮤니티 · AI 콘텐츠 mavs.kr ↗" [ref=e200] [cursor=pointer]:
+        - /url: https://mavs.kr
+        - article [ref=e201]:
+          - img "MAVS.KR 웹사이트 미리보기" [ref=e204]
+        - generic [ref=e205]:
+          - generic [ref=e206]:
+            - generic [ref=e207]: No. 003
+            - generic [ref=e208]: "2025"
+          - heading "MAVS.KR" [level=3] [ref=e209]
+          - paragraph [ref=e210]: 댈러스 매버릭스 팬 커뮤니티 · AI 콘텐츠
+          - paragraph [ref=e211]: mavs.kr ↗
+      - link "No. 004 2025 이승선 — Curator 큐레이터·도슨트 포트폴리오 sdngazer.art ↗" [ref=e212] [cursor=pointer]:
+        - /url: https://sdngazer.art
+        - article [ref=e213]:
+          - img "이승선 — Curator 웹사이트 미리보기" [ref=e216]
+        - generic [ref=e217]:
+          - generic [ref=e218]:
+            - generic [ref=e219]: No. 004
+            - generic [ref=e220]: "2025"
+          - heading "이승선 — Curator" [level=3] [ref=e221]
+          - paragraph [ref=e222]: 큐레이터·도슨트 포트폴리오
+          - paragraph [ref=e223]: sdngazer.art ↗
+      - link "No. 005 2025 MyBDR 농구 토너먼트 · 라이브 기록 플랫폼 mybdr.kr ↗" [ref=e224] [cursor=pointer]:
+        - /url: https://mybdr.kr
+        - article [ref=e225]:
+          - img "MyBDR 웹사이트 미리보기" [ref=e228]
+        - generic [ref=e229]:
+          - generic [ref=e230]:
+            - generic [ref=e231]: No. 005
+            - generic [ref=e232]: "2025"
+          - heading "MyBDR" [level=3] [ref=e233]
+          - paragraph [ref=e234]: 농구 토너먼트 · 라이브 기록 플랫폼
+          - paragraph [ref=e235]: mybdr.kr ↗
+      - link "No. 006 2025 HoopNote 학원 운영 AI 비서 · SaaS 랜딩 hoopnote.kr ↗" [ref=e236] [cursor=pointer]:
+        - /url: https://hoopnote.kr
+        - article [ref=e237]:
+          - img "HoopNote 웹사이트 미리보기" [ref=e240]
+        - generic [ref=e241]:
+          - generic [ref=e242]:
+            - generic [ref=e243]: No. 006
+            - generic [ref=e244]: "2025"
+          - heading "HoopNote" [level=3] [ref=e245]
+          - paragraph [ref=e246]: 학원 운영 AI 비서 · SaaS 랜딩
+          - paragraph [ref=e247]: hoopnote.kr ↗
+  - generic [ref=e115]:
+    - generic [ref=e116]:
+      - generic [ref=e117]: "03"
+      - generic [ref=e118]: CREED
+      - generic [ref=e119]: — studio statement, wall vinyl, south face
+    - generic [ref=e120]:
+      - paragraph [ref=e121]: EVERY
+      - paragraph [ref=e122]: HOMEPAGE
+      - paragraph [ref=e123]:
+        - emphasis [ref=e124]: is
+        - text: a work
+      - paragraph [ref=e125]: OF ART.
+      - generic [ref=e126]:
+        - paragraph [ref=e127]: 나는 홈페이지 하나하나를
+        - paragraph [ref=e128]: 작품으로 생각한다.
+      - paragraph [ref=e129]: — designYEH, studio statement, on the south wall
+  - generic [ref=e131]:
+    - generic [ref=e132]:
+      - generic [ref=e133]: "04"
+      - generic [ref=e134]: STUDIO
+      - generic [ref=e135]: — curator's note, mounted on the wall
+    - generic [ref=e137]:
+      - paragraph [ref=e138]: DESIGNYEH — ARTIST'S NOTE
+      - heading "A small studio. Big enough to care, small enough to answer." [level=2] [ref=e139]:
+        - text: A small studio.
+        - emphasis [ref=e140]: Big enough to care, small enough to answer.
+      - generic [ref=e141]:
+        - paragraph [ref=e142]: 한 페이지의 첫 화면을 위해 며칠을 씁니다.
+        - paragraph [ref=e143]: 클라이언트가 가져오는 건 브랜드의 이름뿐이지만, 그 이름 뒤에는 누군가 쌓아온 시간과 다음을 향한 의지가 있습니다. 저는 그것을 읽고, 웹이라는 빈 캔버스 위에 다시 세웁니다.
+        - paragraph [ref=e144]: 홈페이지는 외주가 아니라 작품이고, 작품은 결과보다 의도가 먼저입니다. 만든 사람을 만나본 적 없는 사람도, 페이지 하나로 그 브랜드의 결을 느낄 수 있어야 합니다.
+        - paragraph [ref=e145]: 그 결을 빚는 것이 designYEH의 일입니다.
+      - generic [ref=e146]:
+        - generic [ref=e147]:
+          - paragraph [ref=e148]: Based in
+          - paragraph [ref=e149]: Seoul, Korea
+        - generic [ref=e150]:
+          - paragraph [ref=e151]: Practice
+          - paragraph [ref=e152]: Websites · Identity · Automation
+        - generic [ref=e153]:
+          - paragraph [ref=e154]: Clients
+          - paragraph [ref=e155]:
+            - text: 검진센터 · 인테리어
+            - text: 스포츠 · 학원 SaaS
+        - generic [ref=e156]:
+          - paragraph [ref=e157]: Inquiries
+          - paragraph [ref=e158]:
+            - text: by appointment
+            - text: creativebyyeh@gmail.com
+      - paragraph [ref=e159]:
+        - generic [ref=e160]: 당신의 브랜드도 작품이 될 수 있습니다.
+        - generic [ref=e161]: Your brand could be the next piece.
+      - paragraph [ref=e162]: — 누르세요 · press the wax seal below for inquiries.
+  - contentinfo [ref=e164]:
+    - generic [ref=e165]: END OF EXHIBIT
+    - generic [ref=e166]: designyeh © 2026
+    - link "creativebyyeh@gmail.com" [ref=e167] [cursor=pointer]:
+      - /url: mailto:creativebyyeh@gmail.com
+  - link "문의하기 — designyeh studio" [ref=e168] [cursor=pointer]:
+    - /url: /designyeh/contact/
+    - generic [ref=e170]:
+      - generic [ref=e172]: DY
+      - generic [ref=e173]: — design · 예 —
+    - generic [ref=e174]: studio inquiries →
+  - alert [ref=e175]

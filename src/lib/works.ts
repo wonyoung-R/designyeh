@@ -18,19 +18,31 @@ export interface Work {
 }
 
 // Map a DB row (snake_case-ish, loose) into a Work.
+// If the row has no `note` column yet (older schema), fall back to the
+// hardcoded note matched by URL so live data still shows artist's notes.
 export function toWork(row: Record<string, unknown>, i: number): Work {
+  const url = (row.url as string) ?? (row.link as string) ?? "#"
+  const rowNote = (row.note as string) ?? undefined
+  const fallbackNote = FALLBACK_NOTE_BY_URL.get(normalizeUrl(url))
   return {
     id: (row.id as number | string) ?? i,
     title: (row.title as string) ?? "Untitled",
     meta: (row.meta as string) ?? (row.description as string) ?? "",
     year: String(row.year ?? (row.created_at ? new Date(row.created_at as string).getFullYear() : "")),
-    url: (row.url as string) ?? (row.link as string) ?? "#",
+    url,
     image: (row.image as string) ?? "",
     tech: (row.tech as string[]) ?? [],
     category: (row.category as string) ?? "website",
-    note: (row.note as string) ?? undefined,
+    note: rowNote ?? fallbackNote,
   }
 }
+
+function normalizeUrl(u: string): string {
+  return u.replace(/^https?:\/\//, "").replace(/^www\./, "").replace(/\/$/, "").toLowerCase()
+}
+
+// Built lazily below — populated after FALLBACK_WORKS is declared.
+const FALLBACK_NOTE_BY_URL = new Map<string, string>()
 
 // ── Salon-wall layout presets ───────────────────────────────────────────────
 // 16:10 landscape slots (matches the 1440×900 screenshots), alternating frame
@@ -120,3 +132,9 @@ export const FALLBACK_WORKS: Work[] = [
     note: "원장님의 '응' 한 마디가 학원을 움직인다. AI는 보이지 않고, 결과만 남는다.",
   },
 ]
+
+// Populate URL→note map so toWork() can supply notes for DB rows that don't
+// have a `note` column yet (live Supabase schema is one version behind).
+for (const w of FALLBACK_WORKS) {
+  if (w.note) FALLBACK_NOTE_BY_URL.set(normalizeUrl(w.url), w.note)
+}
