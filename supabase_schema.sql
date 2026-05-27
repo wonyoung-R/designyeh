@@ -39,8 +39,9 @@ values
   ('디케어 건강검진센터', '대구 프리미엄 검진센터 브랜드 랜딩',       '2024', 'https://dcarecenter.kr',   '/works/dcare.png',       '{React,Tailwind}',           'website', 2, '병원이 아닌 인상이 먼저였다. 환자가 아니라 손님으로 맞이하는 첫 화면.'),
   ('MAVS.KR',           '댈러스 매버릭스 팬 커뮤니티 · AI 콘텐츠',   '2025', 'https://mavs.kr',          '/works/mavs.png',        '{Next.js,Supabase,AI}',      'website', 3, '팬덤은 24시간 깨어 있다. AI가 밤새 쓰고, 사람은 아침에 같이 읽는다.'),
   ('이승선 — Curator',   '큐레이터·도슨트 포트폴리오',               '2025', 'https://sdngazer.art',     '/works/sdngazer.png',    '{Next.js,Supabase}',         'website', 4, '큐레이터의 사이트는 작품을 가리키는 손이다. 손이 너무 크면 작품이 가려진다.'),
-  ('MyBDR',             '농구 토너먼트 · 라이브 기록 플랫폼',         '2025', 'https://mybdr.kr',         '/works/mybdr.png',       '{Next.js,Supabase}',         'website', 5, '코트 위의 1초가 데이터로 바뀌는 곳. 기록원이 한 손으로, 한 박자에 누를 수 있어야 했다.'),
-  ('HoopNote',          '학원 운영 AI 비서 · SaaS 랜딩',            '2025', 'https://hoopnote.kr',      '/works/hoopnote.png',    '{Next.js,AI}',               'website', 6, '원장님의 ''응'' 한 마디가 학원을 움직인다. AI는 보이지 않고, 결과만 남는다.');
+  ('LOST and FOUND',    '도시형 라이프스타일 브랜드 · 컬렉션 사이트',  '2025', 'https://laf2023.com',      '/works/laf2023.png',     '{Next.js,Tailwind}',         'website', 5, '잃은 것과 찾은 것 사이의 ''and''. 화면도 그 공백을 채우지 않고 그대로 두었다.'),
+  ('GRIT LAB',          '프리미엄 농구 코트 · 예약/대관 플랫폼',       '2025', 'https://grit-lab.kr',      '/works/gritlab.png',     '{Next.js,Booking}',          'website', 6, '코트가 잠기면 사람이 자란다. ''BE LOCKED IN'' — 한 시간의 약속이 곧 디자인이었다.'),
+  ('HoopNote',          '학원 운영 AI 비서 · SaaS 랜딩',            '2025', 'https://hoopnote.kr',      '/works/hoopnote.png',    '{Next.js,AI}',               'website', 7, '원장님의 ''응'' 한 마디가 학원을 움직인다. AI는 보이지 않고, 결과만 남는다.');
 
 -- ────────────────────────────────────────────────────────────────
 -- Adding a new work later = one INSERT. It hangs on the wall
