@@ -39,3 +39,9 @@ yarn-error.log*
 # typescript
 *.tsbuildinfo
 next-env.d.ts
+
+# verification artifacts (playwright screenshots, MCP logs) — never commit
+verify-*.png
+verify-*.jpeg
+verify-*.jpg
+.playwright-mcp/
