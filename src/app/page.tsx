@@ -98,6 +98,16 @@ export default function GalleryHome() {
           .order("id", { ascending: true })
         if (!alive) return
         if (!error && data && data.length > 0) {
+          // Stale-schema guard: if the DB still has the old row set (e.g.
+          // includes mybdr which we removed from the canonical list), don't
+          // overwrite the fallback — fallback is the source of truth until
+          // the SQL editor is re-run. Detect by URL presence.
+          const urls = (data as Record<string, unknown>[]).map(r =>
+            String((r.url ?? r.link ?? "") as string).toLowerCase()
+          )
+          const stale = urls.some(u => u.includes("mybdr"))
+          if (stale) return // keep FALLBACK_WORKS
+
           const rows = [...(data as Record<string, unknown>[])].sort(
             (a, b) =>
               (Number(a.sort_order ?? 0) - Number(b.sort_order ?? 0)) ||
