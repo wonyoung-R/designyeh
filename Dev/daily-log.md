@@ -1,5 +1,71 @@
 # designYEH 작업 로그
 
+## 2026-05-27 — 작품 철학 + 도메인 + 작품벽 갱신 + CSS·schema 함정 다수
+
+### 작품 철학 4지점 박음 ("나는 홈페이지 하나하나를 작품으로 생각한다")
+- [x] ROOM 01 Hero 신조(`.es-creed`) 영문 italic + 국문, border-top 인용 (Hero 살리고 그 아래)
+- [x] ROOM 02 작가 노트 6→7개, italic serif + curly quote (lbl-note + lbl-note-mark)
+- [x] ROOM 03 INTERLUDE → **CREED** 명칭 교체, 모토 "DESIGN WELL…" 폐기, 대형 helvetica 4줄 `EVERY/HOMEPAGE/is a work/OF ART.` + border-left 인용 한글 선언 + mono cite
+- [x] ROOM 04 STUDIO 1인칭 서사 3단락 + italic serif 코다 "그 결을 빚는 것이 designYEH의 일입니다" + 영/한 CTA "당신의 브랜드도 작품이 될 수 있습니다."
+
+### 작품벽 7개로 갱신 (사장 결정)
+- [x] **MyBDR 폐기**, **LAF2023 (laf2023.com) 추가**, **GRIT LAB (grit-lab.kr) 추가**, HoopNote 유지
+- [x] 두 신규 사이트 playwright 캡처(1440×900) → `public/works/{laf2023,gritlab}.png`
+- [x] 작가 노트 작성:
+  - LAF2023: "잃은 것과 찾은 것 사이의 'and'. 화면도 그 공백을 채우지 않고 그대로 두었다."
+  - GRIT LAB: "코트가 잠기면 사람이 자란다. 'BE LOCKED IN' — 한 시간의 약속이 곧 디자인이었다."
+- [x] **stale-schema 가드** 추가: Supabase 옛 row에 `mybdr` URL 감지 시 setWorks 호출 안 함 → fallback 7개 유지
+
+### dsgnyeh.art 커스텀 도메인 운영 시작
+- [x] 사장 가비아에서 DNS 세팅 (A 레코드 4개 → 185.199.108-111.153, GH Pages IP)
+- [x] GH Pages 설정에 cname=dsgnyeh.art 등록, https_certificate=approved
+- [x] `public/CNAME` 파일 추가 (push 시 GH Pages CNAME 자동 유지)
+- [x] `next.config.ts` basePath 자동 분기: `public/CNAME` 존재 시 `''` (root) / VERCEL=1 시 `''` / default `/designyeh`
+- [x] 계산된 basePath를 `env: { NEXT_PUBLIC_BASE_PATH: basePath }`로 client 베이크인 (asset() 헬퍼 동기)
+
+### Contact 페이지 단순화
+- [x] 폼 폐기 → 이메일 안내 페이지로 변경 (Make.com 시나리오 의존 제거)
+- [x] 이메일 `creativebyyeh@gmail.com` (mailto, 제목·본문 한글 템플릿 자동 채움)
+- [x] 카카오 오픈채팅 버튼 `https://open.kakao.com/me/designyeh` (카카오 옐로우 #FEE500, **아이디 grizz 비공개**, URL의 designyeh slug만 노출)
+
+### CSS specificity fix (`:where()`)
+- [x] 증상: contact-submit 버튼 검정 배경+검정 텍스트로 보임 ("그냥 까맣게 보임")
+- [x] 원인: `body.gallery a { color: inherit }` (specificity 0,1,1) > `.contact-submit { color: cream }` (0,1,0) → 흰 텍스트가 inherit으로 덮임
+- [x] fix: `:where(body.gallery) a { ... }` — `:where()`가 specificity를 0으로 깎음 → 클래스 명시 color 모두 자동으로 이김. 미래의 button-style `<a class="...">` 추가에도 안전
+
+### GH Pages source legacy↔workflow 함정 2회
+- [x] 1회차: 사장이 "리드미 페이지" 노출 보고 → Jekyll v3.10.0이 README 처리한 옛 화면. `gh api PUT pages -f build_type=workflow` + workflow_dispatch로 복구
+- [x] 2회차: 작품 철학 push 후 라이브 검증 시 동일 현상 재발 → 같은 명령으로 1분 복구
+- [x] 향후 또 발생 가능 — 복구 명령 메모리에 보존
+
+### 부가 fix
+- [x] Supabase row에 note 컬럼 없어도 작가 노트 표시: `FALLBACK_NOTE_BY_URL` 맵 + `toWork()` URL 매칭으로 자동 공급, `normalizeUrl()` 로 https/www/trailing-slash 차이 무시
+- [x] supabase_schema.sql 동기화 (사장 SQL editor 재실행 권장, 미실행 시 stale-schema 가드 동작)
+- [x] 검증 산출물 정리 + `.gitignore`에 `verify-*` / `.playwright-mcp/` 패턴 추가
+
+### 이번 세션 누적 커밋
+| commit | 내용 |
+|--------|------|
+| `6535cfb` | 작품 철학 4지점 박음 |
+| `b46cc91` | Supabase note 없어도 fallback 노트 |
+| `64f4dfc` | 검증 산출물 제거 + gitignore |
+| `303d404` | dsgnyeh.art 커스텀 도메인 지원 |
+| `8cc9959` | contact-submit :where() specificity |
+| `27c4c8f` | MyBDR 제거 + LAF2023 + GRIT LAB |
+| `49af900` | stale-schema 가드 |
+
+### 라이브 검증 결과
+- **메인**: https://dsgnyeh.art/ — 7개 작품 + 작가 노트 + 신조 + CREED + Artist's Note + CTA 모두 정상, mybdr 잔재 0
+- **redirect**: wonyoung-r.github.io/designyeh/ → 301 → dsgnyeh.art (자동)
+- playwright 데스크탑(1440) + 모바일(iPhone 15 393) 검증 통과
+
+### 잔여
+- [ ] Supabase `portfolios` 테이블 SQL editor 재실행 (note 컬럼 + 7개 seed 동기) — 사장 작업, 안 해도 stale-schema 가드로 라이브 정확
+- [ ] (선택) 옛 Vercel 계정 GitHub Installations에서 designyeh repo access 제외 — 사장 작업
+- [ ] (선택) ROOM 04 로고 부활 — 6개 로고 자료 받으면
+
+---
+
 ## 2026-05-24 — 갤러리 포트폴리오 전면 개편 완성
 
 ### 배경
