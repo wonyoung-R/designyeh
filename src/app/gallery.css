@@ -881,9 +881,26 @@ html { overflow-x: hidden; }
   .plq-grid { grid-template-columns: 1fr 1fr; }
   .plq-statement { font-size: 14.5px; line-height: 1.68; }
   .vinyl-kr-block { padding-left: 0; margin-top: 36px; }
-  .salon-grid { gap: 64px 32px; }
-  .offset-down, .offset-up,
-  .in-view.offset-down, .in-view.offset-up { transform: none; }
+
+  /* MOBILE WORKS WALL — 1열 column 스택, 일정한 간격, salon offset 제거.
+     데스크탑 살롱 그리드의 offset-down/up 변환이 모바일에서도 적용돼 일부
+     카드가 윗 카드와 겹치는 현상 해소. specificity 를 base 와 맞춤. */
+  .salon-grid {
+    flex-direction: column;
+    align-items: stretch;
+    gap: 64px;
+    padding: 16px 0 24px;
+  }
+  .frame-link,
+  .frame-link.in-view,
+  .frame-link.offset-down,
+  .frame-link.in-view.offset-down,
+  .frame-link.offset-up,
+  .frame-link.in-view.offset-up {
+    transform: none;
+    width: 100%;
+    max-width: 100%;
+  }
   .room { padding: 64px clamp(20px, 5vw, 40px) 110px; }
 }
 @media (max-width: 560px) {
