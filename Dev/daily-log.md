@@ -1,5 +1,55 @@
 # designYEH 작업 로그
 
+## 2026-06-04 — 모바일 작품벽 카드 간격 균일화
+
+### 증상 (사장 보고)
+- iPhone 15 (393×852) 모바일에서 ROOM 02 작품 카드 간격 불균일
+- 특히 디케어 건강검진센터 ↔ MAVS.KR 등 일부 카드가 윗 카드와 겹치는 현상
+
+### 진단 (playwright evaluate)
+| 카드 | 적용된 transform | 의도 |
+|------|-----------------|------|
+| Design LUKA | matrix(1,0,0,1,0,0) | - |
+| 디케어 (offset-down) | **translateY(40px)** | 데스크탑 살롱 offset |
+| MAVS.KR (offset-up) | none (in-view 미트리거) | 데스크탑 살롱 offset |
+| 이승선 | translateY(18px) | entry 잔여 |
+| LAF/GRIT/HoopNote | mix | salon offset |
+
+**근본 원인**: 데스크탑 살롱 그리드용 `.offset-down/up`(translateY ±30~40px) 변환이 모바일에서도 그대로 적용. 기존 미디어쿼리 `.offset-down, .offset-up, .in-view.offset-down, .in-view.offset-up { transform: none }`(specificity 0,2,0)이 base의 `.frame-link.in-view.offset-down`(0,3,0)보다 약해서 안 이김.
+
+### fix (9564d0d, @media max-width:920)
+```css
+.salon-grid {
+  flex-direction: column;
+  align-items: stretch;
+  gap: 64px;
+  padding: 16px 0 24px;
+}
+.frame-link,
+.frame-link.in-view,
+.frame-link.offset-down,
+.frame-link.in-view.offset-down,
+.frame-link.offset-up,
+.frame-link.in-view.offset-up {
+  transform: none;          /* base 와 specificity 매칭 */
+  width: 100%; max-width: 100%;
+}
+```
+- ≤560 미디어쿼리의 `.salon-grid { gap: 48px 0 }`가 후순 override → 최종 48px 일정 간격
+
+### 라이브 검증
+- 7개 카드 1열 풀폭 스택
+- **인접 쌍 6개 모두 정확히 48px**: Design LUKA→디케어 48, 디케어→MAVS 48, …, GRIT→HoopNote 48
+- 겹침 0, Wax Seal FAB 유지, 라벨(No.·연도·제목·meta·작가 노트·URL) 모두 정상
+
+### 교훈
+CSS cascade base 룰이 **다중 클래스**로 specificity (0,3,0) 이상이면, 미디어쿼리도 동일하게 **다중 클래스**로 작성해야 이긴다. 단일/이중 클래스 미디어쿼리는 무력. `:where()` 또는 selector 강화 둘 다 정답.
+
+### 누적 main 커밋 (이번 작업)
+- `9564d0d fix(mobile): 작품벽 카드 간격 균일화 — 살롱 offset 제거 + column flex`
+
+---
+
 ## 2026-05-27 — 작품 철학 + 도메인 + 작품벽 갱신 + CSS·schema 함정 다수
 
 ### 작품 철학 4지점 박음 ("나는 홈페이지 하나하나를 작품으로 생각한다")
