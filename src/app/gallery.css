@@ -207,7 +207,7 @@ html { overflow-x: hidden; }
   align-items: stretch;
   width: max-content;
   transition: transform .35s cubic-bezier(.2,.7,.2,1);
-  cursor: pointer;
+  /* 액자는 감상 대상 — 클릭 유도 없음(cursor 기본, 링크 제거) */
 }
 .frame-link:hover { transform: translateY(-3px); }
 .frame-link:hover .frame {

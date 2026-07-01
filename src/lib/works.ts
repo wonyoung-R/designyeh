@@ -47,13 +47,15 @@ const FALLBACK_NOTE_BY_URL = new Map<string, string>()
 // ── Salon-wall layout presets ───────────────────────────────────────────────
 // 16:10 landscape slots (matches the 1440×900 screenshots), alternating frame
 // styles and hanging offsets so the wall reads as hand-hung, not a grid.
+// 2026-06-08: sizes scaled up ×1.5 by owner request (pixel-perfect from 360/225
+// preset → 540/338 등).
 const FRAME_SLOTS = [
-  { w: 360, h: 225, frame: "frame-walnut", offset: "" },
-  { w: 300, h: 188, frame: "frame-thin",   offset: "offset-down" },
-  { w: 340, h: 213, frame: "frame-walnut", offset: "offset-up" },
-  { w: 300, h: 188, frame: "frame-thin",   offset: "" },
-  { w: 360, h: 225, frame: "frame-walnut", offset: "offset-up" },
-  { w: 320, h: 200, frame: "frame-thin",   offset: "offset-down" },
+  { w: 540, h: 338, frame: "frame-walnut", offset: "" },
+  { w: 450, h: 282, frame: "frame-thin",   offset: "offset-down" },
+  { w: 510, h: 320, frame: "frame-walnut", offset: "offset-up" },
+  { w: 450, h: 282, frame: "frame-thin",   offset: "" },
+  { w: 540, h: 338, frame: "frame-walnut", offset: "offset-up" },
+  { w: 480, h: 300, frame: "frame-thin",   offset: "offset-down" },
 ] as const
 
 export interface FrameLayout {

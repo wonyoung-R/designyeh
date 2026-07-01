@@ -12,10 +12,10 @@ import {
   FALLBACK_WORKS,
 } from "@/lib/works"
 
-/* ── A single framed work, hung on the salon wall ───────────────────────── */
+/* ── A single framed work, hung on the salon wall (non-clickable, museum piece) */
 function Frame({ work, index }: { work: Work; index: number }) {
   const { artW, artH, frameClass, offsetClass } = frameLayout(index)
-  const ref = useRef<HTMLAnchorElement>(null)
+  const ref = useRef<HTMLDivElement>(null)
   const [inView, setInView] = useState(false)
 
   useEffect(() => {
@@ -35,12 +35,9 @@ function Frame({ work, index }: { work: Work; index: number }) {
   }, [])
 
   return (
-    <a
+    <div
       ref={ref}
       className={`frame-link ${offsetClass} ${inView ? "in-view" : ""}`}
-      href={work.url}
-      target="_blank"
-      rel="noopener noreferrer"
       style={
         {
           "--art-w": `${artW}px`,
@@ -76,9 +73,9 @@ function Frame({ work, index }: { work: Work; index: number }) {
             {work.note}
           </p>
         )}
-        <p className="lbl-url">{work.url.replace(/^https?:\/\//, "").replace(/\/$/, "")}  ↗</p>
+        <p className="lbl-url">{work.url.replace(/^https?:\/\//, "").replace(/\/$/, "")}</p>
       </div>
-    </a>
+    </div>
   )
 }
 
