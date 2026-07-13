@@ -2,7 +2,8 @@ import type { Metadata } from "next";
 import "./globals.css";
 
 export const metadata: Metadata = {
-  metadataBase: new URL("https://designyeh.kr"),
+  metadataBase: new URL("https://dsgnyeh.art"),
+  alternates: { canonical: "/" },
   title: {
     default: "designyeh — studio",
     template: "%s · designyeh",
@@ -13,7 +14,7 @@ export const metadata: Metadata = {
   openGraph: {
     type: "website",
     locale: "ko_KR",
-    url: "https://designyeh.kr",
+    url: "https://dsgnyeh.art",
     siteName: "designyeh",
     title: "designyeh — studio",
     description:
@@ -47,7 +48,26 @@ export default function RootLayout({
           href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.min.css"
         />
       </head>
-      <body className="gallery antialiased">{children}</body>
+      <body className="gallery antialiased">
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{
+            __html: JSON.stringify({
+              "@context": "https://schema.org",
+              "@type": "WebSite",
+              name: "designyeh",
+              url: "https://dsgnyeh.art",
+              inLanguage: "ko",
+              publisher: {
+                "@type": "Organization",
+                name: "designyeh",
+                url: "https://dsgnyeh.art",
+              },
+            }),
+          }}
+        />
+        {children}
+      </body>
     </html>
   );
 }
