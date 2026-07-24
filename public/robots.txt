@@ -1,0 +1,5 @@
+# https://dsgnyeh.art/
+User-agent: *
+Allow: /
+
+Sitemap: https://dsgnyeh.art/sitemap.xml
