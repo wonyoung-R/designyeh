@@ -8,7 +8,8 @@ const KAKAO_OPEN_CHAT = "https://open.kakao.com/me/designyeh"
 
 export const metadata: Metadata = {
   title: "Contact",
-  description: "designYEH에 문의하기 — 이메일로 편하게 말을 걸어주세요.",
+  description:
+    "designYEH에 문의하기 — 홈페이지 제작, 로고·브랜딩, 인쇄물 디자인 프로젝트를 이메일 또는 카카오 오픈채팅으로 편하게 상담하세요. 보통 하루 안에 회신드립니다.",
 }
 
 export default function ContactPage() {

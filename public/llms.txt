@@ -10,10 +10,8 @@
 - 인쇄물 · 그래픽 디자인
 
 ## 페이지
-- [홈](https://dsgnyeh.art/): 스튜디오 소개와 대표 작업 전시
-- [Portfolio](https://dsgnyeh.art/portfolio/): 작업 갤러리 (dcare, GritLab, HoopNote, LAF, mavs.kr, sdngazer.art, design_luka 등)
-- [About](https://dsgnyeh.art/about/): 스튜디오 철학
-- [Contact](https://dsgnyeh.art/contact/): 프로젝트 문의
+- [홈](https://dsgnyeh.art/): 원페이지 갤러리 — 스튜디오 소개(ROOM), 작업 전시(dcare, GritLab, HoopNote, LAF, mavs.kr, sdngazer.art, design_luka 등), 스튜디오 철학
+- [Contact](https://dsgnyeh.art/contact/): 프로젝트 문의 (이메일·카카오 오픈채팅)
 
 ## 참고
 - 언어: 한국어 (ko-KR)
