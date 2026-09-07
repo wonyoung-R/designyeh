@@ -1,18 +1,27 @@
-# designyeh — studio
+# designYEH
 
-> designyeh(dsgnyeh.art)는 브랜드의 첫 인상을 짓는 한국의 작은 디자인 스튜디오입니다.
-> 홈페이지 제작, 브랜딩(로고), 인쇄물 등 디자인 솔루션을 제공하며,
-> 마감된 작업들을 미술관 컨셉(ROOM 01~04)의 갤러리로 전시합니다.
+> 눈에 남는 브랜드, 손이 덜 가는 운영.
+> designYEH는 웹사이트 제작부터 브랜드 아이덴티티, 문의 이후 운영 자동화까지 한 흐름으로 설계하는 서울의 작은 웹에이전시입니다. Every homepage is a work of art.
 
-## 서비스
-- 웹사이트 제작 (반응형 홈페이지, 포트폴리오/브랜드 사이트)
-- 브랜딩 · 로고 디자인
-- 인쇄물 · 그래픽 디자인
+작은 팀과 사업자를 위한 서비스를 제공하며 실제 웹 작업을 미술관 형태의 갤러리로 소개합니다. 언어는 한국어입니다. 이 파일은 공개 콘텐츠의 길잡이입니다.
 
-## 페이지
-- [홈](https://dsgnyeh.art/): 원페이지 갤러리 — 스튜디오 소개(ROOM), 작업 전시(dcare, GritLab, HoopNote, LAF, mavs.kr, sdngazer.art, design_luka 등), 스튜디오 철학
-- [Contact](https://dsgnyeh.art/contact/): 프로젝트 문의 (이메일·카카오 오픈채팅)
+## 서비스와 canonical 페이지
+- [홈](https://dsgnyeh.art/): 서비스 개요, 접근 방식, 실제 작품, 과정과 상담 전 질문
+- [홈페이지 제작](https://dsgnyeh.art/homepage-production/): 기업 홈페이지 제작과 반응형 홈페이지 제작. 정보 구조, 브랜드 화면, 문의 동선, 기본 검색 설정과 운영 인계
+- [브랜드 아이덴티티](https://dsgnyeh.art/brand-identity/): 로고, 색상, 서체와 사용 원칙, 웹 적용
+- [운영 자동화](https://dsgnyeh.art/operations-automation/): 문의 이후 입력·분류·전달. AI·SaaS·RPA는 수단이며 개인정보·권한 확인, 사람의 승인과 수동 대체 절차(fallback)를 함께 설계
+- [프로젝트 상담](https://dsgnyeh.art/contact/): 현재 상황, 목표, 필요한 기능, 준비 자료와 의사결정자 확인. 이메일 creativebyyeh@gmail.com
 
-## 참고
-- 언어: 한국어 (ko-KR)
-- 슬로건: Designing Brands. Building Impact.
+## 제공 범위와 확인 항목
+필요한 서비스를 선택하며 포함·제외 항목과 승인·인계 기준을 상담에서 합의합니다. 콘텐츠 작성·촬영·번역, 도메인·호스팅, 유료 도구, 연동 계정과 유지관리는 별도 확인합니다. 결제·회원·예약·관리자 기능은 자동 포함되지 않습니다. 상표 출원·등록과 법률 검토는 기본 제공 범위가 아닙니다. 모든 업무의 무인 운영이나 오류 없는 처리는 제공하지 않습니다. 검색 설정은 내용 이해를 위한 기반이며 검색 순위, 생성형 답변 인용, 문의·매출 결과를 약속하지 않습니다.
+
+## 실제 공개 웹 작품
+- [Design LUKA](https://designluka.co.kr): 인테리어 브랜드 사이트 · 문의 자동 분류
+- [디케어 건강검진센터](https://dcarecenter.kr): 대구 프리미엄 검진센터 브랜드 랜딩
+- [MAVS.KR](https://mavs.kr): 댈러스 매버릭스 팬 커뮤니티 · AI 콘텐츠
+- [이승선 — Curator](https://sdngazer.art): 큐레이터·도슨트 포트폴리오
+- [LOST and FOUND](https://laf2023.com): 도시형 라이프스타일 브랜드 · 컬렉션 사이트
+- [GRIT LAB](https://grit-lab.kr): 프리미엄 농구 코트 · 예약/대관 플랫폼
+- [HoopNote](https://hoopnote.kr): 학원 운영 AI 비서 · SaaS 랜딩
+
+작품 소개는 공개된 웹 작업의 범위입니다. 전체 브랜드 아이덴티티나 모든 내부 자동화 구축, 검색·사업 성과를 의미하지 않습니다.
