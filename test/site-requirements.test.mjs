@@ -79,6 +79,34 @@ test("Korean copy keeps words intact while addresses and CTA labels wrap safely"
   assert.match(gallery, /\.cta,\s*\.contact-submit,\s*\.contact-kakao,\s*\.contact-home\s*\{[^}]*white-space:\s*nowrap\s*;/)
 })
 
+test("gallery headlines use the three typography tokens without forced Korean breaks", () => {
+  assert.doesNotMatch(gallery, /Helvetica(?: Neue)?/i)
+  assert.match(gallery, /--g-sans:\s*"Pretendard Variable",\s*"Pretendard",\s*system-ui,\s*sans-serif;/)
+  for (const selector of [
+    "\\.exhibition-statement",
+    "\\.vinyl-line",
+    "\\.plq-title",
+    "\\.agency-title",
+    "\\.section-intro h2, \\.final-plaque h2",
+    "\\.contact-intro \\.contact-title",
+  ]) {
+    assert.match(gallery, new RegExp(`${selector}[^\\{]*\\{[^}]*var\\(--g-sans\\)`))
+  }
+  assert.match(gallery, /\.gallery\s*:where\(h1,\s*h2\)\s*\{[^}]*word-break:\s*keep-all\s*;/)
+  assert.match(home, /무엇을 만들었는지보다, 어떻게 판단했는지 보세요\./)
+  assert.doesNotMatch(home, /만든 것에서\s*<em>판단의 결<\/em>을 보세요\./)
+  assert.match(gallery, /\.works-intro h2\s*\{[^}]*text-wrap:\s*pretty\s*;/)
+  const worksEmRule = gallery.match(/\.works-intro h2 em\s*\{[^}]*\}/)?.[0] ?? ""
+  assert.match(worksEmRule, /font-family:\s*inherit\s*;/)
+  assert.match(worksEmRule, /font-style:\s*normal\s*;/)
+  assert.match(worksEmRule, /font-weight:\s*inherit\s*;/)
+  assert.match(worksEmRule, /letter-spacing:\s*inherit\s*;/)
+  assert.doesNotMatch(worksEmRule, /white-space:\s*nowrap\s*;/)
+  assert.match(gallery, /\.agency-title em,\s*\.final-plaque h2 em\s*\{[^}]*font-family:\s*var\(--g-serif\)/)
+  assert.match(gallery, /\.lbl-note\s*\{[^}]*font-family:\s*var\(--g-serif\)/)
+  assert.doesNotMatch(home, /<br\b[^>]*>/i)
+})
+
 const slugs = ["homepage-production", "brand-identity", "operations-automation"]
 const serviceData = read("src/lib/services.ts")
 const servicePage = read("src/components/service-page.tsx")

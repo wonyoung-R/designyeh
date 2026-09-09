@@ -188,7 +188,7 @@ export default function GalleryHome() {
         <section id="approach" className="room room-approach" aria-labelledby="approach-title">
           <SectionTag no="04" name="APPROACH" meta="how decisions are made" />
           <div className="section-intro split-intro">
-            <h2 id="approach-title">작품의 결을 지키고, 사업의 흐름을 놓치지 않습니다.</h2>
+            <h2 id="approach-title">브랜드의 결은 살리고, 사업에 필요한 흐름은 분명하게 만듭니다.</h2>
             <p>도구보다 먼저 목적을 묻습니다. 각 결정이 방문자의 이해, 브랜드 신뢰, 문의 행동, 그리고 팀의 실제 운영에 어떤 영향을 주는지 살핍니다.</p>
           </div>
           <div className="approach-grid">
@@ -202,7 +202,7 @@ export default function GalleryHome() {
 
         <section id="works" className="room room-websites" aria-labelledby="works-title">
           <SectionTag no="05" name="WORKS" meta="selected websites, hung on the wall" />
-          <div className="section-intro works-intro"><p className="section-kicker">PERMANENT COLLECTION</p><h2 id="works-title">만든 것에서 <em>판단의 결</em>을 보세요.</h2><p>각기 다른 업종과 목적을 브랜드다운 웹 장면으로 옮긴 기존 작업입니다.</p></div>
+          <div className="section-intro works-intro"><p className="section-kicker">PERMANENT COLLECTION</p><h2 id="works-title">무엇을 만들었는지보다, 어떻게 판단했는지 보세요.</h2><p>각기 다른 업종과 목적을 브랜드다운 웹 장면으로 옮긴 기존 작업입니다.</p></div>
           <div className="salon-wall salon-grid">
             {works.map((work, index) => <Frame key={work.id} work={work} index={index} />)}
           </div>
