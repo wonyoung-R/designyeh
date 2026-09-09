@@ -13,6 +13,7 @@ const NAV_ITEMS = [
   ["Works", "#works"],
   ["Process", "#process"],
   ["FAQ", "#faq"],
+  ["가격 안내", "/pricing/"],
 ] as const
 
 function SiteNav() {
@@ -178,6 +179,7 @@ export default function GalleryHome() {
               <Link className="service-link" href="/operations-automation/">운영 자동화 자세히 보기 →</Link>
             </article>
           </div>
+          <p className="scope-note"><Link className="service-link" href="/pricing/">랜딩페이지 300,000원 · 가격 및 수정 정책 보기 →</Link> <span>VAT·도메인 구매비 별도.</span></p>
           <p className="scope-note"><strong>상담에서 먼저 확인합니다.</strong> 목표, 필요한 화면과 기능, 제공 가능한 콘텐츠, 연동 대상, 개인정보 취급, 도메인·호스팅, 유지관리와 운영 인계 범위를 확인한 뒤 프로젝트 범위를 제안합니다.</p>
           <div className="baseboard" />
         </section>
@@ -247,7 +249,7 @@ export default function GalleryHome() {
           <div className="baseboard" />
         </section>
       </main>
-      <footer className="end-label"><span>END OF EXHIBIT</span><span>designYEH © {new Date().getFullYear()}</span><a href="mailto:creativebyyeh@gmail.com">creativebyyeh@gmail.com</a></footer>
+      <footer className="end-label"><span>END OF EXHIBIT</span><Link href="/pricing/">가격 및 이용 안내</Link><span>designYEH © {new Date().getFullYear()}</span><a href="mailto:creativebyyeh@gmail.com">creativebyyeh@gmail.com</a></footer>
       <FabWax />
     </>
   )

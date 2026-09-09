@@ -1,0 +1,36 @@
+.pricing-nav nav { display: flex; justify-content: flex-end; gap: clamp(14px, 3vw, 32px); align-items: center; }
+.pricing-nav nav a { padding-block: 10px; }
+.pricing-nav [aria-current="page"] { border-bottom: 1px solid var(--ink); }
+.pricing-page .room { padding-bottom: 100px; }
+.pricing-page h1 { max-width: 960px; }
+.pricing-index { display: flex; flex-wrap: wrap; gap: 10px 24px; margin: 32px 0 48px; font-size: 13px; }
+.pricing-index a { padding-bottom: 7px; border-bottom: 1px solid var(--ink-line); }
+.pricing-plaque { scroll-margin-top: 90px; display: grid; grid-template-columns: 1.2fr 1fr; gap: 48px; padding: clamp(24px, 4vw, 54px); background: var(--mat-cream); border: 1px solid var(--ink-line); border-top: 5px solid var(--walnut); box-shadow: 0 20px 40px -30px var(--walnut); }
+.pricing-plaque h2 { font-size: clamp(26px, 3vw, 38px); }
+.pricing-plaque p, .pricing-reply p, .pricing-stages p, .pricing-terms { font-size: 15px; line-height: 1.8; color: var(--ink-soft); }
+.pricing-plaque .pricing-amount { margin: 24px 0 0; font: 400 clamp(44px, 6vw, 76px)/1.2 var(--g-serif); color: var(--ink); letter-spacing: -.03em; }
+.pricing-amount span { margin-left: 8px; font: 500 20px var(--g-sans); }
+.pricing-plaque .pricing-tax { margin: 10px 0 30px; font-size: 13px; }
+.pricing-inclusions { border-left: 1px solid var(--rule); padding-left: 36px; align-self: stretch; display: flex; flex-direction: column; justify-content: center; }
+.pricing-inclusions h3 { font-size: 24px; margin: 24px 0 8px; line-height: 1.4; }
+.pricing-inclusions p { margin: 8px 0 16px; }
+.pricing-reply { display: grid; grid-template-columns: 1fr 1.4fr; gap: 60px; }
+.pricing-reply .pricing-clock { font: italic 140px/1 var(--g-serif); margin: 25px 0 0; color: var(--walnut); }
+.pricing-clock span { font-size: 64px; }
+.pricing-reply p { margin-bottom: 22px; }
+.pricing-stages { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 20px; margin: 36px 0 56px; }
+.pricing-stages article { padding: 30px; border: 1px solid var(--ink-line); background: var(--mat-cream); }
+.pricing-stages h3 { font-size: 24px; margin: 24px 0 16px; }
+.pricing-stages .pricing-basis { border-top: 1px solid var(--rule); padding-top: 16px; margin-top: 22px; font-size: 13px; }
+.pricing-terms { border-top: 1px solid var(--ink-line); margin-bottom: 32px; }
+.pricing-terms > div { display: grid; grid-template-columns: 160px 1fr; gap: 24px; padding: 24px 0; border-bottom: 1px solid var(--ink-line); }
+.pricing-terms dt { font-weight: 650; color: var(--ink); }
+.pricing-terms dd { margin: 0; }
+@media (max-width: 700px) {
+  .pricing-plaque, .pricing-reply, .pricing-stages { grid-template-columns: minmax(0, 1fr); gap: 28px; }
+  .pricing-inclusions { border-left: 0; border-top: 1px solid var(--rule); padding: 28px 0 0; }
+  .pricing-terms > div { grid-template-columns: minmax(0, 1fr); gap: 8px; }
+  .pricing-reply .pricing-clock { font-size: 100px; }
+  .pricing-page .room { padding-bottom: 72px; }
+  .pricing-nav { letter-spacing: 0; }
+}

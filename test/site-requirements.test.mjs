@@ -82,7 +82,7 @@ test("Korean copy keeps words intact while addresses and CTA labels wrap safely"
 const slugs = ["homepage-production", "brand-identity", "operations-automation"]
 const serviceData = read("src/lib/services.ts")
 const servicePage = read("src/components/service-page.tsx")
-const urls = ["https://dsgnyeh.art/", ...slugs.map(slug => `https://dsgnyeh.art/${slug}/`), "https://dsgnyeh.art/contact/"]
+const urls = ["https://dsgnyeh.art/", ...slugs.map(slug => `https://dsgnyeh.art/${slug}/`), "https://dsgnyeh.art/contact/", "https://dsgnyeh.art/pricing/"]
 
 test("three static service routes share metadata and visible schema content", () => {
   slugs.forEach((slug, index) => {
@@ -103,7 +103,7 @@ test("three static service routes share metadata and visible schema content", ()
   for (const phrase of ["홈페이지 제작", "기업 홈페이지 제작", "반응형 홈페이지 제작", "개인정보", "사람의 승인", "fallback"]) assert.ok(serviceData.includes(phrase))
 })
 
-test("sitemap contains exactly five canonical real pages", () => {
+test("sitemap contains exactly six canonical real pages", () => {
   const sitemap = read("public/sitemap.xml")
   assert.deepEqual([...sitemap.matchAll(/<loc>(.*?)<\/loc>/g)].map(match => match[1]), urls)
   assert.doesNotMatch(sitemap, /\/about\/|\/portfolio\/|<lastmod>/)
