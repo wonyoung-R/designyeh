@@ -180,6 +180,7 @@ export default function GalleryHome() {
             </article>
           </div>
           <p className="scope-note"><Link className="service-link" href="/pricing/">랜딩페이지 300,000원 · 가격 및 수정 정책 보기 →</Link> <span>VAT·도메인 구매비 별도.</span></p>
+          <p className="scope-note"><Link className="service-link" href="/pricing/#maintenance">운영·유지관리 월 30,000원부터 · 기존 홈페이지도 상담 가능 · 사이트당/VAT 별도 →</Link></p>
           <p className="scope-note"><strong>상담에서 먼저 확인합니다.</strong> 목표, 필요한 화면과 기능, 제공 가능한 콘텐츠, 연동 대상, 개인정보 취급, 도메인·호스팅, 유지관리와 운영 인계 범위를 확인한 뒤 프로젝트 범위를 제안합니다.</p>
           <div className="baseboard" />
         </section>
