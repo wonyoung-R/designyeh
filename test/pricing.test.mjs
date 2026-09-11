@@ -37,7 +37,7 @@ test("AI estimates separate human time and usage while pending terms remain visi
   assert.doesNotMatch(page, /<br\b|무제한 수정|시간당\s*[\d,]+원|\d+일.*납품 보장/)
 })
 
-const maintenance = page.slice(page.indexOf('<section id="maintenance"'), page.indexOf('<section id="ai"'))
+const maintenance = page.slice(page.indexOf('<section id="maintenance"'), page.indexOf('<section id="terms"'))
 
 test("maintenance sits between reply and AI with index, home and contact links", () => {
   assert.ok(page.indexOf('<section id="reply"') < page.indexOf('<section id="maintenance"'))
@@ -65,4 +65,20 @@ test("maintenance item layout stacks on mobile and permits long content and CTA 
   assert.match(css, /@media \(max-width: 700px\)[^]*?\.pricing-terms > div \{ grid-template-columns: minmax\(0, 1fr\)/)
   assert.match(css, /\.pricing-maintenance \.maintenance-items dd \{[^}]*overflow-wrap: anywhere/)
   assert.match(css, /@media \(max-width: 700px\) \{\s*\.pricing-maintenance \.cta \{[^}]*white-space: normal/)
+})
+
+
+test("pricing leads with homepage production and keeps AI estimates collapsed below terms", () => {
+  assert.match(page, /const title = "홈페이지 제작 가격 및 이용 안내"/)
+  const description = page.match(/const description = "([^"]+)"/)[1]
+  assert.doesNotMatch(description, /AI|자동화/)
+  const intro = page.slice(page.indexOf('<section className="room room-entry"'), page.indexOf('<article id="landing"'))
+  assert.match(intro, /소규모 사업자를 위한 홈페이지 제작/)
+  assert.doesNotMatch(intro, /AI·|자동화/)
+  const ai = page.slice(page.indexOf('<section id="ai"'), page.indexOf('<section className="room room-final"'))
+  assert.match(ai, /<details className="faq-item"><summary>추가 상담: AI·업무 자동화 견적<\/summary>/)
+  assert.doesNotMatch(ai, /<details[^>]*\bopen(?:[\s=>])/)
+  assert.match(ai, /stages.map/)
+  assert.match(ai, /토큰 사용량을 이유로 추가 청구하지 않습니다/)
+  assert.ok(page.indexOf('<section id="terms"') < page.indexOf('<section id="ai"'))
 })

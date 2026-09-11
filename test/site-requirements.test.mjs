@@ -20,22 +20,22 @@ test("home provides the complete conversion path", () => {
     assert.match(home, new RegExp(`id=["']${id}["']`))
   }
   assert.match(home, /Every homepage is a work of art\./)
-  assert.match(home, /웹사이트 제작부터 브랜드 아이덴티티, 문의 이후 운영 자동화까지 한 흐름으로 설계합니다\./)
-  assert.match(home, /프로젝트 상담하기/)
+  assert.match(home, /어떤 일을 하는 곳인지, 왜 믿고 맡길 수 있는지\. 사업 소개부터 서비스 안내, 고객 문의까지 담아드립니다\./)
+  assert.match(home, /홈페이지 제작 문의하기/)
   assert.match(home, /제작 사례 보기/)
   assert.match(home, /human approval|사람의 승인/)
   assert.match(home, /fallback|대체 절차/)
 })
 
-test("home contains three services, four approaches, six process steps and six FAQs", () => {
+test("home contains three website production stages, four approaches, six process steps and six FAQs", () => {
   assert.equal((home.match(/className="service-card"/g) ?? []).length, 3)
   assert.equal((home.match(/className="approach-card"/g) ?? []).length, 4)
   assert.equal((home.match(/className="process-item"/g) ?? []).length, 6)
   assert.equal((home.match(/<details className="faq-item"/g) ?? []).length, 6)
 })
 
-test("contact qualifies all three services and required preparation", () => {
-  for (const phrase of ["웹사이트", "아이덴티티", "운영 자동화", "현재 상황", "목표", "필요한 기능", "일정", "예산", "의사결정자"]) {
+test("contact qualifies homepage production and required preparation", () => {
+  for (const phrase of ["홈페이지 제작", "현재 상황", "목표", "필요한 기능", "일정", "예산", "의사결정자"]) {
     assert.match(contact, new RegExp(phrase))
   }
   assert.match(contact, /mailto:/)
@@ -49,8 +49,8 @@ test("global JSON-LD describes the agency without page-specific duplication", ()
   assert.match(layout, /Organization/)
   assert.match(layout, /WebSite/)
   assert.match(layout, /Service/)
-  assert.match(layout, /웹사이트/)
-  assert.match(layout, /운영 자동화/)
+  assert.match(layout, /소규모 사업자를 위한 홈페이지 제작/)
+  assert.doesNotMatch(layout, /아이덴티티|운영 자동화/)
 })
 
 test("Supabase is optional and seven fallback works remain", () => {
@@ -118,8 +118,6 @@ test("three static service routes share metadata and visible schema content", ()
     assert.match(page, /export const metadata = serviceMetadata\(service\)/)
     assert.ok(page.includes(`services[${index}]`))
     assert.ok(serviceData.includes(`slug: "${slug}"`))
-    assert.ok(home.includes(`href="/${slug}/"`))
-    assert.ok(contact.includes(`href="/${slug}/"`))
   })
   for (const type of ["Service", "WebPage", "BreadcrumbList", "FAQPage"]) assert.ok(servicePage.includes(`"@type": "${type}"`))
   assert.equal((servicePage.match(/<h1\b/g) ?? []).length, 1)
@@ -152,11 +150,51 @@ test("public crawler policy and service guide are current", () => {
 })
 
 test("new content preserves the approved hook and has no forced breaks or invented guarantees", () => {
-  assert.match(home, /눈에 남는 브랜드, <em>손이 덜 가는 운영\.<\/em>/)
-  assert.match(layout, /default: "홈페이지 제작/)
+  assert.match(home, /소규모 사업자를 위한 <em>홈페이지 제작<\/em>/)
+  assert.match(layout, /default: "소규모 사업자를 위한 홈페이지 제작/)
   assert.doesNotMatch(layout, /첫인상에서 운영까지/)
   for (const directive of ["max-snippet", "max-image-preview", "max-video-preview"]) assert.ok(layout.includes(directive))
   const all = [home, contact, layout, serviceData, servicePage, read("public/llms.txt")].join("\n")
   assert.doesNotMatch(all, /<br\b[^>]*>/i)
   assert.doesNotMatch(all, /무제한 수정|검색\s*순위\s*보장|성과 보장|매출 보장|리드 보장|상위\s*노출\s*보장|1위 보장|aggregateRating|reviewRating|priceCurrency/)
+})
+
+// The approved positioning replaces equal promotion of three services with one website offer.
+test("home promotes only homepage production outside the last optional FAQ", () => {
+  const hero = home.slice(home.indexOf('<section className="room room-entry'), home.indexOf('<section className="room room-problem'))
+  const cards = home.slice(home.indexOf('<section id="services"'), home.indexOf('<section id="approach"'))
+  assert.doesNotMatch(hero + cards, /AI|자동화|아이덴티티|brand-identity|operations-automation/)
+  for (const title of ["기획·정보 정리", "디자인·제작", "검수·인계"]) assert.ok(cards.includes(`<h3>${title}</h3>`))
+  const faqs = [...home.matchAll(/<details className="faq-item">([^]*?)<\/details>/g)].map(match => match[1])
+  assert.doesNotMatch(faqs.slice(0, -1).join(""), /AI|자동화|아이덴티티/)
+  assert.match(faqs.at(-1), /AI·업무 자동화/)
+  assert.match(faqs.at(-1), /별도로 상담/)
+  assert.doesNotMatch(home.replace(faqs.at(-1), ""), /AI|자동화|아이덴티티/)
+  assert.doesNotMatch(home, /href="\/brand-identity\/"/)
+  assert.equal((home.match(/홈페이지 제작 문의하기/g) ?? []).length, 2)
+})
+
+test("contact preserves encoded mailto, chat and privacy guidance without service selection", () => {
+  assert.doesNotMatch(contact, /관심 서비스|아이덴티티|자동화|반복 업무/)
+  assert.match(contact, /const EMAIL = "creativebyyeh@gmail.com"/)
+  assert.match(contact, /const SUBJECT = "designYEH 홈페이지 제작 문의"/)
+  assert.ok(contact.includes('`mailto:${EMAIL}?subject=${encodeURIComponent(SUBJECT)}&body=${encodeURIComponent(BODY)}`'))
+  assert.equal((contact.match(/href=\{mailtoHref\}/g) ?? []).length, 2)
+  assert.match(contact, /https:\/\/open.kakao.com\/me\/designyeh/)
+  for (const text of ["데이터·개인정보, 승인 담당, 오류 시 대체 절차", "개인정보와 권한, 승인·인계·유지관리 기준"]) assert.ok(contact.includes(text))
+  assert.match(contact, /href="\/homepage-production\/"/)
+})
+
+test("homepage detail and shared related navigation prioritize website production", () => {
+  const homepageService = serviceData.slice(0, serviceData.indexOf('slug: "brand-identity"'))
+  assert.match(homepageService, /title: "소규모 사업자를 위한 홈페이지 제작"/)
+  assert.doesNotMatch(homepageService, /자동화|아이덴티티/)
+  assert.match(servicePage, /홈페이지 제작 문의하기/)
+  assert.ok(servicePage.includes('item.slug === "homepage-production" && item.slug !== service.slug'))
+  assert.match(servicePage, /href="\/pricing\/"/)
+  const description = layout.match(/const description = "([^"]+)"/)[1]
+  assert.ok(home.includes(description))
+  assert.ok(homepageService.includes(description))
+  assert.equal((layout.match(/소규모 사업자를 위한 홈페이지 제작 · designYEH/g) ?? []).length, 3)
+  assert.match(layout, /name: "designYEH", url: "https:\/\/dsgnyeh.art\/", description/)
 })

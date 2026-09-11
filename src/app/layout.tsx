@@ -1,16 +1,16 @@
 import type { Metadata } from "next"
 import "./globals.css"
 
-const description = "designYEH는 웹사이트, 아이덴티티, 문의 이후 운영 자동화를 설계하는 서울의 작은 웹에이전시입니다. 눈에 남는 브랜드, 손이 덜 가는 운영. 홈페이지 제작부터 브랜드 아이덴티티와 운영 흐름까지 함께 설계합니다."
+const description = "어떤 일을 하는 곳인지, 왜 믿고 맡길 수 있는지. 사업 소개부터 서비스 안내, 고객 문의까지 담아드립니다."
 
 export const metadata: Metadata = {
   metadataBase: new URL("https://dsgnyeh.art"),
-  title: { default: "홈페이지 제작 · designYEH — 눈에 남는 브랜드, 손이 덜 가는 운영.", template: "%s · designYEH" },
+  title: { default: "소규모 사업자를 위한 홈페이지 제작 · designYEH", template: "%s · designYEH" },
   description,
   icons: { icon: "/favicon.svg" },
   alternates: { canonical: "/" },
-  openGraph: { type: "website", locale: "ko_KR", url: "https://dsgnyeh.art/", siteName: "designYEH", title: "홈페이지 제작 · designYEH — 눈에 남는 브랜드, 손이 덜 가는 운영.", description, images: [{ url: "/images/og.jpg", width: 1200, height: 800, alt: "designYEH 웹에이전시" }] },
-  twitter: { card: "summary_large_image", title: "홈페이지 제작 · designYEH — 눈에 남는 브랜드, 손이 덜 가는 운영.", description, images: ["/images/og.jpg"] },
+  openGraph: { type: "website", locale: "ko_KR", url: "https://dsgnyeh.art/", siteName: "designYEH", title: "소규모 사업자를 위한 홈페이지 제작 · designYEH", description, images: [{ url: "/images/og.jpg", width: 1200, height: 800, alt: "designYEH 웹에이전시" }] },
+  twitter: { card: "summary_large_image", title: "소규모 사업자를 위한 홈페이지 제작 · designYEH", description, images: ["/images/og.jpg"] },
   robots: { index: true, follow: true, googleBot: { index: true, follow: true, "max-snippet": -1, "max-image-preview": "large", "max-video-preview": -1 } },
 }
 

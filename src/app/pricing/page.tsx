@@ -2,8 +2,8 @@ import type { Metadata } from "next"
 import Link from "next/link"
 import "./pricing.css"
 
-const title = "가격 및 이용 안내"
-const description = "단일 랜딩페이지 최대 9개 섹션, 300,000원(VAT·도메인 구매비 별도). 완료 후 30일간 간단한 수정 2회와 24시간 회신 조건, AI·업무 자동화 견적 방식을 안내합니다."
+const title = "홈페이지 제작 가격 및 이용 안내"
+const description = "단일 랜딩페이지 최대 9개 섹션, 300,000원(VAT·도메인 구매비 별도). 완료 후 30일간 간단한 수정 2회와 24시간 회신 조건, 홈페이지 운영·유지관리를 안내합니다."
 const url = "https://dsgnyeh.art/pricing/"
 export const metadata: Metadata = {
   title, description, alternates: { canonical: url },
@@ -40,7 +40,7 @@ export default function PricingPage() {
   return <>
     <header className="docent contact-nav pricing-nav">
       <Link className="wordmark" href="/">designyeh<span className="wm-period">.</span></Link>
-      <nav aria-label="주요 메뉴"><Link href="/pricing/" aria-current="page">가격 안내</Link><Link href="/contact/">프로젝트 상담 →</Link></nav>
+      <nav aria-label="주요 메뉴"><Link href="/pricing/" aria-current="page">가격 안내</Link><Link href="/contact/">홈페이지 제작 문의 →</Link></nav>
     </header>
     <main className="service-detail pricing-page">
       <section className="room room-entry" aria-labelledby="pricing-title">
@@ -49,10 +49,10 @@ export default function PricingPage() {
           <nav className="service-breadcrumb" aria-label="현재 위치"><Link href="/">홈</Link> / <span aria-current="page">가격 및 이용 안내</span></nav>
           <p className="section-kicker">A CLEAR START</p>
           <h1 id="pricing-title">필요한 범위는 명확하게, 비용은 이해하기 쉽게.</h1>
-          <p className="service-definition">작은 시작을 위한 랜딩페이지부터 AI·업무 자동화까지. 제작 범위와 완료 기준을 먼저 맞추고 시작합니다.</p>
-          <nav className="pricing-index" aria-label="가격 안내 목차"><a href="#landing">랜딩페이지</a><a href="#revisions">완료와 수정</a><a href="#reply">24시간 회신</a><a href="#maintenance">운영·유지관리</a><a href="#ai">AI·자동화 견적</a><a href="#terms">계약 전 확인</a></nav>
+          <p className="service-definition">소규모 사업자를 위한 홈페이지 제작 비용과 이용 조건입니다. 필요한 페이지와 기능, 제작 범위와 완료 기준을 먼저 맞추고 시작합니다.</p>
+          <nav className="pricing-index" aria-label="가격 안내 목차"><a href="#landing">랜딩페이지</a><a href="#revisions">완료와 수정</a><a href="#reply">24시간 회신</a><a href="#maintenance">운영·유지관리</a><a href="#terms">계약 전 확인</a><a href="#ai">추가 상담 견적</a></nav>
           <article id="landing" className="pricing-plaque" aria-labelledby="landing-title">
-            <div><p className="section-kicker">LANDING PAGE / FIXED PRICE</p><h2 id="landing-title">하나의 페이지로 시작하세요.</h2><p>단일 랜딩페이지 · 최대 9개 섹션</p><p className="pricing-amount">300,000<span>원</span></p><p className="pricing-tax">VAT 별도 · 도메인 구매 비용 별도</p><Link className="cta cta-primary" href="/contact/">제작 범위 상담하기 →</Link></div>
+            <div><p className="section-kicker">LANDING PAGE / FIXED PRICE</p><h2 id="landing-title">하나의 페이지로 시작하세요.</h2><p>단일 랜딩페이지 · 최대 9개 섹션</p><p className="pricing-amount">300,000<span>원</span></p><p className="pricing-tax">VAT 별도 · 도메인 구매 비용 별도</p><Link className="cta cta-primary" href="/contact/">홈페이지 제작 문의하기 →</Link></div>
             <div className="pricing-inclusions"><span className="card-no">INCLUDED CARE</span><h3>완료 후에도, 작은 수정을 함께.</h3><p>제작 완료 확정일로부터 <strong>30일간 간단한 수정 2회</strong>를 무상 제공합니다.</p><p>섹션은 소개·서비스·사례·문의처럼 한 페이지 안의 콘텐츠 구역입니다. 독립된 웹페이지 9개를 뜻하지 않습니다.</p><a className="service-link" href="#terms">기본 구성·포함 작업은 상담 후 확정 ↓</a></div>
           </article>
           <p className="scope-note"><strong>범위가 넓어질 때는 별도 견적을 확인합니다.</strong> 추가 페이지·새 섹션·기능, 전면 디자인 변경, 기획·카피, 로고·촬영, 다국어, 회원가입·결제·예약·DB·관리자, 자체 문의 폼·외부 연동은 별도 견적 검토 대상입니다. 최종 포함·제외 항목은 견적서에서 확정합니다.</p>
@@ -89,18 +89,18 @@ export default function PricingPage() {
         </div>
         <p className="maintenance-contact"><Link className="service-link" href="/contact/">내 홈페이지 관리 상담하기 →</Link></p><p>사이트 주소와 관리가 필요한 내용을 알려주세요. 비밀번호·인증키는 문의 내용에 입력하지 마세요.</p>
       </div><div className="baseboard" /></section>
-      <section id="ai" className="room room-approach" aria-labelledby="ai-title"><div className="service-sheet">
+      <section id="terms" className="room room-faq" aria-labelledby="terms-title"><div className="service-sheet">
+        <p className="section-kicker">05 / BEFORE WE BEGIN</p><h2 id="terms-title">계약 전에 함께 확인합니다.</h2><p>아래 항목은 아직 확정되지 않았습니다. 상담을 거쳐 견적서·계약서에서 합의하며, 확정 전 보장되는 조건이 아닙니다.</p>
+        <dl className="pricing-terms">{terms.map(([name, text]) => <div key={name}><dt>{name}</dt><dd>{text}</dd></div>)}</dl><p>VAT·세금계산서 처리는 사업자 과세유형에 따라 확인합니다. 이 페이지는 가격과 서비스 이용 안내이며, 개별 계약서나 개인정보처리방침을 대체하지 않습니다.</p>
+      </div><div className="baseboard" /></section>
+      <section id="ai" className="room room-approach" aria-labelledby="ai-title"><div className="service-sheet"><details className="faq-item"><summary>추가 상담: AI·업무 자동화 견적</summary>
         <p className="section-kicker">04 / AI · RAG · AUTOMATION</p><h2 id="ai-title">업무와 자료를 먼저, 견적은 그다음.</h2><p>사내 문서 검색·답변(RAG), 문서 처리, 업무 도구 연동은 자료 상태와 기능·권한·예외 처리 요구에 따라 비용이 달라집니다. 컨설팅과 구축을 구분하며, 아래 단계와 견적 방식은 상담 후 확정합니다. 단계별 단가·최소 비용은 협의가 필요합니다.</p>
         <div className="pricing-stages">{stages.map(([no, name, text, basis]) => <article key={no}><span className="card-no">{no}</span><h3>{name}</h3><p>{text}</p><p className="pricing-basis">{basis}</p></article>)}</div>
         <h2>시간과 사용량을 구분해 산정합니다.</h2><p>전문가의 분석·설계·구현 관여·검수 시간, AI 실행비, 인프라 등 직접 비용을 나누는 견적 방식을 제안합니다. 산출물·완료 기준·예상 비용·예산 상한을 함께 정하고, 초과 실행 전 승인을 받는 구조를 협의합니다.</p>
         <ul><li>사람의 실제 투입시간과 에이전트 실행·대기시간을 구분하며, 에이전트 수를 사람 인원수로 환산하지 않습니다.</li><li>AI 비용은 입력·출력·캐시·도구 등 공급사의 실제 과금 기준을 따릅니다. 구독형 도구에 임의 토큰 단가를 적용하지 않습니다.</li><li>제작사 실수나 불필요한 재시도 비용을 무제한 전가하지 않습니다. PoC의 정상 실험 예산은 사전에 합의합니다.</li><li>모델 API, 서버·DB·검색 인프라, 유료 SaaS·라이선스와 유지관리 비용은 구축비와 구분합니다.</li></ul>
         <p className="scope-note">랜딩페이지 정찰제는 이 견적 방식과 별개입니다. 합의한 기본 범위 안에서 토큰 사용량을 이유로 추가 청구하지 않습니다.</p>
-      </div><div className="baseboard" /></section>
-      <section id="terms" className="room room-faq" aria-labelledby="terms-title"><div className="service-sheet">
-        <p className="section-kicker">05 / BEFORE WE BEGIN</p><h2 id="terms-title">계약 전에 함께 확인합니다.</h2><p>아래 항목은 아직 확정되지 않았습니다. 상담을 거쳐 견적서·계약서에서 합의하며, 확정 전 보장되는 조건이 아닙니다.</p>
-        <dl className="pricing-terms">{terms.map(([name, text]) => <div key={name}><dt>{name}</dt><dd>{text}</dd></div>)}</dl><p>VAT·세금계산서 처리는 사업자 과세유형에 따라 확인합니다. 이 페이지는 가격과 서비스 이용 안내이며, 개별 계약서나 개인정보처리방침을 대체하지 않습니다.</p>
-      </div><div className="baseboard" /></section>
-      <section className="room room-final" aria-labelledby="pricing-contact-title"><div className="final-plaque"><p className="section-kicker">LET’S DEFINE YOUR SCOPE</p><h2 id="pricing-contact-title">필요한 범위부터 이야기해 주세요.</h2><p>현재 상황, 필요한 페이지나 업무, 준비된 자료와 희망 일정을 알려주세요. 정찰제 적용 여부와 별도 검토가 필요한 범위를 안내합니다.</p><Link className="cta cta-primary" href="/contact/">프로젝트 상담하기 →</Link></div><div className="baseboard" /></section>
+      </details></div><div className="baseboard" /></section>
+      <section className="room room-final" aria-labelledby="pricing-contact-title"><div className="final-plaque"><p className="section-kicker">LET’S DEFINE YOUR SCOPE</p><h2 id="pricing-contact-title">필요한 범위부터 이야기해 주세요.</h2><p>현재 상황, 필요한 페이지와 기능, 준비된 자료와 희망 일정을 알려주세요. 정찰제 적용 여부와 별도 검토가 필요한 범위를 안내합니다.</p><Link className="cta cta-primary" href="/contact/">홈페이지 제작 문의하기 →</Link></div><div className="baseboard" /></section>
     </main>
     <footer className="end-label"><Link href="/">designYEH — HOME</Link><Link href="/pricing/" aria-current="page">가격 및 이용 안내</Link><Link href="/contact/">Contact</Link></footer>
   </>
