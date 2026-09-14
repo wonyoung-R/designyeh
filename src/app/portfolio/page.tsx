@@ -1,14 +1,12 @@
 "use client"
 
-// The gallery home IS the portfolio now. Keep this route as a redirect so any
-// existing links / bookmarks land on the works wall. useRouter respects basePath.
+import Link from "next/link"
 import { useEffect } from "react"
-import { useRouter } from "next/navigation"
+import { asset } from "@/lib/assets"
 
 export default function PortfolioRedirect() {
-  const router = useRouter()
   useEffect(() => {
-    router.replace("/#room-02")
-  }, [router])
-  return null
+    window.location.replace(asset("/#works"))
+  }, [])
+  return <main className="room redirect-page"><p className="section-kicker">SELECTED WORK</p><h1>designYEH 제작 사례</h1><p>업종과 목적에 맞춰 만든 기존 웹 작업을 살펴보세요.</p><Link className="cta cta-primary" href="/#works">제작 사례 보기 →</Link><Link className="service-link" href="/">홈으로 돌아가기</Link></main>
 }

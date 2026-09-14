@@ -1,4 +1,5 @@
 import type { Metadata } from "next"
+import { asset } from "@/lib/assets"
 import "./globals.css"
 
 const description = "어떤 일을 하는 곳인지, 왜 믿고 맡길 수 있는지. 사업 소개부터 서비스 안내, 고객 문의까지 담아드립니다."
@@ -19,18 +20,14 @@ const jsonLd = {
   "@graph": [
     { "@type": ["Organization", "ProfessionalService"], "@id": "https://dsgnyeh.art/#agency", name: "designYEH", url: "https://dsgnyeh.art/", description, image: "https://dsgnyeh.art/images/og.jpg", email: "creativebyyeh@gmail.com", areaServed: "KR", knowsLanguage: ["ko", "en"] },
     { "@type": "WebSite", "@id": "https://dsgnyeh.art/#website", name: "designYEH", url: "https://dsgnyeh.art/", inLanguage: "ko-KR", publisher: { "@id": "https://dsgnyeh.art/#agency" } },
-
   ],
 }
 
 export default function RootLayout({ children }: Readonly<{ children: React.ReactNode }>) {
   return (
-    <html lang="ko"><head>
-      <link rel="preconnect" href="https://fonts.googleapis.com" />
-      <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
-      <link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
-      <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.min.css" />
-      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }} />
-    </head><body className="gallery antialiased">{children}</body></html>
+    <html lang="ko">
+      <head><link rel="stylesheet" href={asset("/fonts/paperlogy/paperlogy.css")} /><script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd).replace(/</g, "\\u003c") }} /></head>
+      <body className="gallery antialiased">{children}</body>
+    </html>
   )
 }

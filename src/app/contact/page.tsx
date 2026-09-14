@@ -26,16 +26,18 @@ export default function ContactPage() {
   const mailtoHref = `mailto:${EMAIL}?subject=${encodeURIComponent(SUBJECT)}&body=${encodeURIComponent(BODY)}`
   return (
     <>
+      <a className="skip-link" href="#contact-main">본문으로 이동</a>
       <header className="docent contact-nav">
         <Link className="wordmark" href="/">designyeh<span className="wm-period">.</span></Link>
         <nav className="nav-primary" aria-label="문의 페이지 메뉴">
           <Link href="/#services">Services</Link><Link href="/#works">Works</Link><Link href="/#process">Process</Link><Link href="/#faq">FAQ</Link>
         </nav>
-        <Link className="contact-home" href="/">전시로 돌아가기</Link>
+        <Link className="contact-home" href="/">홈으로 돌아가기</Link>
+        <details className="nav-mobile"><summary>메뉴 <span aria-hidden="true">＋</span></summary><nav aria-label="모바일 주요 메뉴"><Link href="/#services">Services</Link><Link href="/#works">Works</Link><Link href="/#process">Process</Link><Link href="/#faq">FAQ</Link><Link href="/pricing/">가격 안내</Link></nav></details>
       </header>
-      <main>
+      <main id="contact-main" tabIndex={-1}>
         <section className="room room-studio contact-room" aria-labelledby="contact-title">
-          <div className="room-tag"><span className="tag-no">—</span><span className="tag-name">CONTACT</span><span className="tag-meta">— project inquiries</span></div>
+          <div className="room-tag"><span className="tag-no">01</span><span className="tag-name">CONTACT</span><span className="tag-meta">project inquiries</span></div>
           <div className="contact-layout">
             <div className="contact-intro">
               <p className="section-kicker">START WITH A NOTE</p>
@@ -57,19 +59,19 @@ export default function ContactPage() {
                 <li><strong>프로젝트 조건</strong><span>일정·예산 범위, 준비된 콘텐츠, 의사결정자</span></li>
                 <li><strong>운영 조건</strong><span>데이터·개인정보, 승인 담당, 오류 시 대체 절차</span></li>
               </ul>
-              <div className="contact-email-block"><p className="contact-email-label">EMAIL</p><a className="contact-email" href={mailtoHref}>{EMAIL}</a></div>
-              <a className="contact-submit" href={mailtoHref}>홈페이지 제작 문의하기 →</a>
+              <div className="contact-email-block"><p className="contact-email-label">EMAIL</p><a className="contact-email" href={mailtoHref} aria-describedby="contact-privacy">{EMAIL}</a></div>
+              <a className="contact-submit" href={mailtoHref} aria-describedby="contact-privacy">홈페이지 제작 문의하기 →</a>
               <div className="contact-or"><span>또는</span></div>
-              <a className="contact-kakao" href={KAKAO_OPEN_CHAT} target="_blank" rel="noopener noreferrer">
-                <span className="kakao-icon" aria-hidden="true">💬</span><span className="kakao-text"><span className="kakao-title">카카오톡 오픈채팅으로 대화하기</span><span className="kakao-sub">designYEH · 카카오톡에서 열립니다</span></span><span className="kakao-arrow" aria-hidden="true">↗</span>
+              <a className="contact-kakao" href={KAKAO_OPEN_CHAT} target="_blank" rel="noopener noreferrer" aria-describedby="contact-privacy">
+                <span className="kakao-icon" aria-hidden="true">↗</span><span className="kakao-text"><span className="kakao-title">카카오톡 오픈채팅으로 대화하기</span><span className="kakao-sub">designYEH · 카카오톡에서 열립니다 (새 창)</span></span><span className="kakao-arrow" aria-hidden="true">→</span>
               </a>
+              <p className="privacy-notice" id="contact-privacy"><strong>문의와 개인정보 안내</strong>이 페이지에는 문의 내용을 입력하거나 제출하는 양식이 없습니다. 이메일·채팅 링크를 누르면 외부 서비스로 이동하며, 메시지는 해당 이메일·채팅 제공업체에서 처리합니다. 비밀번호·API 키·민감한 고객 데이터는 보내지 마세요.</p>
               <p className="contact-hint">상담 후 포함·제외 범위, 고객 제공 자료, 외부 서비스 비용, 개인정보와 권한, 승인·인계·유지관리 기준을 확인합니다.</p>
             </div>
           </div>
-          <div className="baseboard" />
         </section>
       </main>
-      <footer className="end-label"><span>FRONT DESK</span><Link href="/">designYEH — HOME</Link><a href={`mailto:${EMAIL}`}>{EMAIL}</a></footer>
+      <footer className="end-label"><span>DESIGNYEH STUDIO</span><Link href="/">designYEH — HOME</Link><a href={`mailto:${EMAIL}`}>{EMAIL}</a></footer>
     </>
   )
 }

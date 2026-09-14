@@ -1,62 +1,83 @@
-// works.ts — portfolio data model + fallback data + salon-wall layout presets
-//
-// The gallery (ROOM 02) renders from Supabase `portfolios`. If the table is
-// empty or unreachable, it falls back to FALLBACK_WORKS so the site always
-// shows. Adding a row to Supabase automatically hangs a new framed work on the
-// wall — frameLayout() assigns each successive work a size/frame/offset slot.
-
+// Curated local portfolio content. No network access is needed to render works.
 export interface Work {
   id: number | string
   title: string
-  meta: string        // museum-label subtitle, e.g. "검진센터 브랜드 랜딩"
-  year: string        // e.g. "2024"
-  url: string         // full https URL — clicking the frame opens it
-  image: string       // /works/{slug}.png (local) or remote URL
+  meta: string
+  year: string
+  url: string
+  image: string
   tech?: string[]
-  category?: string   // "website" (default) | "logo"
-  note?: string       // artist's note — 1~2 sentence intent shown on the label
+  category?: string
+  note?: string
+  solution?: string
+  scope?: string[]
+  ownership?: string
 }
 
-// Map a DB row (snake_case-ish, loose) into a Work.
-// If the row has no `note` column yet (older schema), fall back to the
-// hardcoded note matched by URL so live data still shows artist's notes.
-export function toWork(row: Record<string, unknown>, i: number): Work {
-  const url = (row.url as string) ?? (row.link as string) ?? "#"
-  const rowNote = (row.note as string) ?? undefined
-  const fallbackNote = FALLBACK_NOTE_BY_URL.get(normalizeUrl(url))
-  return {
-    id: (row.id as number | string) ?? i,
-    title: (row.title as string) ?? "Untitled",
-    meta: (row.meta as string) ?? (row.description as string) ?? "",
-    year: String(row.year ?? (row.created_at ? new Date(row.created_at as string).getFullYear() : "")),
-    url,
-    image: (row.image as string) ?? "",
-    tech: (row.tech as string[]) ?? [],
-    category: (row.category as string) ?? "website",
-    note: rowNote ?? fallbackNote,
+function text(value: unknown): string | undefined {
+  return typeof value === "string" ? value : undefined
+}
+
+function httpsUrl(value: unknown): string | undefined {
+  if (typeof value !== "string" || value !== value.trim() || !/^https:\/\//i.test(value)) return undefined
+  if (/[\u0000-\u0020\u007f\\]/.test(value)) return undefined
+  try {
+    const parsed = new URL(value)
+    if (parsed.protocol !== "https:" || !parsed.hostname || parsed.username || parsed.password) return undefined
+    return parsed.href
+  } catch {
+    return undefined
   }
 }
 
-function normalizeUrl(u: string): string {
-  return u.replace(/^https?:\/\//, "").replace(/^www\./, "").replace(/\/$/, "").toLowerCase()
+function localImage(value: unknown): string | undefined {
+  return typeof value === "string" && /^\/works\/[a-zA-Z0-9][a-zA-Z0-9_-]*\.png$/.test(value) ? value : undefined
 }
 
-// Built lazily below — populated after FALLBACK_WORKS is declared.
-const FALLBACK_NOTE_BY_URL = new Map<string, string>()
+function normalizeUrl(value: string): string {
+  const parsed = new URL(value)
+  const host = parsed.hostname.replace(/^www\./, "").toLowerCase()
+  return `${host}${parsed.port ? `:${parsed.port}` : ""}${parsed.pathname.replace(/\/$/, "")}${parsed.search}`
+}
 
-// ── Salon-wall layout presets ───────────────────────────────────────────────
-// 16:10 landscape slots (matches the 1440×900 screenshots), alternating frame
-// styles and hanging offsets so the wall reads as hand-hung, not a grid.
-// 2026-06-08: sizes scaled up ×1.5 by owner request (pixel-perfect from 360/225
-// preset → 540/338 등).
-const FRAME_SLOTS = [
-  { w: 540, h: 338, frame: "frame-walnut", offset: "" },
-  { w: 450, h: 282, frame: "frame-thin",   offset: "offset-down" },
-  { w: 510, h: 320, frame: "frame-walnut", offset: "offset-up" },
-  { w: 450, h: 282, frame: "frame-thin",   offset: "" },
-  { w: 540, h: 338, frame: "frame-walnut", offset: "offset-up" },
-  { w: 480, h: 300, frame: "frame-thin",   offset: "offset-down" },
-] as const
+function safeIndex(index: number): number {
+  return Number.isSafeInteger(index) && index >= 0 ? index : 0
+}
+
+function workYear(year: unknown, createdAt: unknown): string {
+  if (typeof year === "string") return year
+  if (typeof year === "number" && Number.isFinite(year)) return String(year)
+  if (typeof createdAt !== "string" || !/^\d{4}-\d{2}-\d{2}(?:T|$)/.test(createdAt)) return ""
+  const date = new Date(createdAt)
+  return Number.isFinite(date.getTime()) ? String(date.getUTCFullYear()) : ""
+}
+
+// Defensive adapter for imported records. Invalid links stay empty; they never
+// become a link to an unrelated project. Images always stay on the local site.
+export function toWork(value: unknown, i: number): Work {
+  const row: Record<string, unknown> = value !== null && typeof value === "object" && !Array.isArray(value)
+    ? value as Record<string, unknown>
+    : {}
+  const index = safeIndex(i)
+  const url = httpsUrl(row.url) ?? httpsUrl(row.link) ?? ""
+  const matching = url ? FALLBACK_WORKS.find(work => normalizeUrl(work.url) === normalizeUrl(url)) : undefined
+  const fallback = matching ?? FALLBACK_WORKS[index % FALLBACK_WORKS.length]
+  const id = typeof row.id === "string" || (typeof row.id === "number" && Number.isFinite(row.id)) ? row.id : index
+  return {
+    id,
+    title: text(row.title) ?? "Untitled",
+    meta: text(row.meta) ?? text(row.description) ?? "",
+    year: workYear(row.year, row.created_at),
+    url,
+    image: localImage(row.image) ?? fallback.image,
+    tech: Array.isArray(row.tech) ? row.tech.filter((item): item is string => typeof item === "string") : [],
+    category: text(row.category) ?? "website",
+    note: text(row.note) ?? matching?.note,
+    solution: text(row.solution) ?? matching?.solution,
+    scope: Array.isArray(row.scope) ? row.scope.filter((item): item is string => typeof item === "string") : matching?.scope?.slice(),
+    ownership: text(row.ownership) ?? matching?.ownership,
+  }
+}
 
 export interface FrameLayout {
   artW: number
@@ -65,23 +86,24 @@ export interface FrameLayout {
   offsetClass: string
 }
 
+// Uniform 16:10 geometry retained for compatibility with existing imports.
 export function frameLayout(index: number): FrameLayout {
-  const slot = FRAME_SLOTS[index % FRAME_SLOTS.length]
-  return { artW: slot.w, artH: slot.h, frameClass: slot.frame, offsetClass: slot.offset }
+  void index
+  return { artW: 640, artH: 400, frameClass: "work-surface", offsetClass: "" }
 }
 
-// ── Fallback data: the 6 live sites ─────────────────────────────────────────
-// Shown until the Supabase `portfolios` table is seeded. Edit freely.
 export const FALLBACK_WORKS: Work[] = [
   {
     id: "designluka",
     title: "Design LUKA",
-    meta: "인테리어 브랜드 사이트 · 문의 자동 분류",
+    meta: "인테리어 회사 홈페이지 · DB 연동 및 관리",
     year: "2024",
     url: "https://designluka.co.kr",
     image: "/works/designluka.png",
     tech: ["Next.js", "Tailwind", "Admin"],
-    note: "공간을 파는 브랜드에는, 공간을 담은 웹이 필요했다.",
+    note: "인테리어 회사의 홈페이지에, 운영을 위한 관리 기능이 필요했습니다.",
+    solution: "사이트에 DB를 연결하고 관리자 페이지를 함께 구축했습니다.",
+    scope: ["DB 연결", "관리자 페이지"],
   },
   {
     id: "dcare",
@@ -102,6 +124,7 @@ export const FALLBACK_WORKS: Work[] = [
     image: "/works/mavs.png",
     tech: ["Next.js", "Supabase", "AI"],
     note: "팬덤은 24시간 깨어 있다. AI가 밤새 쓰고, 사람은 아침에 같이 읽는다.",
+    ownership: "자체 운영 프로젝트",
   },
   {
     id: "sdngazer",
@@ -111,42 +134,45 @@ export const FALLBACK_WORKS: Work[] = [
     url: "https://sdngazer.art",
     image: "/works/sdngazer.png",
     tech: ["Next.js", "Supabase"],
-    note: "큐레이터의 사이트는 작품을 가리키는 손이다. 손이 너무 크면 작품이 가려진다.",
+    note: "도슨트의 활동을 이미지로 보여주고, 새 기록도 편하게 더할 수 있어야 했습니다.",
+    solution: "이미지 중심의 개인 포트폴리오에 기록을 추가하고 관리하는 관리자 페이지를 연결했습니다.",
+    scope: ["이미지 중심 포트폴리오", "기록 관리", "관리자 페이지"],
   },
   {
     id: "laf2023",
     title: "LOST and FOUND",
-    meta: "도시형 라이프스타일 브랜드 · 컬렉션 사이트",
+    meta: "의류 판매 페이지 · 인플루언서 협업 채널",
     year: "2025",
     url: "https://laf2023.com",
     image: "/works/laf2023.png",
     tech: ["Next.js", "Tailwind"],
-    note: "잃은 것과 찾은 것 사이의 'and'. 화면도 그 공백을 채우지 않고 그대로 두었다.",
+    note: "개인 의류 판매를 위한 페이지와 인플루언서가 함께 작업할 채널이 필요했습니다.",
+    solution: "의류 판매 사이트의 페이지를 제작하고, 인플루언서 협업 채널을 구축했습니다.",
+    scope: ["의류 판매 페이지", "인플루언서 협업 채널"],
   },
   {
     id: "gritlab",
     title: "GRIT LAB",
-    meta: "프리미엄 농구 코트 · 예약/대관 플랫폼",
+    meta: "농구 체육관 홈페이지 · 대회 운영 시스템",
     year: "2025",
     url: "https://grit-lab.kr",
     image: "/works/gritlab.png",
-    tech: ["Next.js", "Booking"],
-    note: "코트가 잠기면 사람이 자란다. 'BE LOCKED IN' — 한 시간의 약속이 곧 디자인이었다.",
+    tech: ["Next.js"],
+    note: "작은 체육관에서 홈페이지와 대회 운영, 전광판을 따로 관리하기에는 부담이 컸습니다.",
+    solution: "랜딩 페이지와 3:3 대회 운영, 스코어보드·전광판을 하나의 DB와 하나의 사이트로 연결했습니다.",
+    scope: ["랜딩 페이지", "3:3 대회 운영", "스코어보드·전광판", "DB 연결"],
   },
   {
     id: "hoopnote",
     title: "HoopNote",
-    meta: "학원 운영 AI 비서 · SaaS 랜딩",
+    meta: "농구학원 운영 보조 서비스",
     year: "2025",
     url: "https://hoopnote.kr",
     image: "/works/hoopnote.png",
     tech: ["Next.js", "AI"],
-    note: "원장님의 '응' 한 마디가 학원을 움직인다. AI는 보이지 않고, 결과만 남는다.",
+    note: "유소년 농구학원 원장과 코치는 수업 외에도 행정 업무와 학부모 소통을 챙겨야 합니다.",
+    solution: "농구학원 운영 보조 서비스를 직접 기획·제작하고, 코칭 외 업무를 돕기 위해 AI를 도입했습니다.",
+    scope: ["농구학원 운영 보조 서비스", "AI 도입"],
+    ownership: "자체 프로젝트",
   },
 ]
-
-// Populate URL→note map so toWork() can supply notes for DB rows that don't
-// have a `note` column yet (live Supabase schema is one version behind).
-for (const w of FALLBACK_WORKS) {
-  if (w.note) FALLBACK_NOTE_BY_URL.set(normalizeUrl(w.url), w.note)
-}

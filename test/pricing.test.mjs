@@ -63,7 +63,7 @@ test("maintenance item layout stacks on mobile and permits long content and CTA 
   const css = read("src/app/pricing/pricing.css")
   assert.match(maintenance, /<dl className="pricing-terms maintenance-items">/)
   assert.match(css, /@media \(max-width: 700px\)[^]*?\.pricing-terms > div \{ grid-template-columns: minmax\(0, 1fr\)/)
-  assert.match(css, /\.pricing-maintenance \.maintenance-items dd \{[^}]*overflow-wrap: anywhere/)
+  assert.match(css, /\.pricing-maintenance \.maintenance-items dd \{[^}]*overflow-wrap: break-word/)
   assert.match(css, /@media \(max-width: 700px\) \{\s*\.pricing-maintenance \.cta \{[^}]*white-space: normal/)
 })
 

@@ -1,20 +1,6 @@
 import Link from "next/link"
 
-/**
- * Wax Seal floating contact button.
- * Embossed dark-red wax coin with a "DY" monogram, links to /contact.
- * Ported from the Claude Design handoff (fab.jsx → wax_seal variant).
- */
+// Keep the existing export for callers; the contact pill occupies its own row.
 export function FabWax() {
-  return (
-    <Link href="/contact" className="fab fab-wax" aria-label="문의하기 — designyeh studio">
-      <span className="fab-wax-drip" />
-      <span className="fab-wax-coin">
-        <span className="fwx-ring" />
-        <span className="fwx-monogram">DY</span>
-        <span className="fwx-arc">— design · 예 —</span>
-      </span>
-      <span className="fab-tip">studio inquiries →</span>
-    </Link>
-  )
+  return <aside className="contact-rail" aria-label="스튜디오 문의"><Link href="/contact" className="fab contact-pill">제작 문의 <span aria-hidden="true">↗</span></Link></aside>
 }

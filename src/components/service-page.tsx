@@ -16,28 +16,40 @@ export function ServicePage({ service }: { service: ServiceContent }) {
   }
   return <>
     <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd).replace(/</g, "\\u003c") }} />
-    <header className="docent contact-nav"><Link className="wordmark" href="/">designyeh<span className="wm-period">.</span></Link><Link className="contact-home" href="/contact/">홈페이지 제작 문의</Link></header>
-    <main className="service-detail">
+    <a className="skip-link" href="#service-main">본문으로 이동</a>
+    <header className="docent contact-nav">
+      <Link className="wordmark" href="/">designyeh<span className="wm-period">.</span></Link>
+      <nav className="nav-primary" aria-label="주요 메뉴"><Link href="/#services">Services</Link><Link href="/#works">Works</Link><Link href="/pricing/">가격 안내</Link></nav>
+      <Link className="contact-home" href="/contact/">홈페이지 제작 문의</Link>
+      <details className="nav-mobile"><summary>메뉴 <span aria-hidden="true">＋</span></summary><nav aria-label="모바일 주요 메뉴"><Link href="/#services">Services</Link><Link href="/#works">Works</Link><Link href="#faq">FAQ</Link><Link href="/pricing/">가격 안내</Link><Link href="/contact/">Contact</Link></nav></details>
+    </header>
+    <main id="service-main" tabIndex={-1} className="service-detail">
       <section className="room room-entry" aria-labelledby="service-title">
-        <div className="room-tag"><span className="tag-no">S—0{services.indexOf(service) + 1}</span><span className="tag-name">SERVICE GALLERY</span></div>
+        <div className="room-tag"><span className="tag-no">S—0{services.indexOf(service) + 1}</span><span className="tag-name">STUDIO SERVICES</span></div>
         <div className="service-sheet">
           <nav className="service-breadcrumb" aria-label="현재 위치"><Link href="/">홈</Link><span aria-hidden="true"> / </span><span aria-current="page">{service.name}</span></nav>
           <h1 id="service-title">{service.title}</h1><p className="service-definition">{service.definition}</p>
-          <div className="cta-row"><Link className="cta cta-primary" href="/contact/">홈페이지 제작 문의하기 →</Link><a className="cta cta-secondary" href="#service-works">관련 작품 보기 ↓</a></div>
-        </div><div className="baseboard" />
+          <div className="cta-row"><Link className="cta cta-primary" href="/contact/">홈페이지 제작 문의하기 →</Link><a className="cta cta-secondary" href="#service-works">관련 작업 보기 ↓</a></div>
+        </div>
       </section>
-      <section className="room room-problem" aria-labelledby="audience-title"><div className="service-sheet"><h2 id="audience-title">누구를 위한 서비스인가요?</h2><ul>{service.audience.map(text => <li key={text}>{text}</li>)}</ul><h2>어떤 문제를 다루나요?</h2>{service.problems.map(text => <p key={text}>{text}</p>)}</div><div className="baseboard" /></section>
-      <section className="room room-services" aria-labelledby="scope-title"><div className="service-sheet"><h2 id="scope-title">포함하는 작업</h2><ul>{service.included.map(text => <li key={text}>{text}</li>)}</ul><h2>제외 항목과 먼저 확인할 범위</h2><ul>{service.boundaries.map(text => <li key={text}>{text}</li>)}</ul></div><div className="baseboard" /></section>
-      <section id="service-works" className="room room-websites" aria-labelledby="related-works-title"><div className="service-sheet"><p className="section-kicker">SELECTED COLLECTION</p><h2 id="related-works-title">관련 작품</h2><p>{service.worksContext}</p><div className="service-works">{service.works.map(id => {
-        const work = FALLBACK_WORKS.find(work => work.id === id)!
-        return <article key={id}><div className="frame frame-walnut"><div className="mat snug">
-          {/* eslint-disable-next-line @next/next/no-img-element */}
-          <img src={asset(work.image)} alt={`${work.title} 웹사이트 미리보기`} width={1440} height={900} loading="lazy" />
-        </div></div><div className="label"><h3 className="lbl-title">{work.title}</h3><p className="lbl-meta">{work.meta}</p><a className="service-link" href={work.url} target="_blank" rel="noopener noreferrer">작품 사이트 방문 <span className="sr-only">{work.title} (새 창)</span> ↗</a></div></article>
-      })}</div><Link className="service-link" href="/#works">전체 작품 보기 →</Link></div><div className="baseboard" /></section>
-      <section className="room room-process" aria-labelledby="steps-title"><div className="service-sheet"><h2 id="steps-title">진행 과정</h2><ol className="process-list">{service.steps.map(([title, text], index) => <li className="process-item" key={title}><span>0{index + 1}</span><div><h3>{title}</h3><p>{text}</p></div></li>)}</ol></div><div className="baseboard" /></section>
-      <section id="faq" className="room room-faq" aria-labelledby="service-faq-title"><div className="service-sheet"><h2 id="service-faq-title">자주 묻는 질문</h2><div className="faq-list">{service.faq.map(([question, answer]) => <details className="faq-item" key={question}><summary>{question}</summary><p>{answer}</p></details>)}</div></div><div className="baseboard" /></section>
-      <section className="room room-final" aria-labelledby="next-title"><div className="service-sheet"><h2 id="next-title">홈페이지에 담고 싶은 내용을 알려주세요.</h2><p>사업 소개, 준비된 자료와 필요한 페이지·기능을 알려주시면 제작 범위와 인계 기준을 함께 확인합니다.</p><div className="cta-row"><Link className="cta cta-primary" href="/contact/">홈페이지 제작 문의하기 →</Link></div><nav className="service-related" aria-label="홈페이지 제작 안내">{services.filter(item => item.slug === "homepage-production" && item.slug !== service.slug).map(item => <Link className="service-link" href={`/${item.slug}/`} key={item.slug}>{item.name} 살펴보기 →</Link>)}<Link className="service-link" href="/pricing/">홈페이지 제작 가격 및 수정 정책 →</Link></nav></div><div className="baseboard" /></section>
-    </main><footer className="end-label"><span>SERVICE GALLERY</span><Link href="/">designYEH — HOME</Link><Link href="/contact/">Contact</Link></footer>
+      <section className="room room-problem" aria-labelledby="audience-title"><div className="service-sheet"><h2 id="audience-title">누구를 위한 서비스인가요?</h2><ul>{service.audience.map(text => <li key={text}>{text}</li>)}</ul><h2>어떤 문제를 다루나요?</h2>{service.problems.map(text => <p key={text}>{text}</p>)}</div></section>
+      <section className="room room-services" aria-labelledby="scope-title"><div className="service-sheet"><h2 id="scope-title">포함하는 작업</h2><ul>{service.included.map(text => <li key={text}>{text}</li>)}</ul><h2>제외 항목과 먼저 확인할 범위</h2><ul>{service.boundaries.map(text => <li key={text}>{text}</li>)}</ul></div></section>
+      <section id="service-works" className="room room-websites" aria-labelledby="related-works-title"><div className="service-sheet"><p className="section-kicker">SELECTED WORK</p><h2 id="related-works-title">관련 작업</h2><p>{service.worksContext}</p><div className="service-works">{service.works.map(id => {
+        const work = FALLBACK_WORKS.find(work => work.id === id)
+        if (!work) return null
+        const stem = /^\/works\/(designluka|dcare|mavs|sdngazer|laf2023|gritlab|hoopnote)\.png$/.test(work.image)
+          ? work.image.slice(0, -4)
+          : null
+        return <article key={id} className="work-card"><a className="work-image-link" href={work.url} target="_blank" rel="noopener noreferrer" aria-label={`${work.title} 사이트 방문 (새 창)`}>
+          <picture style={{ display: "block", width: "100%" }}>
+            {stem && <source type="image/webp" srcSet={`${asset(`${stem}-640.webp`)} 640w, ${asset(`${stem}.webp`)} 1440w`} sizes="(max-width: 700px) 100vw, 50vw" />}
+            <img src={asset(work.image)} alt={`${work.title} 웹사이트 미리보기`} width={1440} height={900} loading="lazy" />
+          </picture>
+        </a><div className="label"><h3 className="lbl-title">{work.title}</h3><p className="lbl-meta">{work.meta}</p><a className="service-link" href={work.url} target="_blank" rel="noopener noreferrer">작업 사이트 방문 <span className="sr-only">{work.title} (새 창)</span> ↗</a></div></article>
+      })}</div><Link className="service-link" href="/#works">전체 작업 보기 →</Link></div></section>
+      <section className="room room-process" aria-labelledby="steps-title"><div className="service-sheet"><h2 id="steps-title">진행 과정</h2><ol className="process-list">{service.steps.map(([title, text], index) => <li className="process-item" key={title}><span>0{index + 1}</span><div><h3>{title}</h3><p>{text}</p></div></li>)}</ol></div></section>
+      <section id="faq" className="room room-faq" aria-labelledby="service-faq-title"><div className="service-sheet"><h2 id="service-faq-title">자주 묻는 질문</h2><div className="faq-list">{service.faq.map(([question, answer]) => <details className="faq-item" key={question}><summary>{question}</summary><p>{answer}</p></details>)}</div></div></section>
+      <section className="room room-final" aria-labelledby="next-title"><div className="service-sheet"><h2 id="next-title">홈페이지에 담고 싶은 내용을 알려주세요.</h2><p>사업 소개, 준비된 자료와 필요한 페이지·기능을 알려주시면 제작 범위와 인계 기준을 함께 확인합니다.</p><div className="cta-row"><Link className="cta cta-primary" href="/contact/">홈페이지 제작 문의하기 →</Link></div><nav className="service-related" aria-label="홈페이지 제작 안내">{services.filter(item => item.slug === "homepage-production" && item.slug !== service.slug).map(item => <Link className="service-link" href={`/${item.slug}/`} key={item.slug}>{item.name} 살펴보기 →</Link>)}<Link className="service-link" href="/pricing/">홈페이지 제작 가격 및 수정 정책 →</Link></nav></div></section>
+    </main><footer className="end-label"><span>STUDIO SERVICES</span><Link href="/">designYEH — HOME</Link><Link href="/contact/">Contact</Link></footer>
   </>
 }

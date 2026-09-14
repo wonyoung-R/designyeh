@@ -10,6 +10,20 @@ const supabase = read("src/lib/supabase.ts")
 const works = read("src/lib/works.ts")
 const gallery = read("src/app/gallery.css")
 
+const normalizeHtmlText = (html) => html
+  .replace(/\{\/\*[\s\S]*?\*\/\}/g, "")
+  .replace(/<!--[\s\S]*?-->/g, "")
+  .replace(/<br\b[^>]*>/gi, " ")
+  .replace(/<[^>]+>/g, "")
+  .replace(/&nbsp;|&#160;|&#xA0;/gi, " ")
+  .replace(/\s+/g, " ")
+  .trim()
+const heroSection = home.match(/<section\b[^>]*className="room room-entry\b[^"]*"[^>]*>[\s\S]*?<\/section>/)?.[0] ?? ""
+const heroH1 = heroSection.match(/<h1\b[^>]*>[\s\S]*?<\/h1>/)?.[0] ?? ""
+const homeWithoutHeroBreaks = heroH1
+  ? home.replace(heroH1, heroH1.replace(/<br\s*\/>/g, " "))
+  : home
+
 const navItems = ["Services", "Approach", "Works", "Process", "FAQ", "Contact"]
 const sectionIds = ["services", "approach", "works", "process", "faq", "contact"]
 
@@ -19,7 +33,14 @@ test("home provides the complete conversion path", () => {
     assert.match(home, id === "contact" ? /href="\/contact"/ : new RegExp(`#${id}`))
     assert.match(home, new RegExp(`id=["']${id}["']`))
   }
-  assert.match(home, /Every homepage is a work of art\./)
+  assert.equal(normalizeHtmlText(heroH1), "어떤 일을 하는 곳인지, 잘 전해지는 홈페이지.")
+  assert.doesNotMatch(heroSection, /<(?:img|Image)\b/)
+  const eyebrow = [...heroSection.matchAll(/<(p)\b([^>]*\bclassName="hero-eyebrow"[^>]*)>([^]*?)<\/\1>/g)]
+    .find(([, , , content]) => normalizeHtmlText(content) === "designYEH — 홈페이지 기획·디자인·제작")
+  assert.ok(eyebrow, "hero must contain the visible owner-approved eyebrow")
+  assert.doesNotMatch(eyebrow[2], /\bhidden\b|aria-hidden\s*=\s*["']true["']|display\s*:\s*["']?none|visibility\s*:\s*["']?hidden/)
+  const orderedSections = ["works", "services", "process", "faq", "contact"].map(id => home.search(new RegExp(`<section\\b[^>]*\\bid=["']${id}["']`)))
+  assert.ok(orderedSections.every((position, index) => position >= 0 && (index === 0 || position > orderedSections[index - 1])), "section order must be works < services < process < faq < contact")
   assert.match(home, /어떤 일을 하는 곳인지, 왜 믿고 맡길 수 있는지\. 사업 소개부터 서비스 안내, 고객 문의까지 담아드립니다\./)
   assert.match(home, /홈페이지 제작 문의하기/)
   assert.match(home, /제작 사례 보기/)
@@ -27,9 +48,12 @@ test("home provides the complete conversion path", () => {
   assert.match(home, /fallback|대체 절차/)
 })
 
-test("home contains three website production stages, four approaches, six process steps and six FAQs", () => {
+test("home contains three website production stages, an approach anchor and heading, six process steps and six FAQs", () => {
   assert.equal((home.match(/className="service-card"/g) ?? []).length, 3)
-  assert.equal((home.match(/className="approach-card"/g) ?? []).length, 4)
+  const approach = home.match(/<(section|div)\b[^>]*\bid="approach"[^>]*>[^]*?<\/\1>/)?.[0] ?? ""
+  assert.ok(approach, "approach anchor must exist")
+  assert.match(approach, /<h2\b[^>]*>[^]*?<\/h2>/)
+  assert.doesNotMatch(home, /className="[^"]*\bapproach-card\b[^"]*"/)
   assert.equal((home.match(/className="process-item"/g) ?? []).length, 6)
   assert.equal((home.match(/<details className="faq-item"/g) ?? []).length, 6)
 })
@@ -66,9 +90,8 @@ test("unsupported public promises are absent", () => {
   }
 })
 
-
-test("agency pages let the browser wrap copy without forced breaks", () => {
-  for (const page of [home, contact]) assert.doesNotMatch(page, /<br\b[^>]*>/i)
+test("agency pages allow intentional breaks only inside the homepage hero h1", () => {
+  for (const page of [homeWithoutHeroBreaks, contact]) assert.doesNotMatch(page, /<br\b[^>]*>/i)
 })
 
 test("Korean copy keeps words intact while addresses and CTA labels wrap safely", () => {
@@ -76,24 +99,19 @@ test("Korean copy keeps words intact while addresses and CTA labels wrap safely"
   assert.doesNotMatch(gallery, /word-break:\s*break-all/)
   assert.match(gallery, /\.contact-email\s*\{[^}]*overflow-wrap:\s*anywhere\s*;/)
   assert.match(gallery, /\.lbl-url,\s*\.end-label a\[href\^="mailto:"\]\s*\{[^}]*overflow-wrap:\s*anywhere\s*;/)
-  assert.match(gallery, /\.cta,\s*\.contact-submit,\s*\.contact-kakao,\s*\.contact-home\s*\{[^}]*white-space:\s*nowrap\s*;/)
+  assert.match(gallery, /\.cta,\s*\.contact-submit,\s*\.contact-kakao,\s*\.contact-home\s*\{[^}]*white-space:\s*normal\s*;/)
 })
 
-test("gallery headlines use the three typography tokens without forced Korean breaks", () => {
-  assert.doesNotMatch(gallery, /Helvetica(?: Neue)?/i)
-  assert.match(gallery, /--g-sans:\s*"Pretendard Variable",\s*"Pretendard",\s*system-ui,\s*sans-serif;/)
-  for (const selector of [
-    "\\.exhibition-statement",
-    "\\.vinyl-line",
-    "\\.plq-title",
-    "\\.agency-title",
-    "\\.section-intro h2, \\.final-plaque h2",
-    "\\.contact-intro \\.contact-title",
-  ]) {
+test("studio typography uses local Korean sans fallbacks and accessible emphasis", () => {
+  assert.match(gallery, /--g-sans:\s*"Paperlogy",[^;]*"Apple SD Gothic Neo"[^;]*"Malgun Gothic"[^;]*system-ui,\s*sans-serif;/)
+  assert.doesNotMatch(gallery, /--g-serif|Instrument Serif|Georgia|font-style:\s*italic|font:\s*italic/)
+  for (const selector of ["\\.agency-title", "\\.section-intro h2, \\.final-plaque h2", "\\.contact-intro \\.contact-title, \\.contact-title"]) {
     assert.match(gallery, new RegExp(`${selector}[^\\{]*\\{[^}]*var\\(--g-sans\\)`))
   }
   assert.match(gallery, /\.gallery\s*:where\(h1,\s*h2\)\s*\{[^}]*word-break:\s*keep-all\s*;/)
-  assert.match(home, /무엇을 만들었는지보다, 어떻게 판단했는지 보세요\./)
+  const worksSection = home.match(/<section\b[^>]*\bid=["']works["'][^>]*>[\s\S]*?<\/section>/)?.[0] ?? ""
+  const worksHeading = worksSection.match(/<h2\b[^>]*>([\s\S]*?)<\/h2>/)?.[1] ?? ""
+  assert.match(normalizeHtmlText(worksHeading), /[\p{L}\p{N}]/u)
   assert.doesNotMatch(home, /만든 것에서\s*<em>판단의 결<\/em>을 보세요\./)
   assert.match(gallery, /\.works-intro h2\s*\{[^}]*text-wrap:\s*pretty\s*;/)
   const worksEmRule = gallery.match(/\.works-intro h2 em\s*\{[^}]*\}/)?.[0] ?? ""
@@ -102,9 +120,11 @@ test("gallery headlines use the three typography tokens without forced Korean br
   assert.match(worksEmRule, /font-weight:\s*inherit\s*;/)
   assert.match(worksEmRule, /letter-spacing:\s*inherit\s*;/)
   assert.doesNotMatch(worksEmRule, /white-space:\s*nowrap\s*;/)
-  assert.match(gallery, /\.agency-title em,\s*\.final-plaque h2 em\s*\{[^}]*font-family:\s*var\(--g-serif\)/)
-  assert.match(gallery, /\.lbl-note\s*\{[^}]*font-family:\s*var\(--g-serif\)/)
-  assert.doesNotMatch(home, /<br\b[^>]*>/i)
+  assert.match(gallery, /\.gallery :where\(em, i\)\s*\{[^}]*font-style:\s*normal/)
+  assert.match(gallery, /\.lbl-note\s*\{[^}]*font-family:\s*var\(--g-sans\)/)
+  assert.match(gallery, /:focus-visible\s*\{[^}]*outline:\s*3px solid var\(--blue\)/)
+  assert.match(gallery, /prefers-reduced-motion:\s*reduce/)
+  assert.doesNotMatch(homeWithoutHeroBreaks, /<br\b[^>]*>/i)
 })
 
 const slugs = ["homepage-production", "brand-identity", "operations-automation"]
@@ -143,26 +163,35 @@ test("public crawler policy and service guide are current", () => {
   for (const bot of ["Googlebot", "OAI-SearchBot", "GPTBot", "ClaudeBot", "PerplexityBot"]) assert.ok(robots.includes(bot))
   const llms = read("public/llms.txt")
   for (const url of urls) assert.ok(llms.includes(`(${url})`))
-  for (const phrase of ["눈에 남는 브랜드, 손이 덜 가는 운영.", "홈페이지 제작", "브랜드 아이덴티티", "운영 자동화", "사람의 승인", "fallback"]) assert.ok(llms.includes(phrase))
+  for (const phrase of ["소규모 사업자를 위한 홈페이지 제작", "홈페이지 제작", "브랜드 아이덴티티", "운영 자동화", "사람의 승인", "fallback"]) assert.ok(llms.includes(phrase))
   const workUrls = [...works.matchAll(/^\s+url: "(https:[^"]+)"/gm)].map(match => match[1])
   assert.equal(workUrls.length, 7)
   for (const url of workUrls) assert.ok(llms.includes(`(${url})`))
 })
 
-test("new content preserves the approved hook and has no forced breaks or invented guarantees", () => {
-  assert.match(home, /소규모 사업자를 위한 <em>홈페이지 제작<\/em>/)
+test("new content preserves service positioning, limits breaks to the hero and has no invented guarantees", () => {
+  const homeCopy = [...home
+    .replace(/\{\/\*[\s\S]*?\*\/\}/g, "")
+    .replace(/<!--[\s\S]*?-->/g, "")
+    .matchAll(/<(p|h[1-6])\b([^>]*)>([\s\S]*?)<\/\1>/g)]
+    .filter(([, , attributes]) => !/\bhidden\b|aria-hidden\s*=\s*["']true["']/.test(attributes))
+    .map(([, , , content]) => normalizeHtmlText(content))
+    .join(" ")
+  assert.match(homeCopy, /소규모 사업자를 위한 홈페이지 제작/)
   assert.match(layout, /default: "소규모 사업자를 위한 홈페이지 제작/)
   assert.doesNotMatch(layout, /첫인상에서 운영까지/)
   for (const directive of ["max-snippet", "max-image-preview", "max-video-preview"]) assert.ok(layout.includes(directive))
   const all = [home, contact, layout, serviceData, servicePage, read("public/llms.txt")].join("\n")
-  assert.doesNotMatch(all, /<br\b[^>]*>/i)
+  const copyWithoutHeroBreaks = [homeWithoutHeroBreaks, contact, layout, serviceData, servicePage, read("public/llms.txt")].join("\n")
+  assert.doesNotMatch(copyWithoutHeroBreaks, /<br\b[^>]*>/i)
   assert.doesNotMatch(all, /무제한 수정|검색\s*순위\s*보장|성과 보장|매출 보장|리드 보장|상위\s*노출\s*보장|1위 보장|aggregateRating|reviewRating|priceCurrency/)
 })
 
 // The approved positioning replaces equal promotion of three services with one website offer.
 test("home promotes only homepage production outside the last optional FAQ", () => {
-  const hero = home.slice(home.indexOf('<section className="room room-entry'), home.indexOf('<section className="room room-problem'))
-  const cards = home.slice(home.indexOf('<section id="services"'), home.indexOf('<section id="approach"'))
+  const hero = heroSection
+  const servicesStart = home.indexOf('<section id="services"')
+  const cards = home.slice(servicesStart, home.indexOf('</section>', servicesStart) + '</section>'.length)
   assert.doesNotMatch(hero + cards, /AI|자동화|아이덴티티|brand-identity|operations-automation/)
   for (const title of ["기획·정보 정리", "디자인·제작", "검수·인계"]) assert.ok(cards.includes(`<h3>${title}</h3>`))
   const faqs = [...home.matchAll(/<details className="faq-item">([^]*?)<\/details>/g)].map(match => match[1])
