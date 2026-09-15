@@ -247,10 +247,23 @@ body.gallery {
 .room-websites .room-tag { margin-bottom: 24px; }
 .room-tag { font-weight: 500; }
 .tag-no, .card-no, .approach-card > span, .process-item > span, .journey span, .hero-eyebrow, .section-kicker, .plate-kicker, .plq-kicker { font-weight: 500; }
-.agency-hero { min-height: 420px; padding-top: 40px; padding-bottom: 48px; }
-.agency-hero .room-tag { margin-bottom: 28px; }
-.hero-grid { grid-template-columns: minmax(0, 1.3fr) minmax(0, .7fr); gap: 48px; }
-.agency-title { font: 500 clamp(44px, 4.6vw, 66px)/1.18 var(--g-sans); font-family: "Paperlogy", var(--g-sans); letter-spacing: normal; font-synthesis: none; word-break: keep-all; overflow-wrap: break-word; }
+.agency-hero { min-height: calc(100svh - 80px); display: grid; align-content: center; padding-block: clamp(88px, 10svh, 144px); }
+.hero-grid { width: 100%; grid-template-columns: minmax(0, 1fr); gap: 40px; align-items: start; }
+.agency-title { max-width: none; width: 100%; font: 500 clamp(36px, 5vw, 72px)/1.3 var(--g-sans); font-family: "Paperlogy", var(--g-sans); letter-spacing: normal; font-synthesis: none; word-break: keep-all; overflow-wrap: break-word; }
+.agency-hero .hero-copy { max-width: none; padding-bottom: 0; }
+.agency-hero .hero-eyebrow { margin-bottom: 32px; letter-spacing: 0; }
+.hero-proposition > span { display: block; }
+.agency-hero .cta-row { margin-top: 32px; gap: 12px 32px; }
+.project-strip { padding: 36px clamp(20px, 5vw, 80px) 44px; border-bottom: 1px solid var(--rule); }
+.project-strip-inner { max-width: 1280px; margin-inline: auto; }
+.project-strip h2 { margin: 0 0 24px; font: 400 12px/1.5 var(--g-sans); letter-spacing: 0; color: var(--ink-soft); }
+.project-strip-scroll { display: flex; gap: clamp(32px, 4vw, 64px); overflow-x: auto; padding: 6px 0 16px; overscroll-behavior-x: contain; scroll-behavior: auto; animation: none; transition: none; }
+.project-group { flex: 0 0 auto; }
+.project-group + .project-group { padding-left: clamp(32px, 4vw, 64px); border-left: 1px solid var(--rule); }
+.project-strip .project-group h3 { margin: 0 0 16px; font: 400 12px/1.5 var(--g-sans); letter-spacing: 0; color: var(--ink-soft); }
+.project-group ul { display: flex; align-items: baseline; gap: clamp(24px, 3vw, 48px); list-style: none; margin: 0; padding: 0; }
+.project-group li { flex: 0 0 auto; white-space: nowrap; font: 500 clamp(17px, 1.5vw, 21px)/1.5 var(--g-sans); }
+.project-strip-scroll:focus-visible { outline: 3px solid var(--blue); outline-offset: 5px; }
 .agency-title .agency-title-intro { display: block; font-weight: 500; }
 .agency-title .agency-title-key { display: block; font-weight: 700; }
 .hero-creed { margin-top: 20px; font-size: 15px; font-weight: 500; }
@@ -313,7 +326,7 @@ body.gallery {
   .contact-nav > .contact-home:last-child:nth-child(2) { grid-column: 2; }
   .hero-grid, .split-intro, .contact-layout, .faq-layout { grid-template-columns: 1fr; gap: 32px; }
   .hero-copy { max-width: 720px; }
-  .agency-title { max-width: 900px; font-size: clamp(36px, 5.5vw, 52px); }
+  .agency-title { max-width: none; font-size: clamp(34px, 5vw, 52px); }
   .service-grid { grid-template-columns: 1fr; }
   .service-card h3 { margin-top: 0; }
   .approach-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
@@ -326,14 +339,18 @@ body.gallery {
   .docent { min-height: 68px; padding: 10px 20px; }
   .wordmark { font-size: 25px; }
   .room { padding: 64px 20px; }
-  .agency-hero { min-height: 0; padding-top: 28px; padding-bottom: 32px; }
+  .agency-hero { min-height: calc(100svh - 68px); padding-block: 72px; }
   .room-websites { padding-top: 32px; }
   .room-tag { margin-bottom: 28px; gap: 12px; }
   .tag-meta { flex-basis: 100%; margin-left: 0; }
   .agency-hero .room-tag { margin-bottom: 20px; }
   .hero-eyebrow { display: block; margin-bottom: 14px; font-size: 12px; letter-spacing: 0; }
   .hero-grid { gap: 20px; }
-  .agency-title { font-size: clamp(36px, 10vw, 44px); }
+  .agency-title { font-size: clamp(34px, 8.8vw, 44px); }
+  .agency-hero .hero-grid { gap: 32px; }
+  .agency-hero .hero-eyebrow { margin-bottom: 28px; }
+  .agency-hero .cta-row { align-items: flex-start; gap: 8px 24px; }
+  .project-strip { padding-block: 28px 32px; }
   .hero-proposition { font-size: 16px; }
   .hero-creed { font-size: 14px; margin-top: 16px; }
   .cta-row { flex-direction: row; align-items: center; gap: 8px 16px; margin-top: 12px; }

@@ -33,15 +33,17 @@ test("home provides the complete conversion path", () => {
     assert.match(home, id === "contact" ? /href="\/contact"/ : new RegExp(`#${id}`))
     assert.match(home, new RegExp(`id=["']${id}["']`))
   }
-  assert.equal(normalizeHtmlText(heroH1), "어떤 일을 하는 곳인지, 잘 전해지는 홈페이지.")
+  assert.equal(normalizeHtmlText(heroH1), "당신이 쌓아온 일에, 필요한 다음을 만듭니다.")
   assert.doesNotMatch(heroSection, /<(?:img|Image)\b/)
   const eyebrow = [...heroSection.matchAll(/<(p)\b([^>]*\bclassName="hero-eyebrow"[^>]*)>([^]*?)<\/\1>/g)]
-    .find(([, , , content]) => normalizeHtmlText(content) === "designYEH — 홈페이지 기획·디자인·제작")
+    .find(([, , , content]) => normalizeHtmlText(content) === "designYEH · 디자인과 기술로 만드는 사업의 다음")
   assert.ok(eyebrow, "hero must contain the visible owner-approved eyebrow")
   assert.doesNotMatch(eyebrow[2], /\bhidden\b|aria-hidden\s*=\s*["']true["']|display\s*:\s*["']?none|visibility\s*:\s*["']?hidden/)
   const orderedSections = ["works", "services", "process", "faq", "contact"].map(id => home.search(new RegExp(`<section\\b[^>]*\\bid=["']${id}["']`)))
   assert.ok(orderedSections.every((position, index) => position >= 0 && (index === 0 || position > orderedSections[index - 1])), "section order must be works < services < process < faq < contact")
-  assert.match(home, /어떤 일을 하는 곳인지, 왜 믿고 맡길 수 있는지\. 사업 소개부터 서비스 안내, 고객 문의까지 담아드립니다\./)
+  assert.match(normalizeHtmlText(heroSection), /사업을 보여주는 모습부터, 매일 일하는 방식까지\. 디자인과 기술로 지금 필요한 것을 함께 만듭니다\./)
+  assert.match(heroSection, /우리 사업 이야기 나누기/)
+  assert.match(heroSection, /만든 것들 살펴보기/)
   assert.match(home, /홈페이지 제작 문의하기/)
   assert.match(home, /제작 사례 보기/)
   assert.match(home, /human approval|사람의 승인/)
@@ -177,7 +179,8 @@ test("new content preserves service positioning, limits breaks to the hero and h
     .filter(([, , attributes]) => !/\bhidden\b|aria-hidden\s*=\s*["']true["']/.test(attributes))
     .map(([, , , content]) => normalizeHtmlText(content))
     .join(" ")
-  assert.match(homeCopy, /소규모 사업자를 위한 홈페이지 제작/)
+  assert.match(homeCopy, /디자인과 기술로 지금 필요한 것을 함께 만듭니다\./)
+  assert.match(homeCopy, /사업과 서비스를 소개하고 고객 문의를 받을 공식 홈페이지가 필요한 소규모 사업자에게 맞습니다\./)
   assert.match(layout, /default: "소규모 사업자를 위한 홈페이지 제작/)
   assert.doesNotMatch(layout, /첫인상에서 운영까지/)
   for (const directive of ["max-snippet", "max-image-preview", "max-video-preview"]) assert.ok(layout.includes(directive))
@@ -200,7 +203,9 @@ test("home promotes only homepage production outside the last optional FAQ", () 
   assert.match(faqs.at(-1), /별도로 상담/)
   assert.doesNotMatch(home.replace(faqs.at(-1), ""), /AI|자동화|아이덴티티/)
   assert.doesNotMatch(home, /href="\/brand-identity\/"/)
-  assert.equal((home.match(/홈페이지 제작 문의하기/g) ?? []).length, 2)
+  assert.equal((home.match(/홈페이지 제작 문의하기/g) ?? []).length, 1)
+  assert.equal((heroSection.match(/우리 사업 이야기 나누기/g) ?? []).length, 1)
+  assert.match(heroSection, /className="cta cta-primary" href="\/contact"/)
 })
 
 test("contact preserves encoded mailto, chat and privacy guidance without service selection", () => {
@@ -222,7 +227,10 @@ test("homepage detail and shared related navigation prioritize website productio
   assert.ok(servicePage.includes('item.slug === "homepage-production" && item.slug !== service.slug'))
   assert.match(servicePage, /href="\/pricing\/"/)
   const description = layout.match(/const description = "([^"]+)"/)[1]
-  assert.ok(home.includes(description))
+  // The approved message hero supersedes the former verbatim metadata copy.
+  // Metadata and the dedicated homepage service retain the website offer.
+  assert.ok(description.length > 0)
+  assert.match(home, /사업과 서비스를 소개하고 고객 문의를 받을 공식 홈페이지가 필요한 소규모 사업자에게 맞습니다\./)
   assert.ok(homepageService.includes(description))
   assert.equal((layout.match(/소규모 사업자를 위한 홈페이지 제작 · designYEH/g) ?? []).length, 3)
   assert.match(layout, /name: "designYEH", url: "https:\/\/dsgnyeh.art\/", description/)

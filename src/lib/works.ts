@@ -166,7 +166,7 @@ export const FALLBACK_WORKS: Work[] = [
     id: "hoopnote",
     title: "HoopNote",
     meta: "농구학원 운영 보조 서비스",
-    year: "2025",
+    year: "2026",
     url: "https://hoopnote.kr",
     image: "/works/hoopnote.png",
     tech: ["Next.js", "AI"],

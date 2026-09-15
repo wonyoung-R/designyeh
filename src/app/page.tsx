@@ -79,18 +79,32 @@ export default function StudioHome() {
       <SiteNav />
       <main id="top" tabIndex={-1}>
         <section className="room room-entry agency-hero" aria-labelledby="hero-title">
-          <SectionTag no="01" name="DESIGNYEH STUDIO" meta="websites for small businesses" />
           <div className="hero-grid">
             <div>
-              <p className="hero-eyebrow">designYEH — 홈페이지 기획·디자인·제작</p>
-              <h1 id="hero-title" className="agency-title"><span className="agency-title-intro">어떤 일을 하는 곳인지,</span> <strong className="agency-title-key">잘 전해지는 홈페이지.</strong></h1>
-              <p className="hero-creed">소규모 사업자를 위한 홈페이지 제작</p>
+              <p className="hero-eyebrow">designYEH · 디자인과 기술로 만드는 사업의 다음</p>
+              <h1 id="hero-title" className="agency-title"><span className="agency-title-intro">당신이 쌓아온 일에,</span> <strong className="agency-title-key">필요한 다음을 만듭니다.</strong></h1>
             </div>
             <div className="hero-copy">
-              <p className="hero-proposition">어떤 일을 하는 곳인지, 왜 믿고 맡길 수 있는지. 사업 소개부터 서비스 안내, 고객 문의까지 담아드립니다.</p>
+              <p className="hero-proposition"><span>사업을 보여주는 모습부터, 매일 일하는 방식까지.</span> <span>디자인과 기술로 지금 필요한 것을 함께 만듭니다.</span></p>
               <div className="cta-row">
-                <Link className="cta cta-primary" href="/contact">홈페이지 제작 문의하기 <span aria-hidden="true">→</span></Link>
-                <a className="cta cta-secondary" href="#works">제작 사례 보기 <span aria-hidden="true">↓</span></a>
+                <Link className="cta cta-primary" href="/contact">우리 사업 이야기 나누기 <span aria-hidden="true">↗</span></Link>
+                <a className="cta cta-secondary" href="#works">만든 것들 살펴보기 <span aria-hidden="true">↓</span></a>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <section className="project-strip" aria-labelledby="project-strip-title">
+          <div className="project-strip-inner">
+            <h2 id="project-strip-title">프로젝트명 (텍스트)</h2>
+            <div className="project-strip-scroll" role="region" aria-labelledby="project-strip-title" tabIndex={0}>
+              <div className="project-group" data-project-group="client" role="group" aria-labelledby="client-projects-title">
+                <h3 id="client-projects-title">고객 작업</h3>
+                <ul><li>Design LUKA</li><li>디케어 건강검진센터</li><li>GRIT LAB</li></ul>
+              </div>
+              <div className="project-group" data-project-group="own" role="group" aria-labelledby="own-projects-title">
+                <h3 id="own-projects-title">자체 프로젝트</h3>
+                <ul><li>MAVS.KR</li><li>HoopNote</li></ul>
               </div>
             </div>
           </div>

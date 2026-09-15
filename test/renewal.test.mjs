@@ -37,9 +37,9 @@ test("home is local and server rendered, with work before services", () => {
   const hero = home.slice(home.indexOf('<section className="room room-entry'), home.indexOf('<section id="works"'))
   assert.ok(hero, "hero must exist")
   assert.doesNotMatch(hero, /<(?:img|Image)\b/)
-  assert.match(home, /<section\b[^>]*className="room room-entry\b[^"]*"[^>]*>[^]*?<\/section>\s*<section\b[^>]*id="works"/)
+  assert.match(home, /<section\b[^>]*className="room room-entry\b[^"]*"[^>]*>[^]*?<\/section>\s*<section\b[^>]*className="project-strip"[^>]*>[^]*?<\/section>\s*<section\b[^>]*id="works"/)
   const headline = hero.match(/<h1\b[^>]*\bid="hero-title"[^>]*>([^]*?)<\/h1>/)?.[1] ?? ""
-  assert.equal(headline.replace(/<[^>]*>/g, "").replace(/\s+/g, ""), "어떤일을하는곳인지,잘전해지는홈페이지.")
+  assert.equal(headline.replace(/<[^>]*>/g, "").replace(/\s+/g, ""), "당신이쌓아온일에,필요한다음을만듭니다.")
   const worksSection = home.match(/<section\b[^>]*id="works"[^>]*>[^]*?<\/section>/)?.[0] ?? ""
   assert.match(worksSection, /works\.map\(\(work, index\) => <WorkCard/)
   const worksHeading = worksSection.match(/<h2\b[^>]*>([^]*?)<\/h2>/)?.[1] ?? ""
@@ -49,8 +49,8 @@ test("home is local and server rendered, with work before services", () => {
 
 test("hero clauses use semantic markup and scoped block typography", () => {
   const headline = home.match(/<h1\b[^>]*\bid="hero-title"[^>]*>([^]*?)<\/h1>/)?.[1] ?? ""
-  assert.match(headline, /<span\b[^>]*\bclassName="agency-title-intro"[^>]*>\s*어떤 일을 하는 곳인지\s*,?\s*<\/span>/)
-  assert.match(headline, /<strong\b[^>]*\bclassName="agency-title-key"[^>]*>\s*잘 전해지는 홈페이지\s*\.?\s*<\/strong>/)
+  assert.match(headline, /<span\b[^>]*\bclassName="agency-title-intro"[^>]*>\s*당신이 쌓아온 일에,\s*<\/span>/)
+  assert.match(headline, /<strong\b[^>]*\bclassName="agency-title-key"[^>]*>\s*필요한 다음을 만듭니다\.\s*<\/strong>/)
   const styles = css.replace(/\/\*[^]*?\*\//g, "")
   for (const [selector, weight] of [[".agency-title .agency-title-intro", "500"], [".agency-title .agency-title-key", "700"]]) {
     const declarations = [...styles.matchAll(/([^{}]+)\{([^{}]*)\}/g)]
