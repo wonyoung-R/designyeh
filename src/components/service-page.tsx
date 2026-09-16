@@ -2,6 +2,7 @@ import Link from "next/link"
 import { ORIGIN, services, type ServiceContent } from "@/lib/services"
 import { FALLBACK_WORKS } from "@/lib/works"
 import { asset } from "@/lib/assets"
+import { SiteNav } from "@/components/site-nav"
 
 export function ServicePage({ service }: { service: ServiceContent }) {
   const url = `${ORIGIN}/${service.slug}/`
@@ -17,12 +18,7 @@ export function ServicePage({ service }: { service: ServiceContent }) {
   return <>
     <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd).replace(/</g, "\\u003c") }} />
     <a className="skip-link" href="#service-main">본문으로 이동</a>
-    <header className="docent contact-nav">
-      <Link className="wordmark" href="/">designyeh<span className="wm-period">.</span></Link>
-      <nav className="nav-primary" aria-label="주요 메뉴"><Link href="/#services">Services</Link><Link href="/#works">Works</Link><Link href="/pricing/">가격 안내</Link></nav>
-      <Link className="contact-home" href="/contact/">홈페이지 제작 문의</Link>
-      <details className="nav-mobile"><summary>메뉴 <span aria-hidden="true">＋</span></summary><nav aria-label="모바일 주요 메뉴"><Link href="/#services">Services</Link><Link href="/#works">Works</Link><Link href="#faq">FAQ</Link><Link href="/pricing/">가격 안내</Link><Link href="/contact/">Contact</Link></nav></details>
-    </header>
+    <SiteNav />
     <main id="service-main" tabIndex={-1} className="service-detail">
       <section className="room room-entry" aria-labelledby="service-title">
         <div className="room-tag"><span className="tag-no">S—0{services.indexOf(service) + 1}</span><span className="tag-name">STUDIO SERVICES</span></div>

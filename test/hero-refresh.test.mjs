@@ -21,11 +21,30 @@ const React = {
     return { type, attributes: attributes ?? {}, children }
   },
 }
+const carousel = {}
+const navigation = {}
+runInNewContext(compile(read("src/components/site-nav.tsx")), {
+  exports: navigation, React,
+  require(name) {
+    if (name === "next/link") return { default: "a" }
+    throw new Error(`Unexpected navigation import: ${name}`)
+  },
+}, { timeout: 1000 })
+runInNewContext(compile(read("src/components/project-carousel.tsx")), {
+  exports: carousel, React,
+  require(name) {
+    if (name === "react") return { useState: initial => [initial, () => {}] }
+    if (name === "@/lib/assets") return { asset: value => value }
+    throw new Error(`Unexpected carousel import: ${name}`)
+  },
+}, { timeout: 1000 })
 runInNewContext(compile(home), {
   exports: result, React,
   require(name) {
     if (name === "next/link") return { default: "a" }
     if (name === "@/lib/works") return workExports
+    if (name === "@/components/project-carousel") return carousel
+    if (name === "@/components/site-nav") return navigation
     if (name === "@/lib/assets") return { asset: value => value }
     if (name === "@/components/fab-wax") return { FabWax: () => null }
     throw new Error(`Unexpected import: ${name}`)
@@ -45,6 +64,26 @@ function text(node) {
 const normalized = node => text(node).replace(/\s+/g, " ").trim()
 const byClass = (node, name) => nodes(node, item => (item.attributes.className ?? "").split(/\s+/).includes(name))
 const hero = byClass(tree, "agency-hero")[0]
+
+test("shared menus follow homepage order and keep Pricing last on every page", () => {
+  const expected = [
+    ["Works", "/#works"], ["Services", "/#services"], ["Approach", "/#approach"],
+    ["Process", "/#process"], ["FAQ", "/#faq"], ["Contact", "/contact/"], ["Pricing", "/pricing/"],
+  ]
+  const sections = nodes(tree, node => node.type === "section").map(node => node.attributes.id)
+  const positions = expected.slice(0, 6).map(([, href]) => sections.indexOf(href === "/contact/" ? "contact" : href.split("#")[1]))
+  assert.ok(positions.every((position, i) => position >= 0 && (i === 0 || position > positions[i - 1])))
+  for (const currentPage of [undefined, "/contact/", "/pricing/"]) {
+    const nav = navigation.SiteNav({ currentPage })
+    const menus = nodes(nav, node => node.type === "nav")
+    assert.equal(menus.length, 2)
+    for (const menu of menus) {
+      const links = nodes(menu, node => node.type === "a")
+      assert.deepEqual(links.map(link => [normalized(link), link.attributes.href]), expected)
+      assert.deepEqual(links.filter(link => link.attributes["aria-current"] === "page").map(link => link.attributes.href), currentPage ? [currentPage] : [])
+    }
+  }
+})
 
 test("approved hero renders exact copy and two semantic headline blocks without scripts", () => {
   assert.ok(hero)
@@ -80,32 +119,36 @@ test("approved hero renders exact copy and two semantic headline blocks without 
   }
 })
 
-test("curated text projects distinguish client and own work before all seven full cases", () => {
+test("project logos link to five sites with one accessible set before all seven cases", () => {
   const strip = byClass(tree, "project-strip")[0]
   assert.ok(strip)
-  assert.equal(normalized(nodes(strip, node => node.type === "h2")[0]), "프로젝트명 (텍스트)")
+  assert.equal(normalized(nodes(strip, node => node.type === "h2")[0]), "프로젝트명")
   const scroll = byClass(strip, "project-strip-scroll")[0]
   assert.equal(scroll.attributes.tabIndex, 0)
   assert.equal(scroll.attributes.role, "region")
   assert.equal(scroll.attributes["aria-labelledby"], "project-strip-title")
-  const expected = {
-    client: ["고객 작업", ["Design LUKA", "디케어 건강검진센터", "GRIT LAB"]],
-    own: ["자체 프로젝트", ["MAVS.KR", "HoopNote"]],
-  }
-  for (const [group, [heading, names]] of Object.entries(expected)) {
-    const element = nodes(strip, node => node.attributes["data-project-group"] === group)[0]
-    assert.ok(element)
-    const title = nodes(element, node => node.type === "h3")[0]
-    assert.equal(normalized(title), heading)
-    assert.equal(element.attributes["aria-labelledby"], title.attributes.id)
-    assert.deepEqual(nodes(element, node => node.type === "li").map(normalized), names)
-    for (const name of names) {
-      const work = workExports.FALLBACK_WORKS.find(item => item.title === name)
-      assert.ok(work, `${name}: existing case`)
-      assert.equal(Boolean(work.ownership?.includes("자체")), group === "own")
+  const sets = byClass(strip, "project-logo-list")
+  assert.equal(sets.length, 2)
+  assert.equal(sets[0].attributes["aria-hidden"], undefined)
+  assert.equal(sets[1].attributes["aria-hidden"], true)
+  const expected = ["designluka", "dcare", "gritlab", "mavs", "hoopnote"]
+  for (const [copy, set] of sets.entries()) {
+    const links = nodes(set, node => node.type === "a")
+    assert.equal(links.length, expected.length)
+    for (const [index, id] of expected.entries()) {
+      const work = workExports.FALLBACK_WORKS.find(item => item.id === id)
+      assert.equal(links[index].attributes.href, work.url)
+      assert.equal(links[index].attributes["aria-label"], `${work.title} 사이트 방문 (새 창)`)
+      assert.equal(links[index].attributes.tabIndex, copy === 1 ? -1 : undefined)
+      const logo = nodes(links[index], node => node.type === "img")[0]
+      assert.ok(logo.attributes.src.startsWith("/logos/"))
+      assert.ok(readFileSync(new URL(`../public${logo.attributes.src}`, import.meta.url)).length > 0)
     }
   }
-  assert.equal(nodes(strip, node => ["img", "svg", "a"].includes(node.type)).length, 0)
+  const toggle = byClass(strip, "project-carousel-toggle")[0]
+  assert.equal(toggle.attributes["aria-controls"], scroll.attributes.id)
+  assert.equal(toggle.attributes["aria-pressed"], false)
+  assert.doesNotMatch(normalized(tree), /자체(?: 운영)? 프로젝트/)
   assert.doesNotMatch(normalized(strip), /파트너|파트너십|추천|보증|신뢰|trusted|partner|endorse/i)
   const sections = nodes(tree, node => node.type === "section")
   const works = sections.find(node => node.attributes.id === "works")
@@ -127,12 +170,10 @@ test("curated text projects distinguish client and own work before all seven ful
   }
 })
 
-test("hero reserves a viewport and the project strip uses native static scrolling", () => {
+test("hero reserves a viewport and project strip keeps a visible keyboard focus", () => {
   assert.match(css, /\.agency-hero\s*\{[^}]*min-height:\s*calc\(100svh - 80px\)/)
   assert.match(css, /@media \(max-width: 700px\)[^]*?\.agency-hero\s*\{[^}]*min-height:\s*calc\(100svh - 68px\);[^}]*padding-block:\s*72px/)
   assert.match(css, /\.hero-grid\s*\{[^}]*width:\s*100%;[^}]*grid-template-columns:\s*minmax\(0, 1fr\)/)
   assert.match(css, /\.hero-proposition > span\s*\{\s*display:\s*block;/)
-  assert.match(css, /\.project-strip-scroll\s*\{[^}]*overflow-x:\s*auto;[^}]*animation:\s*none;[^}]*transition:\s*none;/)
   assert.match(css, /\.project-strip-scroll:focus-visible\s*\{[^}]*outline:/)
-  assert.doesNotMatch(css, /@keyframes/)
 })

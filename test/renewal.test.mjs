@@ -14,6 +14,7 @@ const contact = read("src/app/contact/page.tsx")
 const service = read("src/components/service-page.tsx")
 const animate = read("src/components/animate-in-view.tsx")
 const fab = read("src/components/fab-wax.tsx")
+const navigation = read("src/components/site-nav.tsx")
 
 // Use the project's existing TypeScript compiler in memory; no generated files,
 // network, framework runtime, additional packages or credentials are needed.
@@ -364,6 +365,8 @@ function renderResponsivePortfolio(sourceText, componentName, props, basePath, w
       if (name === "@/lib/assets") return assetExports
       if (name === "@/lib/works") return { FALLBACK_WORKS: works }
       if (name === "@/components/fab-wax") return { FabWax: "fab-wax" }
+      if (name === "@/components/project-carousel") return { ProjectCarousel: "project-carousel" }
+      if (name === "@/components/site-nav") return { SiteNav: "site-nav" }
       if (name === "@/lib/services") return { ORIGIN: "https://dsgnyeh.art", services: [props.service] }
       throw new Error(`Unexpected import: ${name}`)
     },
@@ -466,7 +469,7 @@ function renderPortfolioComponent(name, props = {}) {
   }
   runInNewContext(javascript, {
     exports: result, React, asset: value => value, FALLBACK_WORKS,
-    Link: "a", SiteNav: "nav", SectionTag: "section-tag", WorkCard: "work-card", FabWax: "fab-wax",
+    Link: "a", SiteNav: "nav", SectionTag: "section-tag", WorkCard: "work-card", FabWax: "fab-wax", ProjectCarousel: "project-carousel",
   }, { timeout: 1000 })
   return result.render(props)
 }
@@ -518,25 +521,23 @@ test("exactly five portfolio cases have need, solution and confirmed scope", () 
   }
 })
 
-test("portfolio claims stay within confirmed capabilities and identify own projects", () => {
+test("portfolio claims stay within confirmed capabilities and omit ownership labels", () => {
   const byId = Object.fromEntries(FALLBACK_WORKS.map(work => [work.id, work]))
   assert.doesNotMatch(portfolioCopy(byId.designluka), /문의\s*자동\s*분류/)
   assert.doesNotMatch(portfolioCopy(byId.laf2023), /결제|주문|관리자|어드민|payments?|orders?|admin|2,?000/i)
   const grit = portfolioCopy(byId.gritlab)
-  assert.match(grit, /(?:하나의?|한\s*개(?:의)?|1\s*개(?:의)?)\s*(?:DB|데이터베이스)|(?:DB|데이터베이스)\s*(?:하나|한\s*개|1\s*개)/i)
-  assert.match(grit, /(?:하나의?|한\s*개(?:의)?|1\s*개(?:의)?)\s*(?:사이트|홈페이지)|(?:사이트|홈페이지)\s*(?:하나|한\s*개|1\s*개)/)
+  assert.equal(byId.gritlab.solution, "3:3 대회운영, 스코어보드 전광판이 하나로 관리되는 사이트 제작")
   assert.match(grit, /(?:소규모|작은)\s*(?:농구\s*)?체육관/)
   assert.match(grit, /부담/)
   const hoopnote = portfolioCopy(byId.hoopnote)
   assert.doesNotMatch(hoopnote, /(?:\d[\d,.]*\s*(?:%|퍼센트|시간|분|초|원)[^.!?\n]{0,40}(?:절감|단축|감소|줄)|(?:절감|단축|감소)[^.!?\n]{0,40}\d)/)
   assert.doesNotMatch(hoopnote, /(?:학부모|부모)[^.!?\n]{0,60}자동[^.!?\n]{0,30}(?:발송|전송|보내)|자동[^.!?\n]{0,60}(?:학부모|부모)[^.!?\n]{0,30}(?:발송|전송|보내)/)
   for (const id of ["mavs", "hoopnote"]) {
-    assert.equal(typeof byId[id].ownership, "string", `${id}: ownership disclosure`)
-    assert.match(byId[id].ownership, /자체/)
+    assert.equal(byId[id].ownership, undefined, `${id}: ownership label removed`)
   }
 })
 
-test("WorkCard visibly renders need context, solution, scope and ownership", () => {
+test("WorkCard renders narrative and scope while omitting ownership labels", () => {
   for (const [index, work] of FALLBACK_WORKS.entries()) {
     const rendered = visiblePortfolioText(renderPortfolioComponent("WorkCard", { work, index }))
     assert.ok(rendered.includes(work.note), `${work.id}: note stays visible`)
@@ -546,17 +547,18 @@ test("WorkCard visibly renders need context, solution, scope and ownership", () 
       assert.ok(rendered.includes("제작 범위"), `${work.id}: visible scope label`)
       for (const item of work.scope) assert.ok(rendered.includes(item), `${work.id}: ${item}`)
     }
-    if (work.ownership !== undefined) assert.ok(rendered.includes(work.ownership), `${work.id}: visible ownership`)
+    assert.doesNotMatch(rendered, /자체(?: 운영)? 프로젝트/)
   }
   const work = {
     ...FALLBACK_WORKS[0], note: "NEED_CONTEXT_SENTINEL", solution: "SOLUTION_SENTINEL",
     scope: ["SCOPE_FIRST_SENTINEL", "SCOPE_SECOND_SENTINEL"], ownership: "OWNERSHIP_SENTINEL",
   }
   const rendered = visiblePortfolioText(renderPortfolioComponent("WorkCard", { work, index: 0 }))
-  for (const value of [work.note, work.solution, ...work.scope, work.ownership, "제작 범위"]) {
+  for (const value of [work.note, work.solution, ...work.scope, "제작 범위"]) {
     assert.ok(rendered.includes(value), `WorkCard must render field content: ${value}`)
   }
   assert.ok(rendered.indexOf(work.note) < rendered.indexOf(work.solution))
+  assert.ok(!rendered.includes(work.ownership))
 })
 
 test("works introduction visibly distinguishes separate builds from the basic landing package", () => {
@@ -771,15 +773,16 @@ test("works are rectangular and unboxed, with text CTAs", () => {
 
 test("mobile navigation and FAQ use native controls and focus stays visible", () => {
   for (const page of [home, contact, service]) {
-    assert.match(page, /<details className="nav-mobile">/)
-    assert.match(page, /<summary>메뉴/)
+    assert.match(page, /<SiteNav\b/)
     assert.match(page, /className="skip-link"/)
   }
+  assert.match(navigation, /<details className="nav-mobile">/)
+  assert.match(navigation, /<summary>메뉴/)
   assert.match(home, /<details className="faq-item"><summary>/)
   assert.match(css, /:focus-visible\s*\{[^}]*outline: 3px solid var\(--blue\)/)
   assert.match(css, /\.nav-mobile nav\s*\{[^}]*display: grid/)
   assert.doesNotMatch(css.match(/\.nav-mobile nav\s*\{[^}]*\}/)?.[0] ?? "", /position:\s*(absolute|fixed)/)
-  assert.match(home, /NAV_ITEMS.map\(\(\[label, href\]\) => <Link/)
+  assert.match(navigation, /NAV_ITEMS.map\(\(\[label, href\]\)/)
   assert.match(fab, /className="contact-rail"/)
   assert.match(fab, /제작 문의/)
   assert.doesNotMatch(fab, /fab-wax-coin|fwx-|drip/)

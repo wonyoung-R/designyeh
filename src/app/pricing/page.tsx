@@ -1,5 +1,6 @@
 import type { Metadata } from "next"
 import Link from "next/link"
+import { SiteNav } from "@/components/site-nav"
 import "./pricing.css"
 
 const title = "홈페이지 제작 가격 및 이용 안내"
@@ -38,11 +39,9 @@ const terms = [
 
 export default function PricingPage() {
   return <>
-    <header className="docent contact-nav pricing-nav">
-      <Link className="wordmark" href="/">designyeh<span className="wm-period">.</span></Link>
-      <nav aria-label="주요 메뉴"><Link href="/pricing/" aria-current="page">가격 안내</Link><Link href="/contact/">홈페이지 제작 문의 →</Link></nav>
-    </header>
-    <main className="service-detail pricing-page">
+    <a className="skip-link" href="#pricing-main">본문으로 이동</a>
+    <SiteNav currentPage="/pricing/" />
+    <main id="pricing-main" tabIndex={-1} className="service-detail pricing-page">
       <section className="room room-entry" aria-labelledby="pricing-title">
         <div className="room-tag"><span className="tag-no">P—01</span><span className="tag-name">PRICING & POLICY</span></div>
         <div className="service-sheet">

@@ -30,9 +30,9 @@ test("automation context describes the confirmed related work without claiming i
   assert.match(work("designluka"), /scope: \["DB 연결", "관리자 페이지"\]/)
   assert.equal(stringField(work("hoopnote"), "meta"), "농구학원 운영 보조 서비스")
   assert.match(work("hoopnote"), /scope: \["농구학원 운영 보조 서비스", "AI 도입"\]/)
-  assert.equal(stringField(work("hoopnote"), "ownership"), "자체 프로젝트")
+  assert.doesNotMatch(work("hoopnote"), /ownership:/)
   assert.equal(stringField(work("mavs"), "meta"), "댈러스 매버릭스 팬 커뮤니티 · AI 콘텐츠")
-  assert.equal(stringField(work("mavs"), "ownership"), "자체 운영 프로젝트")
+  assert.doesNotMatch(work("mavs"), /ownership:/)
 })
 
 test("every service portfolio reference resolves to a curated work", () => {

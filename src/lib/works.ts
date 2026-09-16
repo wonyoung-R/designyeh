@@ -124,7 +124,6 @@ export const FALLBACK_WORKS: Work[] = [
     image: "/works/mavs.png",
     tech: ["Next.js", "Supabase", "AI"],
     note: "팬덤은 24시간 깨어 있다. AI가 밤새 쓰고, 사람은 아침에 같이 읽는다.",
-    ownership: "자체 운영 프로젝트",
   },
   {
     id: "sdngazer",
@@ -159,7 +158,7 @@ export const FALLBACK_WORKS: Work[] = [
     image: "/works/gritlab.png",
     tech: ["Next.js"],
     note: "작은 체육관에서 홈페이지와 대회 운영, 전광판을 따로 관리하기에는 부담이 컸습니다.",
-    solution: "랜딩 페이지와 3:3 대회 운영, 스코어보드·전광판을 하나의 DB와 하나의 사이트로 연결했습니다.",
+    solution: "3:3 대회운영, 스코어보드 전광판이 하나로 관리되는 사이트 제작",
     scope: ["랜딩 페이지", "3:3 대회 운영", "스코어보드·전광판", "DB 연결"],
   },
   {
@@ -173,6 +172,5 @@ export const FALLBACK_WORKS: Work[] = [
     note: "유소년 농구학원 원장과 코치는 수업 외에도 행정 업무와 학부모 소통을 챙겨야 합니다.",
     solution: "농구학원 운영 보조 서비스를 직접 기획·제작하고, 코칭 외 업무를 돕기 위해 AI를 도입했습니다.",
     scope: ["농구학원 운영 보조 서비스", "AI 도입"],
-    ownership: "자체 프로젝트",
   },
 ]

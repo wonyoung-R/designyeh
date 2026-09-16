@@ -9,6 +9,7 @@ const layout = read("src/app/layout.tsx")
 const supabase = read("src/lib/supabase.ts")
 const works = read("src/lib/works.ts")
 const gallery = read("src/app/gallery.css")
+const navigation = read("src/components/site-nav.tsx")
 
 const normalizeHtmlText = (html) => html
   .replace(/\{\/\*[\s\S]*?\*\/\}/g, "")
@@ -28,9 +29,9 @@ const navItems = ["Services", "Approach", "Works", "Process", "FAQ", "Contact"]
 const sectionIds = ["services", "approach", "works", "process", "faq", "contact"]
 
 test("home provides the complete conversion path", () => {
-  for (const label of navItems) assert.match(home, new RegExp(`[\"'>]${label}[\"'<]`))
+  for (const label of navItems) assert.ok(navigation.includes(`"${label}"`))
   for (const id of sectionIds) {
-    assert.match(home, id === "contact" ? /href="\/contact"/ : new RegExp(`#${id}`))
+    assert.ok(navigation.includes(id === "contact" ? '"/contact/"' : `"/#${id}"`))
     assert.match(home, new RegExp(`id=["']${id}["']`))
   }
   assert.equal(normalizeHtmlText(heroH1), "당신이 쌓아온 일에, 필요한 다음을 만듭니다.")

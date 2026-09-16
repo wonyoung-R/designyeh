@@ -1,5 +1,6 @@
 import Link from "next/link"
 import type { Metadata } from "next"
+import { SiteNav } from "@/components/site-nav"
 
 const EMAIL = "creativebyyeh@gmail.com"
 const SUBJECT = "designYEH 홈페이지 제작 문의"
@@ -27,14 +28,7 @@ export default function ContactPage() {
   return (
     <>
       <a className="skip-link" href="#contact-main">본문으로 이동</a>
-      <header className="docent contact-nav">
-        <Link className="wordmark" href="/">designyeh<span className="wm-period">.</span></Link>
-        <nav className="nav-primary" aria-label="문의 페이지 메뉴">
-          <Link href="/#services">Services</Link><Link href="/#works">Works</Link><Link href="/#process">Process</Link><Link href="/#faq">FAQ</Link>
-        </nav>
-        <Link className="contact-home" href="/">홈으로 돌아가기</Link>
-        <details className="nav-mobile"><summary>메뉴 <span aria-hidden="true">＋</span></summary><nav aria-label="모바일 주요 메뉴"><Link href="/#services">Services</Link><Link href="/#works">Works</Link><Link href="/#process">Process</Link><Link href="/#faq">FAQ</Link><Link href="/pricing/">가격 안내</Link></nav></details>
-      </header>
+      <SiteNav currentPage="/contact/" />
       <main id="contact-main" tabIndex={-1}>
         <section className="room room-studio contact-room" aria-labelledby="contact-title">
           <div className="room-tag"><span className="tag-no">01</span><span className="tag-name">CONTACT</span><span className="tag-meta">project inquiries</span></div>

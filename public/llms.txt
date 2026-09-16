@@ -20,10 +20,10 @@
 ## 실제 공개 웹 작품
 - [Design LUKA](https://designluka.co.kr): DB 연결 · 관리자 페이지
 - [디케어 건강검진센터](https://dcarecenter.kr): 홈페이지 제작 사례
-- [MAVS.KR](https://mavs.kr): 자체 프로젝트 · 홈페이지 제작 사례
+- [MAVS.KR](https://mavs.kr): 홈페이지 제작 사례
 - [이승선 — Curator](https://sdngazer.art): 이미지 중심 포트폴리오 · 기록 관리 · 관리자 페이지
 - [LOST and FOUND](https://laf2023.com): 의류 판매 페이지 · 인플루언서 협업 채널
 - [GRIT LAB](https://grit-lab.kr): 랜딩 페이지 · 3:3 대회 운영 · 스코어보드·전광판 · DB 연결
-- [HoopNote](https://hoopnote.kr): 자체 프로젝트 · 농구학원 운영 보조 서비스 · AI 도입
+- [HoopNote](https://hoopnote.kr): 농구학원 운영 보조 서비스 · AI 도입
 
 DB 연동, 관리자 페이지, 대회 운영 기능은 별도 구축 범위이며 기본 랜딩 패키지에는 포함되지 않습니다. 작품 소개는 공개된 웹 작업의 범위입니다. 전체 브랜드 아이덴티티나 모든 내부 자동화 구축, 검색·사업 성과를 의미하지 않습니다.

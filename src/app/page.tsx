@@ -1,35 +1,9 @@
 import Link from "next/link"
 import { FabWax } from "@/components/fab-wax"
+import { ProjectCarousel } from "@/components/project-carousel"
+import { SiteNav } from "@/components/site-nav"
 import { asset } from "@/lib/assets"
 import { type Work, FALLBACK_WORKS } from "@/lib/works"
-
-const NAV_ITEMS = [
-  ["Works", "#works"],
-  ["Services", "#services"],
-  ["Approach", "#approach"],
-  ["Process", "#process"],
-  ["FAQ", "#faq"],
-  ["가격 안내", "/pricing/"],
-] as const
-
-function SiteNav() {
-  return (
-    <header className="docent agency-nav">
-      <a className="wordmark" href="#top" aria-label="designYEH 홈 맨 위로">designyeh<span className="wm-period">.</span></a>
-      <nav className="nav-primary" aria-label="주요 메뉴">
-        {NAV_ITEMS.map(([label, href]) => <Link key={href} href={href}>{label}</Link>)}
-        <Link className="nav-contact" href="/contact">Contact</Link>
-      </nav>
-      <details className="nav-mobile">
-        <summary>메뉴 <span aria-hidden="true">＋</span></summary>
-        <nav aria-label="모바일 주요 메뉴">
-          {NAV_ITEMS.map(([label, href]) => <Link key={href} href={href}>{label}</Link>)}
-          <Link href="/contact">Contact</Link>
-        </nav>
-      </details>
-    </header>
-  )
-}
 
 function WorkCard({ work, index }: { work: Work; index: number }) {
   const stem = /^\/works\/(designluka|dcare|mavs|sdngazer|laf2023|gritlab|hoopnote)\.png$/.test(work.image)
@@ -47,7 +21,6 @@ function WorkCard({ work, index }: { work: Work; index: number }) {
         <div className="lbl-row"><span>{String(index + 1).padStart(2, "0")} / 홈페이지 제작 사례</span><span>{work.year}</span></div>
         <h3 id={`work-title-${work.id}`} className="lbl-title">{work.title}</h3>
         <p className="lbl-meta">{work.meta}</p>
-        {work.ownership && <p className="work-ownership">{work.ownership}</p>}
         {work.solution ? (
           <dl className="work-narrative">
             {work.note && <><dt>필요했던 것</dt><dd>{work.note}</dd></>}
@@ -95,19 +68,7 @@ export default function StudioHome() {
         </section>
 
         <section className="project-strip" aria-labelledby="project-strip-title">
-          <div className="project-strip-inner">
-            <h2 id="project-strip-title">프로젝트명 (텍스트)</h2>
-            <div className="project-strip-scroll" role="region" aria-labelledby="project-strip-title" tabIndex={0}>
-              <div className="project-group" data-project-group="client" role="group" aria-labelledby="client-projects-title">
-                <h3 id="client-projects-title">고객 작업</h3>
-                <ul><li>Design LUKA</li><li>디케어 건강검진센터</li><li>GRIT LAB</li></ul>
-              </div>
-              <div className="project-group" data-project-group="own" role="group" aria-labelledby="own-projects-title">
-                <h3 id="own-projects-title">자체 프로젝트</h3>
-                <ul><li>MAVS.KR</li><li>HoopNote</li></ul>
-              </div>
-            </div>
-          </div>
+          <ProjectCarousel works={works} />
         </section>
 
         <section id="works" className="room room-websites" aria-labelledby="works-title">

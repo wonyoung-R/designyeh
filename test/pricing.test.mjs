@@ -5,6 +5,7 @@ import test from "node:test"
 const read = path => readFileSync(new URL(`../${path}`, import.meta.url), "utf8")
 const page = read("src/app/pricing/page.tsx")
 const home = read("src/app/page.tsx")
+const navigation = read("src/components/site-nav.tsx")
 
 test("pricing route provides its own canonical and social metadata", () => {
   assert.match(page, /const url = "https:\/\/dsgnyeh.art\/pricing\/"/)
@@ -17,8 +18,9 @@ test("pricing route provides its own canonical and social metadata", () => {
 })
 
 test("home exposes pricing in both navigation menus, service area and footer", () => {
-  assert.match(home, /\["가격 안내", "\/pricing\/"\]/)
-  assert.equal((home.match(/NAV_ITEMS.map/g) ?? []).length, 2)
+  assert.match(home, /<SiteNav\s*\/>/)
+  assert.match(navigation, /\["Pricing", "\/pricing\/"\]/)
+  assert.equal((navigation.match(/\{links\}/g) ?? []).length, 2)
   assert.match(home, /className="service-link" href="\/pricing\/"/)
   assert.match(home, /<footer[^]*href="\/pricing\/"/)
 })
