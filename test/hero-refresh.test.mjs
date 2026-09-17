@@ -33,7 +33,6 @@ runInNewContext(compile(read("src/components/site-nav.tsx")), {
 runInNewContext(compile(read("src/components/project-carousel.tsx")), {
   exports: carousel, React,
   require(name) {
-    if (name === "react") return { useState: initial => [initial, () => {}] }
     if (name === "@/lib/assets") return { asset: value => value }
     throw new Error(`Unexpected carousel import: ${name}`)
   },
@@ -145,9 +144,7 @@ test("project logos link to five sites with one accessible set before all seven 
       assert.ok(readFileSync(new URL(`../public${logo.attributes.src}`, import.meta.url)).length > 0)
     }
   }
-  const toggle = byClass(strip, "project-carousel-toggle")[0]
-  assert.equal(toggle.attributes["aria-controls"], scroll.attributes.id)
-  assert.equal(toggle.attributes["aria-pressed"], false)
+  assert.equal(nodes(strip, node => node.type === "button").length, 0)
   assert.doesNotMatch(normalized(tree), /자체(?: 운영)? 프로젝트/)
   assert.doesNotMatch(normalized(strip), /파트너|파트너십|추천|보증|신뢰|trusted|partner|endorse/i)
   const sections = nodes(tree, node => node.type === "section")

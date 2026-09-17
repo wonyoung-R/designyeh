@@ -256,10 +256,8 @@ body.gallery {
 .agency-hero .cta-row { margin-top: 32px; gap: 12px 32px; }
 .project-strip { padding: 36px clamp(20px, 5vw, 80px) 44px; border-bottom: 1px solid var(--rule); }
 .project-strip-inner { max-width: 1280px; margin-inline: auto; }
-.project-strip-heading { display: flex; align-items: center; justify-content: space-between; gap: 20px; margin-bottom: 20px; }
+.project-strip-heading { margin-bottom: 24px; }
 .project-strip h2 { margin: 0; font: 400 12px/1.5 var(--g-sans); letter-spacing: 0; color: var(--ink-soft); }
-.project-carousel-toggle { display: inline-flex; align-items: center; justify-content: center; gap: 8px; min-height: 44px; padding: 0 4px; border: 0; background: transparent; color: var(--ink-soft); font-size: 11px; cursor: pointer; }
-.project-carousel-toggle:hover { color: var(--ink); }
 .project-strip-scroll { overflow: hidden; padding-block: 8px; overscroll-behavior-x: contain; mask-image: linear-gradient(to right, transparent, #000 4%, #000 96%, transparent); }
 .project-carousel-track { display: flex; width: max-content; animation: project-carousel-drift 36s linear infinite; }
 .project-logo-list { display: flex; align-items: center; flex: 0 0 auto; list-style: none; margin: 0; padding: 0; }
@@ -272,9 +270,6 @@ body.gallery {
 .project-logo-mavs { max-width: 170px; }
 .project-logo-hoopnote { display: inline-flex; align-items: center; gap: 7px; font-size: 27px; font-weight: 700; letter-spacing: -.045em; }
 .project-logo-hoopnote img { width: 42px; height: 42px; object-fit: contain; filter: grayscale(1); mix-blend-mode: multiply; }
-.project-strip-scroll:hover .project-carousel-track,
-.project-strip-scroll:focus-within .project-carousel-track,
-.project-strip-inner[data-paused="true"] .project-carousel-track { animation-play-state: paused; }
 .project-strip-scroll:focus-visible { outline: 3px solid var(--blue); outline-offset: 5px; }
 /* Keyboard navigation uses one stationary, scrollable set of links. */
 .project-strip-scroll:focus-within { overflow-x: auto; mask-image: none; }
@@ -401,7 +396,6 @@ body.gallery {
 }
 @media (prefers-reduced-motion: reduce) {
   html { scroll-behavior: auto; }
-  .project-carousel-toggle { display: none; }
   .project-strip-scroll { overflow-x: auto; mask-image: none; }
   .project-logo-list[aria-hidden="true"] { display: none; }
   *, *::before, *::after { animation: none !important; transition: none !important; scroll-behavior: auto !important; }

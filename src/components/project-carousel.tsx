@@ -1,6 +1,5 @@
 "use client"
 
-import { useState } from "react"
 import { asset } from "@/lib/assets"
 import type { Work } from "@/lib/works"
 
@@ -15,19 +14,12 @@ function ProjectLogo({ work }: { work: Work }) {
 }
 
 export function ProjectCarousel({ works }: { works: Work[] }) {
-  const [paused, setPaused] = useState(false)
   const projects = PROJECT_IDS.flatMap(id => works.filter(work => work.id === id))
 
   return (
-    <div className="project-strip-inner" data-paused={paused}>
+    <div className="project-strip-inner">
       <div className="project-strip-heading">
         <h2 id="project-strip-title">프로젝트명</h2>
-        <button className="project-carousel-toggle" type="button" aria-controls="project-carousel" aria-pressed={paused} onClick={() => setPaused(value => !value)}>
-          <svg width="12" height="12" viewBox="0 0 12 12" fill="currentColor" aria-hidden="true">
-            {paused ? <path d="M3 1.5 10 6l-7 4.5Z" /> : <path d="M2 1.5h3v9H2zM7 1.5h3v9H7z" />}
-          </svg>
-          <span>{paused ? "자동 재생" : "일시 정지"}</span>
-        </button>
       </div>
       <div id="project-carousel" className="project-strip-scroll" role="region" aria-labelledby="project-strip-title" tabIndex={0} onBlur={event => {
         if (!event.currentTarget.contains(event.relatedTarget)) event.currentTarget.scrollLeft = 0
