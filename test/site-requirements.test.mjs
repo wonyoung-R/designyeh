@@ -35,7 +35,7 @@ test("home provides the complete conversion path", () => {
     assert.match(home, new RegExp(`id=["']${id}["']`))
   }
   assert.equal(normalizeHtmlText(heroH1), "당신이 쌓아온 일에, 필요한 다음을 만듭니다.")
-  assert.doesNotMatch(heroSection, /<(?:img|Image)\b/)
+  assert.match(heroSection, /<HeroBackdrop\s*\/>/)
   const eyebrow = [...heroSection.matchAll(/<(p)\b([^>]*\bclassName="hero-eyebrow"[^>]*)>([^]*?)<\/\1>/g)]
     .find(([, , , content]) => normalizeHtmlText(content) === "designYEH · 디자인과 기술로 만드는 사업의 다음")
   assert.ok(eyebrow, "hero must contain the visible owner-approved eyebrow")
@@ -51,14 +51,14 @@ test("home provides the complete conversion path", () => {
   assert.match(home, /fallback|대체 절차/)
 })
 
-test("home contains three website production stages, an approach anchor and heading, six process steps and six FAQs", () => {
+test("home contains three production stages, an approach anchor, six process steps and eight FAQs", () => {
   assert.equal((home.match(/className="service-card"/g) ?? []).length, 3)
   const approach = home.match(/<(section|div)\b[^>]*\bid="approach"[^>]*>[^]*?<\/\1>/)?.[0] ?? ""
   assert.ok(approach, "approach anchor must exist")
   assert.match(approach, /<h2\b[^>]*>[^]*?<\/h2>/)
   assert.doesNotMatch(home, /className="[^"]*\bapproach-card\b[^"]*"/)
   assert.equal((home.match(/className="process-item"/g) ?? []).length, 6)
-  assert.equal((home.match(/<details className="faq-item"/g) ?? []).length, 6)
+  assert.equal((home.match(/<details className="faq-item"/g) ?? []).length, 8)
 })
 
 test("contact qualifies homepage production and required preparation", () => {

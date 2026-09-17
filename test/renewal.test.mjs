@@ -37,7 +37,7 @@ test("home is local and server rendered, with work before services", () => {
   assert.ok(home.indexOf('id="works"') >= 0 && home.indexOf('id="works"') < home.indexOf('id="services"'))
   const hero = home.slice(home.indexOf('<section className="room room-entry'), home.indexOf('<section id="works"'))
   assert.ok(hero, "hero must exist")
-  assert.doesNotMatch(hero, /<(?:img|Image)\b/)
+  assert.match(hero, /<HeroBackdrop\s*\/>/)
   assert.match(home, /<section\b[^>]*className="room room-entry\b[^"]*"[^>]*>[^]*?<\/section>\s*<section\b[^>]*className="project-strip"[^>]*>[^]*?<\/section>\s*<section\b[^>]*id="works"/)
   const headline = hero.match(/<h1\b[^>]*\bid="hero-title"[^>]*>([^]*?)<\/h1>/)?.[1] ?? ""
   assert.equal(headline.replace(/<[^>]*>/g, "").replace(/\s+/g, ""), "당신이쌓아온일에,필요한다음을만듭니다.")
@@ -366,6 +366,7 @@ function renderResponsivePortfolio(sourceText, componentName, props, basePath, w
       if (name === "@/lib/works") return { FALLBACK_WORKS: works }
       if (name === "@/components/fab-wax") return { FabWax: "fab-wax" }
       if (name === "@/components/project-carousel") return { ProjectCarousel: "project-carousel" }
+      if (name === "@/components/hero-backdrop") return { HeroBackdrop: "hero-backdrop" }
       if (name === "@/components/site-nav") return { SiteNav: "site-nav" }
       if (name === "@/lib/services") return { ORIGIN: "https://dsgnyeh.art", services: [props.service] }
       throw new Error(`Unexpected import: ${name}`)
@@ -469,7 +470,7 @@ function renderPortfolioComponent(name, props = {}) {
   }
   runInNewContext(javascript, {
     exports: result, React, asset: value => value, FALLBACK_WORKS,
-    Link: "a", SiteNav: "nav", SectionTag: "section-tag", WorkCard: "work-card", FabWax: "fab-wax", ProjectCarousel: "project-carousel",
+    Link: "a", SiteNav: "nav", SectionTag: "section-tag", WorkCard: "work-card", FabWax: "fab-wax", ProjectCarousel: "project-carousel", HeroBackdrop: "hero-backdrop",
   }, { timeout: 1000 })
   return result.render(props)
 }
@@ -696,7 +697,11 @@ test("substantial side-by-side opening works, immediate content and reduced moti
   assert.doesNotMatch(animate, /motion\.|initial=|useInView|IntersectionObserver|opacity: 0/)
   assert.match(animate, /return <div className=\{className\}>\{children\}<\/div>/)
   assert.match(css, /@media \(prefers-reduced-motion: reduce\)[^]*animation: none !important; transition: none !important/)
-  assert.doesNotMatch(css, /opacity:\s*0\s*;|visibility:\s*hidden/)
+  for (const [, selectors, declarations] of css.matchAll(/([^{}]+)\{([^{}]*)\}/g)) {
+    if (/work-card|salon-grid|section-intro|hero-grid/.test(selectors)) {
+      assert.doesNotMatch(declarations, /opacity:\s*0\s*;|visibility:\s*hidden/)
+    }
+  }
 })
 
 test("work placements and responsive resets are scoped to direct salon-grid cards", () => {

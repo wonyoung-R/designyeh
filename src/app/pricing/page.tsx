@@ -4,7 +4,7 @@ import { SiteNav } from "@/components/site-nav"
 import "./pricing.css"
 
 const title = "홈페이지 제작 가격 및 이용 안내"
-const description = "단일 랜딩페이지 최대 9개 섹션, 300,000원(VAT·도메인 구매비 별도). 완료 후 30일간 간단한 수정 2회와 24시간 회신 조건, 홈페이지 운영·유지관리를 안내합니다."
+const description = "상담과 기본 세팅을 포함한 랜딩페이지 300,000원. 자료·범위 확정 후 합의한 착수 시점부터 12시간 내 완성본을 전달합니다. 약 15분 무료 상담으로 관리자·DB 추가 견적과 운영비를 안내합니다. VAT·유료 서비스 비용 별도."
 const url = "https://dsgnyeh.art/pricing/"
 export const metadata: Metadata = {
   title, description, alternates: { canonical: url },
@@ -16,7 +16,7 @@ const stages = [
   ["01", "업무 분석", "현재·목표 업무 흐름, 자동화 후보와 비AI 대안, 요구사항·우선순위와 개략 견적을 정리합니다.", "분석 범위별 고정가 또는 시간 상한제 협의"],
   ["02", "PoC · 기술 검증", "대표 자료와 평가셋으로 시제품을 검증하고 품질·지연·사용비와 한계를 확인합니다.", "검증 범위와 실험 예산 상한 합의"],
   ["03", "구축 · 연동", "기능·화면·연동·권한·예외 처리를 구현하고 합의한 기준으로 검수·인계합니다.", "검증 가능한 작업 묶음별 견적"],
-  ["04", "운영 · 유지관리", "필요한 점검과 장애 대응, 유지관리 범위를 정합니다.", "월 포함 시간과 별도 사용료 협의"],
+  ["04", "운영 · 유지관리", "필요한 점검과 장애 대응, 유지관리 범위를 정합니다.", "관리 작업비와 월 구독료 실비를 합산해 월관리비 안내"],
 ]
 const maintenanceItems = [
   ["대상", "신규 제작 사이트와 현재 운영 중인 홈페이지. 기존 designYEH 제작 사이트·타사 제작 사이트 포함"],
@@ -24,17 +24,19 @@ const maintenanceItems = [
   ["콘텐츠 수정", "문구·이미지 교체 등의 포함 횟수와 작업량은 계약 시 결정"],
   ["이상 발견 시", "확인된 문제와 조치 방향 안내. 원인 분석·복구 작업의 포함 범위는 계약 시 확정"],
   ["추가 작업", "새 페이지·섹션·기능, 디자인 개편, 외부 시스템 연동 변경은 별도 견적"],
-  ["외부 서비스 비용", "도메인 갱신·호스팅·DB·AI API·유료 라이선스 등 별도"],
+  ["유료 서비스 비용", "고객 사이트에 필요한 도메인·호스팅·DB·AI API·메시지·유료 라이선스 비용은 전액 고객 부담. 사용할 서비스와 예상 비용을 사전에 안내"],
+  ["월 구독료", "관리 작업비에 월 구독료 실비를 합산해 월관리비 총액으로 안내. 견적서에 서비스별 구독료와 관리 작업비를 구분하며 동일 비용을 중복 청구하지 않음"],
+  ["사용량·요금 변경", "사용량 과금은 공급사 기준으로 정산. 요금제·구독료 변경 시 변경 금액을 안내하고, 사용량 예산·상한과 초과 시 처리 기준은 계약 전 합의"],
   ["AI·RAG·자동화 운영", "데이터 갱신·품질 점검·연동 관리 등 필요한 범위에 따라 별도 견적"],
   ["계약 방식", "사이트별 관리 범위·점검 주기·응대 기준·비용을 합의해 별도 계약"],
   ["가입 여부", "선택 사항. 월 계약 없이 필요한 작업만 건별 의뢰 가능"],
 ]
 const terms = [
-  ["제작 범위", "기본 디자인과 원고·이미지 제공 기준, 섹션별 분량, 반응형·검색 메타데이터·문의 링크 등 포함 기능과 최초 배포 범위를 상담 후 견적서에서 확정합니다."],
-  ["일정 · 결제 · 취소", "제작·최초 납품 일정, 자료 제공 지연 시 처리, 결제 시점·분할 여부, 착수 전후 취소·환불과 진행 단계별 정산 기준은 계약 전 협의·확정합니다."],
+  ["제작 범위", "기본 30만원에는 상담·페이지 구성·기본 세팅·반응형 제작·검수·배포를 포함합니다. 원고·이미지 제공 기준, 섹션별 분량, 검색 메타데이터·문의 링크와 완료 기준을 견적서에서 확정합니다."],
+  ["일정 · 결제 · 취소", "기본 랜딩페이지는 자료·범위 확정 후 합의한 착수 시점부터 12시간 내 완성본을 전달합니다. 착수 시각, 자료 변경·추가 요청 시 일정, 결제 시점·분할 여부, 착수 전후 취소·환불과 진행 단계별 정산 기준을 계약 전 확정합니다."],
   ["수정 · 회신", "제작 오류 대응 기간·범위, 추가 수정 단가, 공식 수정 접수 채널, 반복 회신 지연 시 보상 누적 여부와 추가 보상 수정의 사용 기한은 계약 전 확인합니다."],
-  ["운영 · 인계", "도메인 갱신 비용·관리 주체, 호스팅·소스 소유권과 인계, 유지관리 책임·비용을 계약 전 확인합니다. 유료 호스팅·소재·라이선스 등 외부 비용은 필요한 항목을 별도 안내합니다."],
-  ["AI 프로젝트", "시간단가·최소 분석 범위, 사전 상담의 무료 여부, 컨설팅비의 구축비 차감 여부, 사용량 정산·상한, 데이터·권한·외부 전송 조건은 상담과 계약에서 확정합니다."],
+  ["운영 · 인계", "도메인·호스팅·소스 소유권과 인계, 유지관리 책임을 확인합니다. 고객 사이트의 유료 서비스 비용은 전액 고객 부담이며, 월 구독료는 실비를 관리 작업비에 더해 월관리비에 포함합니다. 서비스 계정과 결제·갱신 담당도 함께 정합니다."],
+  ["추가 개발 · AI", "약 15분의 사전 상담은 무료입니다. 추가 개발은 시간당 75,000원을 시작 기준으로 규모·기간에 따라 단가를 낮춰 협의합니다. 유료 분석·기술 검증이 필요하면 범위와 비용을 먼저 안내하고 동의 후 진행합니다. 데이터·권한·외부 전송, 사용량 정산·상한은 견적서에서 확정합니다."],
 ]
 
 export default function PricingPage() {
@@ -48,15 +50,26 @@ export default function PricingPage() {
           <nav className="service-breadcrumb" aria-label="현재 위치"><Link href="/">홈</Link> / <span aria-current="page">가격 및 이용 안내</span></nav>
           <p className="section-kicker">A CLEAR START</p>
           <h1 id="pricing-title">필요한 범위는 명확하게, 비용은 이해하기 쉽게.</h1>
-          <p className="service-definition">소규모 사업자를 위한 홈페이지 제작 비용과 이용 조건입니다. 필요한 페이지와 기능, 제작 범위와 완료 기준을 먼저 맞추고 시작합니다.</p>
-          <nav className="pricing-index" aria-label="가격 안내 목차"><a href="#landing">랜딩페이지</a><a href="#revisions">완료와 수정</a><a href="#reply">24시간 회신</a><a href="#maintenance">운영·유지관리</a><a href="#terms">계약 전 확인</a><a href="#ai">추가 상담 견적</a></nav>
+          <p className="service-definition">소규모 사업자를 위한 홈페이지 제작. 상담과 기본 세팅을 포함한 30만원으로 시작하고, 필요한 관리 기능과 운영 비용은 무료 상담에서 함께 정합니다.</p>
+          <nav className="pricing-index" aria-label="가격 안내 목차"><a href="#landing">30만원 · 12시간</a><a href="#custom">관리자·추가 개발</a><a href="#revisions">완료와 수정</a><a href="#reply">24시간 회신</a><a href="#maintenance">운영·유지관리</a><a href="#terms">계약 전 확인</a><a href="#ai">추가 상담 견적</a></nav>
           <article id="landing" className="pricing-plaque" aria-labelledby="landing-title">
-            <div><p className="section-kicker">LANDING PAGE / FIXED PRICE</p><h2 id="landing-title">하나의 페이지로 시작하세요.</h2><p>단일 랜딩페이지 · 최대 9개 섹션</p><p className="pricing-amount">300,000<span>원</span></p><p className="pricing-tax">VAT 별도 · 도메인 구매 비용 별도</p><Link className="cta cta-primary" href="/contact/">홈페이지 제작 문의하기 →</Link></div>
-            <div className="pricing-inclusions"><span className="card-no">INCLUDED CARE</span><h3>완료 후에도, 작은 수정을 함께.</h3><p>제작 완료 확정일로부터 <strong>30일간 간단한 수정 2회</strong>를 무상 제공합니다.</p><p>섹션은 소개·서비스·사례·문의처럼 한 페이지 안의 콘텐츠 구역입니다. 독립된 웹페이지 9개를 뜻하지 않습니다.</p><a className="service-link" href="#terms">기본 구성·포함 작업은 상담 후 확정 ↓</a></div>
+            <div><p className="section-kicker">LANDING PAGE / FIXED PRICE</p><h2 id="landing-title">우리 사업의 첫 페이지, 12시간 내 완성본 전달.</h2><p>단일 랜딩페이지 · 최대 9개 섹션</p><p className="pricing-amount">300,000<span>원</span></p><p className="pricing-tax">VAT 별도 · 도메인 구매 비용 별도 · 유료 서비스 비용 고객 부담</p><Link className="cta cta-primary" href="/contact/">15분 무료 상담 신청하기 →</Link></div>
+            <div className="pricing-inclusions"><span className="card-no">CONSULTATION TO DELIVERY</span><h3>상담부터 기본 세팅까지, 함께.</h3><p>사업과 고객을 이해하고 페이지를 구성합니다. 기본 세팅·반응형 제작·검수·배포까지 30만원에 포함합니다.</p><p className="delivery-condition"><strong>자료·범위 확정 후 합의한 착수 시점부터 12시간.</strong> 원고·이미지와 제작 범위가 준비되면 착수 시각을 안내하고, 합의한 기본 범위의 완성본을 전달합니다. 관리자·DB·추가 기능의 제작 일정은 별도로 정합니다.</p><p>제작 완료 확정일로부터 <strong>30일간 간단한 수정 2회</strong>를 무상 제공합니다.</p><p>섹션은 소개·서비스·사례·문의처럼 한 페이지 안의 콘텐츠 구역입니다. 독립된 웹페이지 9개를 뜻하지 않습니다.</p><a className="service-link" href="#terms">자료·일정·완료 기준 확인하기 ↓</a></div>
           </article>
-          <p className="scope-note"><strong>범위가 넓어질 때는 별도 견적을 확인합니다.</strong> 추가 페이지·새 섹션·기능, 전면 디자인 변경, 기획·카피, 로고·촬영, 다국어, 회원가입·결제·예약·DB·관리자, 자체 문의 폼·외부 연동은 별도 견적 검토 대상입니다. 최종 포함·제외 항목은 견적서에서 확정합니다.</p>
+          <p className="scope-note"><strong>범위가 넓어질 때는 별도 견적을 확인합니다.</strong> 추가 페이지·새 섹션·기능, 전면 디자인 변경, 별도 콘텐츠 기획·카피 작성, 로고·촬영, 다국어, 회원가입·결제·예약·DB·관리자, 자체 문의 폼·외부 연동은 추가 견적 대상입니다. 자료 변경·추가 요청이 생기면 비용과 전달 일정을 먼저 협의합니다.</p>
         </div><div className="baseboard" />
       </section>
+      <section id="custom" className="room room-services pricing-custom" aria-labelledby="custom-title"><div className="service-sheet">
+        <p className="section-kicker">CUSTOM DEVELOPMENT</p><h2 id="custom-title">관리 기능은, 사업에 필요한 만큼.</h2>
+        <p>관리자 페이지와 DB, 예약·결제·업무 운영 기능은 사업 규모와 필요한 기능에 따라 견적이 달라집니다. 관리할 정보의 종류, 사용자·권한, 연동 서비스와 운영 방식을 함께 확인합니다.</p>
+        <div className="pricing-estimate-grid">
+          <article><span className="card-no">01 / FREE CONSULTATION</span><h3>약 15분 무료 상담</h3><p>현재 사업과 필요한 기능을 듣고 제작 범위·예상 일정·견적을 안내합니다. 세부 분석이나 기술 검증이 필요한 경우에는 별도 작업과 비용을 먼저 설명합니다.</p></article>
+          <article><span className="card-no">02 / ESTIMATE BASIS</span><h3>시간당 75,000원 기준</h3><p>추가 개발의 견적 산정은 시간당 75,000원에서 시작합니다. 작업 규모와 예상 투입기간이 커질수록 시간당 단가를 낮춰 협의하고, 적용 단가·예상 작업시간·총액을 착수 전에 확정합니다.</p></article>
+          <article><span className="card-no">03 / AGREED SCOPE</span><h3>완료 기준을 정한 견적</h3><p>범위가 정해진 기능은 합의한 총액으로 진행합니다. 범위가 불확실하면 분석·검증부터 단계별로 견적을 나누고, 추가 요청은 비용과 일정을 먼저 합의합니다.</p></article>
+        </div>
+        <p className="scope-note">기본 랜딩페이지 30만원은 상담과 기본 세팅을 포함한 정액입니다. 추가 개발의 시간당 기준은 관리자·DB 등 별도 기능의 견적에 적용합니다.</p>
+        <Link className="service-link" href="/contact/">15분 무료 상담으로 견적 받기 →</Link>
+      </div><div className="baseboard" /></section>
       <section id="revisions" className="room room-process" aria-labelledby="revision-title"><div className="service-sheet">
         <p className="section-kicker">01 / COMPLETION & CARE</p><h2 id="revision-title">완료 기준부터, 수정 한 번의 기준까지.</h2>
         <ol className="process-list">
@@ -74,7 +87,7 @@ export default function PricingPage() {
         <p className="section-kicker">03 / WEBSITE MAINTENANCE</p><h2 id="maintenance-title">신규 제작 사이트도, 기존에 운영 중인 홈페이지도.</h2>
         <p>홈페이지를 만든 뒤의 운영도 필요한 만큼 맡기세요. 새로 제작하는 사이트뿐 아니라 <strong>현재 운영 중인 홈페이지도 운영·유지관리 상담 대상에 포함됩니다.</strong> 기존 designYEH 제작 사이트와 다른 업체에서 제작한 사이트 모두 현재 상태와 관리 가능 범위를 확인한 뒤 제안합니다.</p>
         <article className="pricing-plaque" aria-labelledby="maintenance-price-title">
-          <div><h3 id="maintenance-price-title">기본 월 30,000원부터</h3><p className="pricing-amount" aria-hidden="true">30,000<span>원부터 / 월</span></p><p className="pricing-tax">사이트당 · VAT 별도 · 관리 범위에 따라 별도 계약</p><Link className="cta cta-primary" href="/contact/">내 홈페이지 관리 상담하기 →</Link></div>
+          <div><h3 id="maintenance-price-title">기본 월 30,000원부터</h3><p className="pricing-amount" aria-hidden="true">30,000<span>원부터 / 월</span></p><p className="pricing-tax">관리 작업비 기준 · 사이트당 · VAT 별도 · 관리 범위에 따라 별도 계약</p><p><strong>월관리비 = 관리 작업비 + 월 구독료 실비</strong></p><p>호스팅·DB·유료 도구 등 월 구독료를 더한 총액을 안내합니다. 서비스별 비용은 견적서에 구분하며, 고객이 직접 결제한 구독료는 중복 청구하지 않습니다.</p><Link className="cta cta-primary" href="/contact/">내 홈페이지 관리 상담하기 →</Link></div>
           <div className="pricing-inclusions"><span className="card-no">OPTIONAL CARE</span><h3>기존 홈페이지는 먼저 상태를 확인합니다.</h3><p>사이트 주소와 사용하는 플랫폼을 알려주세요. 소스·호스팅 접근 가능 여부, 기능·연동 구조와 기존 오류를 확인한 뒤 관리 가능 범위와 비용을 안내합니다.</p><p>계약 전 발견한 오류 수정, 이전·복구 등 초기 정비가 필요하면 비용을 별도로 안내하고 승인 후 진행합니다.</p></div>
         </article>
         <dl className="pricing-terms maintenance-items">{maintenanceItems.map(([name, text]) => <div key={name}><dt>{name}</dt><dd>{text}</dd></div>)}</dl>
@@ -89,14 +102,14 @@ export default function PricingPage() {
         <p className="maintenance-contact"><Link className="service-link" href="/contact/">내 홈페이지 관리 상담하기 →</Link></p><p>사이트 주소와 관리가 필요한 내용을 알려주세요. 비밀번호·인증키는 문의 내용에 입력하지 마세요.</p>
       </div><div className="baseboard" /></section>
       <section id="terms" className="room room-faq" aria-labelledby="terms-title"><div className="service-sheet">
-        <p className="section-kicker">05 / BEFORE WE BEGIN</p><h2 id="terms-title">계약 전에 함께 확인합니다.</h2><p>아래 항목은 아직 확정되지 않았습니다. 상담을 거쳐 견적서·계약서에서 합의하며, 확정 전 보장되는 조건이 아닙니다.</p>
+        <p className="section-kicker">05 / BEFORE WE BEGIN</p><h2 id="terms-title">계약 전에 함께 확인합니다.</h2><p>위의 가격·전달 기준을 바탕으로 프로젝트별 자료, 착수 시각, 추가 기능과 운영 조건을 견적서·계약서에서 확정합니다.</p>
         <dl className="pricing-terms">{terms.map(([name, text]) => <div key={name}><dt>{name}</dt><dd>{text}</dd></div>)}</dl><p>VAT·세금계산서 처리는 사업자 과세유형에 따라 확인합니다. 이 페이지는 가격과 서비스 이용 안내이며, 개별 계약서나 개인정보처리방침을 대체하지 않습니다.</p>
       </div><div className="baseboard" /></section>
       <section id="ai" className="room room-approach" aria-labelledby="ai-title"><div className="service-sheet"><details className="faq-item"><summary>추가 상담: AI·업무 자동화 견적</summary>
-        <p className="section-kicker">04 / AI · RAG · AUTOMATION</p><h2 id="ai-title">업무와 자료를 먼저, 견적은 그다음.</h2><p>사내 문서 검색·답변(RAG), 문서 처리, 업무 도구 연동은 자료 상태와 기능·권한·예외 처리 요구에 따라 비용이 달라집니다. 컨설팅과 구축을 구분하며, 아래 단계와 견적 방식은 상담 후 확정합니다. 단계별 단가·최소 비용은 협의가 필요합니다.</p>
+        <p className="section-kicker">04 / AI · RAG · AUTOMATION</p><h2 id="ai-title">업무와 자료를 먼저, 견적은 그다음.</h2><p>사내 문서 검색·답변(RAG), 문서 처리, 업무 도구 연동은 자료 상태와 기능·권한·예외 처리 요구에 따라 비용이 달라집니다. 약 15분 무료 상담 후 유료 분석·검증과 구축의 범위를 나눕니다. 추가 개발은 시간당 75,000원을 시작 기준으로 규모·기간에 따라 단가를 낮춰 협의하며, 단계별 총액과 예산 상한을 먼저 확정합니다.</p>
         <div className="pricing-stages">{stages.map(([no, name, text, basis]) => <article key={no}><span className="card-no">{no}</span><h3>{name}</h3><p>{text}</p><p className="pricing-basis">{basis}</p></article>)}</div>
         <h2>시간과 사용량을 구분해 산정합니다.</h2><p>전문가의 분석·설계·구현 관여·검수 시간, AI 실행비, 인프라 등 직접 비용을 나누는 견적 방식을 제안합니다. 산출물·완료 기준·예상 비용·예산 상한을 함께 정하고, 초과 실행 전 승인을 받는 구조를 협의합니다.</p>
-        <ul><li>사람의 실제 투입시간과 에이전트 실행·대기시간을 구분하며, 에이전트 수를 사람 인원수로 환산하지 않습니다.</li><li>AI 비용은 입력·출력·캐시·도구 등 공급사의 실제 과금 기준을 따릅니다. 구독형 도구에 임의 토큰 단가를 적용하지 않습니다.</li><li>제작사 실수나 불필요한 재시도 비용을 무제한 전가하지 않습니다. PoC의 정상 실험 예산은 사전에 합의합니다.</li><li>모델 API, 서버·DB·검색 인프라, 유료 SaaS·라이선스와 유지관리 비용은 구축비와 구분합니다.</li></ul>
+        <ul><li>사람의 실제 투입시간과 에이전트 실행·대기시간을 구분하며, 에이전트 수를 사람 인원수로 환산하지 않습니다.</li><li>AI 비용은 입력·출력·캐시·도구 등 공급사의 실제 과금 기준을 따릅니다. 구독형 도구에 임의 토큰 단가를 적용하지 않습니다.</li><li>고객 서비스에 사용하는 API·메시지·서버·DB·유료 SaaS·라이선스 비용은 전액 고객 부담입니다. 사용할 서비스와 예상 비용, 실험 예산과 사용량 상한을 먼저 합의합니다.</li><li>월 구독료는 실비를 관리 작업비에 더해 월관리비에 포함하고 항목별 금액을 안내합니다. 일회성 구매·사용량 과금의 정산 방식도 계약 전에 확정합니다.</li></ul>
         <p className="scope-note">랜딩페이지 정찰제는 이 견적 방식과 별개입니다. 합의한 기본 범위 안에서 토큰 사용량을 이유로 추가 청구하지 않습니다.</p>
       </details></div><div className="baseboard" /></section>
       <section className="room room-final" aria-labelledby="pricing-contact-title"><div className="final-plaque"><p className="section-kicker">LET’S DEFINE YOUR SCOPE</p><h2 id="pricing-contact-title">필요한 범위부터 이야기해 주세요.</h2><p>현재 상황, 필요한 페이지와 기능, 준비된 자료와 희망 일정을 알려주세요. 정찰제 적용 여부와 별도 검토가 필요한 범위를 안내합니다.</p><Link className="cta cta-primary" href="/contact/">홈페이지 제작 문의하기 →</Link></div><div className="baseboard" /></section>

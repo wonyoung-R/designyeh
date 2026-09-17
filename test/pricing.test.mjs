@@ -11,7 +11,7 @@ test("pricing route provides its own canonical and social metadata", () => {
   assert.match(page, /const url = "https:\/\/dsgnyeh.art\/pricing\/"/)
   for (const phrase of ["export const metadata: Metadata", "alternates: { canonical: url }", "openGraph:", "twitter:"]) assert.ok(page.includes(phrase))
   assert.equal((page.match(/<h1\b/g) ?? []).length, 1)
-  for (const id of ["landing", "revisions", "reply", "ai", "terms"]) {
+  for (const id of ["landing", "custom", "revisions", "reply", "ai", "terms"]) {
     assert.ok(page.includes(`id="${id}"`))
     assert.ok(page.includes(`href="#${id}"`))
   }
@@ -34,9 +34,14 @@ test("24-hour reply is an announced service condition with limited remedy", () =
   assert.doesNotMatch(page, /모니터링.*검증|자동화.*구축 완료|내부 검토용|공개 전 확정 필요|체크리스트 제안|배포.*완료했습니다/)
 })
 
-test("AI estimates separate human time and usage while pending terms remain visible", () => {
-  for (const phrase of ["업무 분석", "PoC · 기술 검증", "구축 · 연동", "운영 · 유지관리", "단계별 단가·최소 비용은 협의", "사람의 실제 투입시간과 에이전트 실행·대기시간을 구분", "공급사의 실제 과금 기준", "초과 실행 전 승인", "토큰 사용량을 이유로 추가 청구하지 않습니다", "아직 확정되지 않았습니다", "취소·환불", "소스 소유권", "데이터·권한·외부 전송", "사전 상담의 무료 여부"]) assert.ok(page.includes(phrase), phrase)
-  assert.doesNotMatch(page, /<br\b|무제한 수정|시간당\s*[\d,]+원|\d+일.*납품 보장/)
+test("basic delivery and custom estimates distinguish fixed scope, free consultation and agreed rates", () => {
+  for (const phrase of ["12시간 내 완성본", "자료·범위 확정 후 합의한 착수 시점부터 12시간", "관리자·DB·추가 기능의 제작 일정은 별도로", "약 15분 무료 상담", "시간당 75,000원", "시간당 단가를 낮춰 협의", "적용 단가·예상 작업시간·총액을 착수 전에 확정", "범위가 정해진 기능은 합의한 총액", "분석·검증부터 단계별로 견적", "유료 분석·기술 검증이 필요하면 범위와 비용을 먼저 안내하고 동의 후 진행"]) assert.ok(page.includes(phrase), phrase)
+  assert.doesNotMatch(page, /상담 접수.*12시간|무제한 수정|<br\b/)
+})
+
+test("AI estimates retain human effort and provider usage boundaries", () => {
+  for (const phrase of ["업무 분석", "PoC · 기술 검증", "구축 · 연동", "운영 · 유지관리", "단계별 총액과 예산 상한", "사람의 실제 투입시간과 에이전트 실행·대기시간을 구분", "공급사의 실제 과금 기준", "초과 실행 전 승인", "토큰 사용량을 이유로 추가 청구하지 않습니다", "취소·환불", "소스 소유권", "데이터·권한·외부 전송"]) assert.ok(page.includes(phrase), phrase)
+  assert.doesNotMatch(page, /사전 상담의 무료 여부|아직 확정되지 않았습니다/)
 })
 
 const maintenance = page.slice(page.indexOf('<section id="maintenance"'), page.indexOf('<section id="terms"'))
@@ -53,7 +58,7 @@ test("maintenance sits between reply and AI with index, home and contact links",
 test("maintenance pricing is per site with review and optional separate consent", () => {
   for (const phrase of ["기본 월 30,000원부터", "사이트당 · VAT 별도 · 관리 범위에 따라 별도 계약", "현재 운영 중인 홈페이지도 운영·유지관리 상담 대상", "기존 designYEH 제작 사이트", "타사 제작 사이트", "소스·호스팅 접근 가능 여부", "승인 후 진행", "자동 계약이나 과금 시작을 뜻하지는 않습니다", "별도 계약에 동의한 이후부터", "모든 기존 사이트에 월 30,000원이 동일하게 적용되는 것은 아닙니다", "비밀번호·인증키는 문의 내용에 입력하지 마세요"]) assert.ok(maintenance.includes(phrase), phrase)
   assert.equal((maintenance.match(/<details className="faq-item">/g) ?? []).length, 2)
-  for (const phrase of ["월 계약 없이 필요한 작업만 건별 의뢰 가능", "도메인 갱신·호스팅·DB·AI API·유료 라이선스 등 별도", "실제 점검 항목·주기는 계약 시 확정", "원인 분석·복구 작업의 포함 범위는 계약 시 확정", "사이트별 관리 범위·점검 주기·응대 기준·비용을 합의해 별도 계약"]) assert.ok(page.includes(phrase), phrase)
+  for (const phrase of ["월 계약 없이 필요한 작업만 건별 의뢰 가능", "유료 서비스 비용", "전액 고객 부담", "월관리비 = 관리 작업비 + 월 구독료 실비", "고객이 직접 결제한 구독료는 중복 청구하지 않습니다", "사용량 예산·상한", "실제 점검 항목·주기는 계약 시 확정", "원인 분석·복구 작업의 포함 범위는 계약 시 확정", "사이트별 관리 범위·점검 주기·응대 기준·비용을 합의해 별도 계약"]) assert.ok(page.includes(phrase), phrase)
 })
 
 test("maintenance preserves existing contracts and limits revision and response promises", () => {

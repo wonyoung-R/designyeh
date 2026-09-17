@@ -17,7 +17,7 @@ const KAKAO_OPEN_CHAT = "https://open.kakao.com/me/designyeh"
 
 export const metadata: Metadata = {
   title: "홈페이지 제작 문의",
-  description: "소규모 사업자를 위한 홈페이지 제작을 상담하세요. 사업 소개와 필요한 페이지·기능, 제작 범위를 함께 확인합니다.",
+  description: "약 15분 무료 상담으로 홈페이지와 관리자·DB 추가 견적을 안내합니다. 기본 랜딩페이지 30만원, 자료·범위 확정 후 합의한 착수 시점부터 12시간 내 완성본 전달.",
   openGraph: { type: "website", locale: "ko_KR", url: "https://dsgnyeh.art/contact/", title: "홈페이지 제작 문의 · designYEH", description: "사업 소개부터 서비스 안내, 고객 문의까지 담을 홈페이지 제작을 상담합니다.", images: ["/images/og.jpg"] },
   twitter: { card: "summary_large_image", title: "홈페이지 제작 문의 · designYEH", description: "사업 소개부터 서비스 안내, 고객 문의까지 담을 홈페이지 제작을 상담합니다.", images: ["/images/og.jpg"] },
   alternates: { canonical: "/contact/" },
@@ -37,6 +37,8 @@ export default function ContactPage() {
               <p className="section-kicker">START WITH A NOTE</p>
               <h1 id="contact-title" className="contact-title">홈페이지 제작 <em>문의하기</em></h1>
               <p>어떤 일을 하는 곳인지, 홈페이지에 무엇을 담고 싶은지 알려주세요. 필요한 페이지와 기능을 함께 정리합니다.</p>
+              <p><strong>약 15분 무료 상담</strong>으로 사업 규모와 필요한 기능을 확인하고 견적을 드립니다. 기본 랜딩페이지는 30만원이며, 자료·범위 확정 후 합의한 착수 시점부터 12시간 내 완성본을 전달합니다.</p>
+              <p>관리자·DB 등 추가 개발은 시간당 75,000원을 시작 기준으로 규모·기간에 따라 단가를 낮춰 협의합니다. 고객 사이트의 유료 서비스 비용은 전액 고객 부담이며, 월 구독료 실비는 관리 작업비와 합산해 안내합니다.</p>
               <div className="contact-service-list" aria-label="홈페이지 제작 안내">
                 <div><span>01</span><strong><Link className="service-link" href="/homepage-production/">홈페이지 제작</Link></strong><p>기획·디자인·제작·검수·인계</p></div>
                 <div><span>02</span><strong><Link className="service-link" href="/pricing/">가격 및 수정 정책</Link></strong><p>제작 범위와 이용 조건 확인</p></div>

@@ -23,6 +23,14 @@ const React = {
 }
 const carousel = {}
 const navigation = {}
+const backdrop = {}
+runInNewContext(compile(read("src/components/hero-backdrop.tsx")), {
+  exports: backdrop, React,
+  require(name) {
+    if (name === "@/lib/assets") return { asset: value => value }
+    throw new Error(`Unexpected backdrop import: ${name}`)
+  },
+}, { timeout: 1000 })
 runInNewContext(compile(read("src/components/site-nav.tsx")), {
   exports: navigation, React,
   require(name) {
@@ -43,6 +51,7 @@ runInNewContext(compile(home), {
     if (name === "next/link") return { default: "a" }
     if (name === "@/lib/works") return workExports
     if (name === "@/components/project-carousel") return carousel
+    if (name === "@/components/hero-backdrop") return backdrop
     if (name === "@/components/site-nav") return navigation
     if (name === "@/lib/assets") return { asset: value => value }
     if (name === "@/components/fab-wax") return { FabWax: () => null }
@@ -84,7 +93,7 @@ test("shared menus follow homepage order and keep Pricing last on every page", (
   }
 })
 
-test("approved hero renders exact copy and two semantic headline blocks without scripts", () => {
+test("hero retains approved copy with decorative local backgrounds and a qualified delivery offer", () => {
   assert.ok(hero)
   assert.equal(nodes(tree, node => node.type === "h1").length, 1)
   assert.equal(normalized(byClass(hero, "hero-eyebrow")[0]), "designYEH · 디자인과 기술로 만드는 사업의 다음")
@@ -101,7 +110,21 @@ test("approved hero renders exact copy and two semantic headline blocks without 
     "사업을 보여주는 모습부터, 매일 일하는 방식까지.",
     "디자인과 기술로 지금 필요한 것을 함께 만듭니다.",
   ])
-  assert.equal(nodes(hero, node => ["img", "picture", "br"].includes(node.type)).length, 0)
+  const background = byClass(hero, "hero-backdrop")[0]
+  assert.equal(background.attributes["aria-hidden"], "true")
+  const images = nodes(background, node => node.type === "img")
+  assert.equal(images.length, 3)
+  assert.equal(images[0].attributes.fetchPriority, "high")
+  for (const img of images) {
+    assert.equal(img.attributes.alt, "")
+    assert.ok(readFileSync(new URL(`../public${img.attributes.src}`, import.meta.url)).length > 0)
+  }
+  for (const source of nodes(background, node => node.type === "source")) {
+    assert.ok(readFileSync(new URL(`../public${source.attributes.srcSet}`, import.meta.url)).length > 0)
+  }
+  const offer = normalized(byClass(hero, "hero-offer")[0])
+  for (const phrase of ["30만원", "12시간 내 완성본 전달", "자료·범위 확정 후 합의한 착수 시점", "VAT·유료 서비스 비용 별도", "15분 무료 상담"]) assert.ok(offer.includes(phrase), phrase)
+  assert.equal(nodes(hero, node => node.type === "br").length, 0)
   assert.equal(byClass(hero, "room-tag").length, 0)
   assert.equal(byClass(hero, "hero-creed").length, 0)
   assert.doesNotMatch(home, /use client|useEffect|useState|IntersectionObserver|dangerouslySetInnerHTML/)
