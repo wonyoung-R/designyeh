@@ -1,0 +1,14 @@
+
+> design-yeh@0.1.0 lint
+> eslint
+
+
+/Volumes/Ryu SSD/MacBook-Archive-2026-09-16/CC/designYEH/.claude/worktrees/seo-fixes/src/app/layout.tsx
+  41:9  warning  Custom fonts not added in `pages/_document.js` will only load for a single page. This is discouraged. See: https://nextjs.org/docs/messages/no-page-custom-font  @next/next/no-page-custom-font
+
+/Volumes/Ryu SSD/MacBook-Archive-2026-09-16/CC/designYEH/src/components/project-carousel.tsx
+  10:52  warning  Using `<img>` could result in slower LCP and higher bandwidth. Consider using `<Image />` from `next/image` or a custom image loader to automatically optimize images. This may incur additional usage or cost from your provider. See: https://nextjs.org/docs/messages/no-img-element  @next/next/no-img-element
+  13:10  warning  Using `<img>` could result in slower LCP and higher bandwidth. Consider using `<Image />` from `next/image` or a custom image loader to automatically optimize images. This may incur additional usage or cost from your provider. See: https://nextjs.org/docs/messages/no-img-element  @next/next/no-img-element
+
+✖ 3 problems (0 errors, 3 warnings)
+

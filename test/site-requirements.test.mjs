@@ -71,11 +71,10 @@ test("contact qualifies homepage production and required preparation", () => {
 })
 
 test("global JSON-LD describes the agency without page-specific duplication", () => {
-  assert.match(layout, /ProfessionalService/)
+  assert.doesNotMatch(layout, /ProfessionalService|LocalBusiness|areaServed|knowsLanguage/)
   assert.doesNotMatch(layout, /FAQPage/)
   assert.match(layout, /Organization/)
   assert.match(layout, /WebSite/)
-  assert.match(layout, /Service/)
   assert.match(layout, /소규모 사업자를 위한 홈페이지 제작/)
   assert.doesNotMatch(layout, /아이덴티티|운영 자동화/)
 })
@@ -209,8 +208,9 @@ test("home promotes only homepage production outside the last optional FAQ", () 
   assert.match(heroSection, /className="cta cta-primary" href="\/contact"/)
 })
 
-test("contact preserves encoded mailto, chat and privacy guidance without service selection", () => {
-  assert.doesNotMatch(contact, /관심 서비스|아이덴티티|자동화|반복 업무/)
+test("contact preserves encoded mailto, chat and privacy while clarifying other service inquiries", () => {
+  assert.match(contact, /문의 첫머리에 원하는 서비스를 적어주세요/)
+  assert.match(contact, /기본 랜딩페이지 가격·일정은 해당 서비스에 적용되지 않습니다/)
   assert.match(contact, /const EMAIL = "creativebyyeh@gmail.com"/)
   assert.match(contact, /const SUBJECT = "designYEH 홈페이지 제작 문의"/)
   assert.ok(contact.includes('`mailto:${EMAIL}?subject=${encodeURIComponent(SUBJECT)}&body=${encodeURIComponent(BODY)}`'))
@@ -222,17 +222,17 @@ test("contact preserves encoded mailto, chat and privacy guidance without servic
 
 test("homepage detail and shared related navigation prioritize website production", () => {
   const homepageService = serviceData.slice(0, serviceData.indexOf('slug: "brand-identity"'))
-  assert.match(homepageService, /title: "소규모 사업자를 위한 홈페이지 제작"/)
+  assert.match(homepageService, /title: "홈페이지 기획·디자인·제작"/)
   assert.doesNotMatch(homepageService, /자동화|아이덴티티/)
   assert.match(servicePage, /홈페이지 제작 문의하기/)
-  assert.ok(servicePage.includes('item.slug === "homepage-production" && item.slug !== service.slug'))
+  assert.ok(servicePage.includes('services.filter(item => item.slug !== service.slug)'))
   assert.match(servicePage, /href="\/pricing\/"/)
   const description = layout.match(/const description = "([^"]+)"/)[1]
   // The approved message hero supersedes the former verbatim metadata copy.
   // Metadata and the dedicated homepage service retain the website offer.
   assert.ok(description.length > 0)
   assert.match(home, /사업과 서비스를 소개하고 고객 문의를 받을 공식 홈페이지가 필요한 소규모 사업자에게 맞습니다\./)
-  assert.ok(homepageService.includes(description))
+  assert.ok(!homepageService.includes(description), "home and service answer different search intents")
   assert.equal((layout.match(/소규모 사업자를 위한 홈페이지 제작 · designYEH/g) ?? []).length, 3)
   assert.match(layout, /name: "designYEH", url: "https:\/\/dsgnyeh.art\/", description/)
 })

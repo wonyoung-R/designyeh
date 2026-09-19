@@ -1,0 +1,101 @@
+[
+  {
+    "status": "fulfilled",
+    "value": {
+      "url": "https://dsgnyeh.art/homepage-production",
+      "chunk_id": "b90677",
+      "wall_time_seconds": 0.387807917,
+      "exit_code": 0,
+      "original_token_count": 319,
+      "output": "HTTP/2 301 \r\nserver: GitHub.com\r\ncontent-type: text/html\r\nlocation: https://dsgnyeh.art/homepage-production/\r\naccess-control-allow-origin: *\r\nexpires: Sat, 19 Sep 2026 10:35:10 GMT\r\ncache-control: max-age=600\r\nx-proxy-cache: MISS\r\nx-github-request-id: 5F92:2C0B99:52108:73678:6AAE6305\r\nx-github-edge-region: koreacentral\r\naccept-ranges: bytes\r\nage: 0\r\ndate: Sat, 19 Sep 2026 10:25:10 GMT\r\nvia: 1.1 varnish\r\nx-served-by: cache-icn1450023-ICN\r\nx-cache: MISS\r\nx-cache-hits: 0\r\nx-timer: S1789813510.986692,VS0,VE202\r\nvary: Accept-Encoding\r\nx-fastly-request-id: 5a4cb02275ed1780ced595f5d41079c909d0e24a\r\ncontent-length: 162\r\n\r\nHTTP/2 200 \r\nserver: GitHub.com\r\ncontent-type: text/html; charset=utf-8\r\nlast-modified: Thu, 17 Sep 2026 05:36:29 GMT\r\naccess-control-allow-origin: *\r\netag: \"6aab7c5d-c7aa\"\r\nexpires: Fri, 18 Sep 2026 22:40:03 GMT\r\ncache-control: max-age=600\r\nx-proxy-cache: MISS\r\nx-github-request-id: CEE8:24C4EC:B50E:112CC:6AADBB63\r\nx-github-edge-region: koreacentral\r\naccept-ranges: bytes\r\nage: 0\r\ndate: Sat, 19 Sep 2026 10:25:10 GMT\r\nvia: 1.1 varnish\r\nx-served-by: cache-icn1450023-ICN\r\nx-cache: HIT\r\nx-cache-hits: 0\r\nx-timer: S1789813510.197585,VS0,VE199\r\nvary: Accept-Encoding\r\nx-fastly-request-id: 3f6830ce375863c5cb68f12120dd2d3df3548cbb\r\ncontent-length: 51114\r\n\r\n"
+    }
+  },
+  {
+    "status": "fulfilled",
+    "value": {
+      "url": "https://dsgnyeh.art/brand-identity",
+      "chunk_id": "e45854",
+      "wall_time_seconds": 0.374835,
+      "exit_code": 0,
+      "original_token_count": 323,
+      "output": "HTTP/2 301 \r\nserver: GitHub.com\r\ncontent-type: text/html\r\nx-origin-cache: HIT\r\nlocation: https://dsgnyeh.art/brand-identity/\r\naccess-control-allow-origin: *\r\nexpires: Sat, 19 Sep 2026 10:35:10 GMT\r\ncache-control: max-age=600\r\nx-proxy-cache: MISS\r\nx-github-request-id: D65A:34D6F1:50188:7173B:6AAE6305\r\nx-github-edge-region: koreacentral\r\naccept-ranges: bytes\r\nage: 0\r\ndate: Sat, 19 Sep 2026 10:25:10 GMT\r\nvia: 1.1 varnish\r\nx-served-by: cache-icn1450066-ICN\r\nx-cache: MISS\r\nx-cache-hits: 0\r\nx-timer: S1789813510.997803,VS0,VE207\r\nvary: Accept-Encoding\r\nx-fastly-request-id: 4bfece4f7c6741eb9dc386c69d39883c89edba04\r\ncontent-length: 162\r\n\r\nHTTP/2 200 \r\nserver: GitHub.com\r\ncontent-type: text/html; charset=utf-8\r\nlast-modified: Thu, 17 Sep 2026 05:36:29 GMT\r\naccess-control-allow-origin: *\r\netag: \"6aab7c5d-9f03\"\r\nexpires: Fri, 18 Sep 2026 22:40:03 GMT\r\ncache-control: max-age=600\r\nx-proxy-cache: MISS\r\nx-github-request-id: 8122:39B606:AD71:10B01:6AADBB6B\r\nx-github-edge-region: koreacentral\r\naccept-ranges: bytes\r\nage: 0\r\ndate: Sat, 19 Sep 2026 10:25:10 GMT\r\nvia: 1.1 varnish\r\nx-served-by: cache-icn1450066-ICN\r\nx-cache: HIT\r\nx-cache-hits: 0\r\nx-timer: S1789813510.214584,VS0,VE208\r\nvary: Accept-Encoding\r\nx-fastly-request-id: 6acf97e233be6217765d47e465bd815fea99158c\r\ncontent-length: 40707\r\n\r\n"
+    }
+  },
+  {
+    "status": "fulfilled",
+    "value": {
+      "url": "https://dsgnyeh.art/operations-automation",
+      "chunk_id": "0de62f",
+      "wall_time_seconds": 0.39760075,
+      "exit_code": 0,
+      "original_token_count": 320,
+      "output": "HTTP/2 301 \r\nserver: GitHub.com\r\ncontent-type: text/html\r\nlocation: https://dsgnyeh.art/operations-automation/\r\naccess-control-allow-origin: *\r\nexpires: Sat, 19 Sep 2026 10:35:10 GMT\r\ncache-control: max-age=600\r\nx-proxy-cache: MISS\r\nx-github-request-id: 8550:24C4EC:4F542:70B37:6AAE6305\r\nx-github-edge-region: koreacentral\r\naccept-ranges: bytes\r\nage: 0\r\ndate: Sat, 19 Sep 2026 10:25:10 GMT\r\nvia: 1.1 varnish\r\nx-served-by: cache-icn1450076-ICN\r\nx-cache: MISS\r\nx-cache-hits: 0\r\nx-timer: S1789813510.977376,VS0,VE201\r\nvary: Accept-Encoding\r\nx-fastly-request-id: 972c09968fd5b08505df30bc72d305dd91253788\r\ncontent-length: 162\r\n\r\nHTTP/2 200 \r\nserver: GitHub.com\r\ncontent-type: text/html; charset=utf-8\r\nlast-modified: Thu, 17 Sep 2026 05:36:29 GMT\r\naccess-control-allow-origin: *\r\netag: \"6aab7c5d-b306\"\r\nexpires: Fri, 18 Sep 2026 22:40:04 GMT\r\ncache-control: max-age=600\r\nx-proxy-cache: MISS\r\nx-github-request-id: 1146:20C46E:A33C:1009D:6AADBB6B\r\nx-github-edge-region: koreacentral\r\naccept-ranges: bytes\r\nage: 0\r\ndate: Sat, 19 Sep 2026 10:25:10 GMT\r\nvia: 1.1 varnish\r\nx-served-by: cache-icn1450076-ICN\r\nx-cache: HIT\r\nx-cache-hits: 0\r\nx-timer: S1789813510.188378,VS0,VE210\r\nvary: Accept-Encoding\r\nx-fastly-request-id: a33505e14144337cbcc9e27e205552361fb6511d\r\ncontent-length: 45830\r\n\r\n"
+    }
+  },
+  {
+    "status": "fulfilled",
+    "value": {
+      "url": "https://dsgnyeh.art/contact",
+      "chunk_id": "674729",
+      "wall_time_seconds": 0.39788725,
+      "exit_code": 0,
+      "original_token_count": 322,
+      "output": "HTTP/2 301 \r\nserver: GitHub.com\r\ncontent-type: text/html\r\nlocation: https://dsgnyeh.art/contact/\r\naccess-control-allow-origin: *\r\nexpires: Sat, 19 Sep 2026 10:35:10 GMT\r\ncache-control: max-age=600\r\nx-proxy-cache: MISS\r\nx-github-request-id: 5C18:1A8CC0:4FF0E:714E6:6AAE6305\r\nx-github-edge-region: koreacentral\r\naccept-ranges: bytes\r\nage: 0\r\ndate: Sat, 19 Sep 2026 10:25:10 GMT\r\nvia: 1.1 varnish\r\nx-served-by: cache-icn1450059-ICN\r\nx-cache: MISS\r\nx-cache-hits: 0\r\nx-timer: S1789813510.970873,VS0,VE206\r\nvary: Accept-Encoding\r\nx-fastly-request-id: 162b8b3696207ecb9af25cfdef6c3b5667950e75\r\ncontent-length: 162\r\n\r\nHTTP/2 200 \r\nserver: GitHub.com\r\ncontent-type: text/html; charset=utf-8\r\nx-origin-cache: HIT\r\nlast-modified: Thu, 17 Sep 2026 05:36:29 GMT\r\naccess-control-allow-origin: *\r\netag: \"6aab7c5d-686e\"\r\nexpires: Fri, 18 Sep 2026 22:40:04 GMT\r\ncache-control: max-age=600\r\nx-proxy-cache: MISS\r\nx-github-request-id: 80E8:285927:ADA1:10B38:6AADBB6C\r\nx-github-edge-region: koreacentral\r\naccept-ranges: bytes\r\nage: 0\r\ndate: Sat, 19 Sep 2026 10:25:10 GMT\r\nvia: 1.1 varnish\r\nx-served-by: cache-icn1450059-ICN\r\nx-cache: HIT\r\nx-cache-hits: 0\r\nx-timer: S1789813510.186984,VS0,VE217\r\nvary: Accept-Encoding\r\nx-fastly-request-id: 44a35eb277bde5a4f65a3b724e5ffbf9274b25dd\r\ncontent-length: 26734\r\n\r\n"
+    }
+  },
+  {
+    "status": "fulfilled",
+    "value": {
+      "url": "https://dsgnyeh.art/pricing",
+      "chunk_id": "103410",
+      "wall_time_seconds": 0.392591791,
+      "exit_code": 0,
+      "original_token_count": 316,
+      "output": "HTTP/2 301 \r\nserver: GitHub.com\r\ncontent-type: text/html\r\nlocation: https://dsgnyeh.art/pricing/\r\naccess-control-allow-origin: *\r\nexpires: Sat, 19 Sep 2026 10:35:10 GMT\r\ncache-control: max-age=600\r\nx-proxy-cache: MISS\r\nx-github-request-id: DFFA:29AC5E:51A26:72FCD:6AAE6305\r\nx-github-edge-region: koreacentral\r\naccept-ranges: bytes\r\nage: 0\r\ndate: Sat, 19 Sep 2026 10:25:10 GMT\r\nvia: 1.1 varnish\r\nx-served-by: cache-icn1450097-ICN\r\nx-cache: MISS\r\nx-cache-hits: 0\r\nx-timer: S1789813510.988630,VS0,VE219\r\nvary: Accept-Encoding\r\nx-fastly-request-id: f1d4506d5d739fa8225e05212186e7921659fa12\r\ncontent-length: 162\r\n\r\nHTTP/2 200 \r\nserver: GitHub.com\r\ncontent-type: text/html; charset=utf-8\r\nlast-modified: Thu, 17 Sep 2026 05:36:29 GMT\r\naccess-control-allow-origin: *\r\netag: \"6aab7c5d-f69f\"\r\nexpires: Fri, 18 Sep 2026 22:40:04 GMT\r\ncache-control: max-age=600\r\nx-proxy-cache: MISS\r\nx-github-request-id: C942:295B27:C35E:12120:6AADBB6C\r\nx-github-edge-region: koreacentral\r\naccept-ranges: bytes\r\nage: 0\r\ndate: Sat, 19 Sep 2026 10:25:10 GMT\r\nvia: 1.1 varnish\r\nx-served-by: cache-icn1450097-ICN\r\nx-cache: HIT\r\nx-cache-hits: 0\r\nx-timer: S1789813510.218409,VS0,VE215\r\nvary: Accept-Encoding\r\nx-fastly-request-id: e591bc03ec4bdfaab2590a712f090313e35eeb09\r\ncontent-length: 63135\r\n\r\n"
+    }
+  },
+  {
+    "status": "fulfilled",
+    "value": {
+      "url": "https://dsgnyeh.art/about",
+      "chunk_id": "55aa13",
+      "wall_time_seconds": 0.39581975,
+      "exit_code": 0,
+      "original_token_count": 316,
+      "output": "HTTP/2 301 \r\nserver: GitHub.com\r\ncontent-type: text/html\r\nlocation: https://dsgnyeh.art/about/\r\naccess-control-allow-origin: *\r\nexpires: Sat, 19 Sep 2026 10:35:10 GMT\r\ncache-control: max-age=600\r\nx-proxy-cache: MISS\r\nx-github-request-id: 78F0:295B27:50122:716F6:6AAE6305\r\nx-github-edge-region: koreacentral\r\naccept-ranges: bytes\r\nage: 0\r\ndate: Sat, 19 Sep 2026 10:25:10 GMT\r\nvia: 1.1 varnish\r\nx-served-by: cache-icn1450056-ICN\r\nx-cache: MISS\r\nx-cache-hits: 0\r\nx-timer: S1789813510.984683,VS0,VE203\r\nvary: Accept-Encoding\r\nx-fastly-request-id: ceaa60610bd623e008d4544bff3e7590d7279405\r\ncontent-length: 162\r\n\r\nHTTP/2 200 \r\nserver: GitHub.com\r\ncontent-type: text/html; charset=utf-8\r\nlast-modified: Thu, 17 Sep 2026 05:36:29 GMT\r\naccess-control-allow-origin: *\r\netag: \"6aab7c5d-2d35\"\r\nexpires: Sat, 19 Sep 2026 10:35:10 GMT\r\ncache-control: max-age=600\r\nx-proxy-cache: MISS\r\nx-github-request-id: 0B1E:4A25D:4F880:70E5E:6AAE6305\r\nx-github-edge-region: koreacentral\r\naccept-ranges: bytes\r\nage: 0\r\ndate: Sat, 19 Sep 2026 10:25:10 GMT\r\nvia: 1.1 varnish\r\nx-served-by: cache-icn1450056-ICN\r\nx-cache: MISS\r\nx-cache-hits: 0\r\nx-timer: S1789813510.196614,VS0,VE209\r\nvary: Accept-Encoding\r\nx-fastly-request-id: fd40591da3d0b78c4227a69f16586f57b658bc53\r\ncontent-length: 11573\r\n\r\n"
+    }
+  },
+  {
+    "status": "fulfilled",
+    "value": {
+      "url": "https://dsgnyeh.art/portfolio",
+      "chunk_id": "980bc7",
+      "wall_time_seconds": 0.384439792,
+      "exit_code": 0,
+      "original_token_count": 317,
+      "output": "HTTP/2 301 \r\nserver: GitHub.com\r\ncontent-type: text/html\r\nlocation: https://dsgnyeh.art/portfolio/\r\naccess-control-allow-origin: *\r\nexpires: Sat, 19 Sep 2026 10:35:10 GMT\r\ncache-control: max-age=600\r\nx-proxy-cache: MISS\r\nx-github-request-id: 9C1C:E6995:53C5D:75257:6AAE6305\r\nx-github-edge-region: koreacentral\r\naccept-ranges: bytes\r\nage: 0\r\ndate: Sat, 19 Sep 2026 10:25:10 GMT\r\nvia: 1.1 varnish\r\nx-served-by: cache-icn1450079-ICN\r\nx-cache: MISS\r\nx-cache-hits: 0\r\nx-timer: S1789813510.985416,VS0,VE207\r\nvary: Accept-Encoding\r\nx-fastly-request-id: 41e23cd21214c427c4f3e768a092583b375e0c9c\r\ncontent-length: 162\r\n\r\nHTTP/2 200 \r\nserver: GitHub.com\r\ncontent-type: text/html; charset=utf-8\r\nlast-modified: Thu, 17 Sep 2026 05:36:29 GMT\r\naccess-control-allow-origin: *\r\netag: \"6aab7c5d-2d27\"\r\nexpires: Sat, 19 Sep 2026 10:35:10 GMT\r\ncache-control: max-age=600\r\nx-proxy-cache: MISS\r\nx-github-request-id: DFFA:29AC5E:51A28:72FD1:6AAE6306\r\nx-github-edge-region: koreacentral\r\naccept-ranges: bytes\r\nage: 0\r\ndate: Sat, 19 Sep 2026 10:25:10 GMT\r\nvia: 1.1 varnish\r\nx-served-by: cache-icn1450079-ICN\r\nx-cache: MISS\r\nx-cache-hits: 0\r\nx-timer: S1789813510.203277,VS0,VE221\r\nvary: Accept-Encoding\r\nx-fastly-request-id: 2f799b82c2e65de91978e4e5bb3626e5e0f03465\r\ncontent-length: 11559\r\n\r\n"
+    }
+  },
+  {
+    "status": "fulfilled",
+    "value": {
+      "url": "http://dsgnyeh.art/",
+      "chunk_id": "2428ef",
+      "wall_time_seconds": 0.123061375,
+      "exit_code": 0,
+      "original_token_count": 172,
+      "output": "HTTP/1.1 200 OK\r\nConnection: keep-alive\r\nContent-Length: 75571\r\nServer: GitHub.com\r\nContent-Type: text/html; charset=utf-8\r\nLast-Modified: Thu, 17 Sep 2026 05:36:29 GMT\r\nAccess-Control-Allow-Origin: *\r\nETag: \"6aab7c5d-12733\"\r\nexpires: Sat, 19 Sep 2026 10:35:10 GMT\r\nCache-Control: max-age=600\r\nx-proxy-cache: MISS\r\nX-GitHub-Request-Id: D632:20C46E:4CEC5:6E444:6AAE6305\r\nx-github-edge-region: koreacentral\r\nAccept-Ranges: bytes\r\nAge: 0\r\nDate: Sat, 19 Sep 2026 10:25:10 GMT\r\nVia: 1.1 varnish\r\nX-Served-By: cache-icn1450090-ICN\r\nX-Cache: MISS\r\nX-Cache-Hits: 0\r\nX-Timer: S1789813510.976054,VS0,VE221\r\nVary: Accept-Encoding\r\nX-Fastly-Request-ID: d1aa37c16bda87f3402eb37fc18a75d4449815b1\r\n\r\n"
+    }
+  },
+  {
+    "status": "fulfilled",
+    "value": {
+      "url": "https://www.dsgnyeh.art/",
+      "chunk_id": "620afd",
+      "wall_time_seconds": 0.40411575,
+      "exit_code": 0,
+      "original_token_count": 284,
+      "output": "HTTP/2 301 \r\nserver: GitHub.com\r\ncontent-type: text/html\r\nlocation: https://dsgnyeh.art/\r\nx-github-request-id: E6B8:3935A0:5090C:71EB2:6AAE6305\r\nx-github-edge-region: koreacentral\r\naccept-ranges: bytes\r\nage: 0\r\ndate: Sat, 19 Sep 2026 10:25:10 GMT\r\nvia: 1.1 varnish\r\nx-served-by: cache-icn1450095-ICN\r\nx-cache: MISS\r\nx-cache-hits: 0\r\nx-timer: S1789813510.025724,VS0,VE202\r\nvary: Accept-Encoding\r\nx-fastly-request-id: 91d7bc49c9d1b7ad4f134a5b612f64995c79a39e\r\ncontent-length: 162\r\n\r\nHTTP/2 200 \r\nserver: GitHub.com\r\ncontent-type: text/html; charset=utf-8\r\nlast-modified: Thu, 17 Sep 2026 05:36:29 GMT\r\naccess-control-allow-origin: *\r\netag: \"6aab7c5d-12733\"\r\nexpires: Fri, 18 Sep 2026 22:40:03 GMT\r\ncache-control: max-age=600\r\nx-proxy-cache: MISS\r\nx-github-request-id: B6A4:3935A0:BDE5:11B78:6AADBB69\r\nx-github-edge-region: koreacentral\r\naccept-ranges: bytes\r\nage: 0\r\ndate: Sat, 19 Sep 2026 10:25:10 GMT\r\nvia: 1.1 varnish\r\nx-served-by: cache-icn1450046-ICN\r\nx-cache: HIT\r\nx-cache-hits: 0\r\nx-timer: S1789813510.255902,VS0,VE203\r\nvary: Accept-Encoding\r\nx-fastly-request-id: 03b8b3f93cb201a8c48960adcf39a478259635d8\r\ncontent-length: 75571\r\n\r\n"
+    }
+  }
+]

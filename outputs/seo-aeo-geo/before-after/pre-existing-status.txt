@@ -1,0 +1,11 @@
+ M .gitignore
+ M README.md
+ D supabase_schema.sql
+?? .claude/
+?? AGENTS.md
+?? CLAUDE.md
+?? docs/document-management.md
+?? docs/index.md
+?? outputs/
+?? scripts/
+?? supabase/

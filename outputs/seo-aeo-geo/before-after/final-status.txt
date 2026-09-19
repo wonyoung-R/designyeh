@@ -1,0 +1,20 @@
+ M .gitignore
+ M README.md
+ M docs/release-seo-audit.md
+ M src/app/contact/page.tsx
+ M src/app/layout.tsx
+ M src/app/page.tsx
+ M src/components/service-page.tsx
+ M src/lib/services.ts
+ D supabase_schema.sql
+ M test/hero-refresh.test.mjs
+ M test/renewal.test.mjs
+ M test/site-requirements.test.mjs
+?? .claude/
+?? AGENTS.md
+?? CLAUDE.md
+?? docs/document-management.md
+?? docs/index.md
+?? outputs/
+?? scripts/
+?? supabase/

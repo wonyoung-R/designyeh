@@ -18,7 +18,7 @@ export const metadata: Metadata = {
 const jsonLd = {
   "@context": "https://schema.org",
   "@graph": [
-    { "@type": ["Organization", "ProfessionalService"], "@id": "https://dsgnyeh.art/#agency", name: "designYEH", url: "https://dsgnyeh.art/", description, image: "https://dsgnyeh.art/images/og.jpg", email: "creativebyyeh@gmail.com", areaServed: "KR", knowsLanguage: ["ko", "en"] },
+    { "@type": "Organization", "@id": "https://dsgnyeh.art/#agency", name: "designYEH", url: "https://dsgnyeh.art/", description, image: "https://dsgnyeh.art/images/og.jpg", email: "creativebyyeh@gmail.com" },
     { "@type": "WebSite", "@id": "https://dsgnyeh.art/#website", name: "designYEH", url: "https://dsgnyeh.art/", inLanguage: "ko-KR", publisher: { "@id": "https://dsgnyeh.art/#agency" } },
   ],
 }

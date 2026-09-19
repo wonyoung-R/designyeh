@@ -36,6 +36,7 @@ function WorkCard({ work, index }: { work: Work; index: number }) {
           </div>
         )}
         <p className="lbl-url"><a href={work.url} target="_blank" rel="noopener noreferrer">{work.url.replace(/^https:\/\//, "").replace(/\/$/, "")}<span aria-hidden="true">↗</span><span className="sr-only">{work.title} (새 창)</span></a></p>
+        <Link className="service-link" href="/homepage-production/">홈페이지 제작 범위·과정 보기 →</Link>
       </div>
     </article>
   )
@@ -61,6 +62,7 @@ export default function StudioHome() {
             </div>
             <div className="hero-copy">
               <p className="hero-proposition"><span>사업을 보여주는 모습부터, 매일 일하는 방식까지.</span> <span>디자인과 기술로 지금 필요한 것을 함께 만듭니다.</span></p>
+              <p>홈페이지 기획·디자인·제작부터 운영 인계까지, 필요한 범위를 함께 정합니다.</p>
               <div className="cta-row">
                 <Link className="cta cta-primary" href="/contact">우리 사업 이야기 나누기 <span aria-hidden="true">↗</span></Link>
                 <a className="cta cta-secondary" href="#works">만든 것들 살펴보기 <span aria-hidden="true">↓</span></a>

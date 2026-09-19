@@ -6,6 +6,11 @@ import { SiteNav } from "@/components/site-nav"
 
 export function ServicePage({ service }: { service: ServiceContent }) {
   const url = `${ORIGIN}/${service.slug}/`
+  const inquiry = service.slug === "homepage-production"
+    ? { cta: "홈페이지 제작 문의하기", title: "홈페이지에 담고 싶은 내용을 알려주세요.", preparation: "사업 소개, 준비된 자료와 필요한 페이지·기능을 알려주시면 제작 범위와 인계 기준을 함께 확인합니다." }
+    : service.slug === "brand-identity"
+      ? { cta: "브랜드 디자인 상담하기", title: "브랜드에 필요한 접점을 알려주세요.", preparation: "브랜드 소개, 기존 로고와 사용 권한, 필요한 제작물을 알려주세요. 로고·색상·서체와 웹 적용 중 필요한 범위를 함께 확인합니다." }
+      : { cta: "운영 자동화 상담하기", title: "반복해서 처리하는 업무를 알려주세요.", preparation: "사용 중인 도구, 반복되는 입력·전달 과정과 예외를 익명화한 예시로 알려주세요. AI 없이 해결하는 방법과 연동 가능 여부부터 확인합니다." }
   const jsonLd = {
     "@context": "https://schema.org",
     "@graph": [
@@ -25,7 +30,7 @@ export function ServicePage({ service }: { service: ServiceContent }) {
         <div className="service-sheet">
           <nav className="service-breadcrumb" aria-label="현재 위치"><Link href="/">홈</Link><span aria-hidden="true"> / </span><span aria-current="page">{service.name}</span></nav>
           <h1 id="service-title">{service.title}</h1><p className="service-definition">{service.definition}</p>
-          <div className="cta-row"><Link className="cta cta-primary" href="/contact/">홈페이지 제작 문의하기 →</Link><a className="cta cta-secondary" href="#service-works">관련 작업 보기 ↓</a></div>
+          <div className="cta-row"><Link className="cta cta-primary" href="/contact/">{inquiry.cta} →</Link><a className="cta cta-secondary" href="#service-works">관련 작업 보기 ↓</a></div>
         </div>
       </section>
       <section className="room room-problem" aria-labelledby="audience-title"><div className="service-sheet"><h2 id="audience-title">누구를 위한 서비스인가요?</h2><ul>{service.audience.map(text => <li key={text}>{text}</li>)}</ul><h2>어떤 문제를 다루나요?</h2>{service.problems.map(text => <p key={text}>{text}</p>)}</div></section>
@@ -45,7 +50,7 @@ export function ServicePage({ service }: { service: ServiceContent }) {
       })}</div><Link className="service-link" href="/#works">전체 작업 보기 →</Link></div></section>
       <section className="room room-process" aria-labelledby="steps-title"><div className="service-sheet"><h2 id="steps-title">진행 과정</h2><ol className="process-list">{service.steps.map(([title, text], index) => <li className="process-item" key={title}><span>0{index + 1}</span><div><h3>{title}</h3><p>{text}</p></div></li>)}</ol></div></section>
       <section id="faq" className="room room-faq" aria-labelledby="service-faq-title"><div className="service-sheet"><h2 id="service-faq-title">자주 묻는 질문</h2><div className="faq-list">{service.faq.map(([question, answer]) => <details className="faq-item" key={question}><summary>{question}</summary><p>{answer}</p></details>)}</div></div></section>
-      <section className="room room-final" aria-labelledby="next-title"><div className="service-sheet"><h2 id="next-title">홈페이지에 담고 싶은 내용을 알려주세요.</h2><p>사업 소개, 준비된 자료와 필요한 페이지·기능을 알려주시면 제작 범위와 인계 기준을 함께 확인합니다.</p><div className="cta-row"><Link className="cta cta-primary" href="/contact/">홈페이지 제작 문의하기 →</Link></div><nav className="service-related" aria-label="홈페이지 제작 안내">{services.filter(item => item.slug === "homepage-production" && item.slug !== service.slug).map(item => <Link className="service-link" href={`/${item.slug}/`} key={item.slug}>{item.name} 살펴보기 →</Link>)}<Link className="service-link" href="/pricing/">홈페이지 제작 가격 및 수정 정책 →</Link></nav></div></section>
+      <section className="room room-final" aria-labelledby="next-title"><div className="service-sheet"><h2 id="next-title">{inquiry.title}</h2><p>{inquiry.preparation}</p><div className="cta-row"><Link className="cta cta-primary" href="/contact/">{inquiry.cta} →</Link></div><nav className="service-related" aria-label="관련 서비스 안내">{services.filter(item => item.slug !== service.slug).map(item => <Link className="service-link" href={`/${item.slug}/`} key={item.slug}>{item.name} 살펴보기 →</Link>)}<Link className="service-link" href="/pricing/">홈페이지 제작 가격 및 수정 정책 →</Link></nav></div></section>
     </main><footer className="end-label"><span>STUDIO SERVICES</span><Link href="/">designYEH — HOME</Link><Link href="/contact/">Contact</Link></footer>
   </>
 }

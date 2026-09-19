@@ -1,0 +1,6 @@
+# Public content is open to all crawlers, including
+# Googlebot, OAI-SearchBot, GPTBot, ClaudeBot and PerplexityBot.
+User-agent: *
+Allow: /
+
+Sitemap: https://dsgnyeh.art/sitemap.xml

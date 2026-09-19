@@ -1,0 +1,1934 @@
+[
+  {
+    "check": "/: unique ids",
+    "passed": true
+  },
+  {
+    "check": "/: one h1",
+    "passed": true
+  },
+  {
+    "check": "/: internal destination #top",
+    "passed": true
+  },
+  {
+    "check": "/: fragment #top",
+    "passed": true
+  },
+  {
+    "check": "/: internal destination /",
+    "passed": true
+  },
+  {
+    "check": "/: internal destination /#works",
+    "passed": true
+  },
+  {
+    "check": "/: fragment /#works",
+    "passed": true
+  },
+  {
+    "check": "/: internal destination /#services",
+    "passed": true
+  },
+  {
+    "check": "/: fragment /#services",
+    "passed": true
+  },
+  {
+    "check": "/: internal destination /#approach",
+    "passed": true
+  },
+  {
+    "check": "/: fragment /#approach",
+    "passed": true
+  },
+  {
+    "check": "/: internal destination /#process",
+    "passed": true
+  },
+  {
+    "check": "/: fragment /#process",
+    "passed": true
+  },
+  {
+    "check": "/: internal destination /#faq",
+    "passed": true
+  },
+  {
+    "check": "/: fragment /#faq",
+    "passed": true
+  },
+  {
+    "check": "/: internal destination /contact/",
+    "passed": true
+  },
+  {
+    "check": "/: internal destination /pricing/",
+    "passed": true
+  },
+  {
+    "check": "/: internal destination /#works",
+    "passed": true
+  },
+  {
+    "check": "/: fragment /#works",
+    "passed": true
+  },
+  {
+    "check": "/: internal destination /#services",
+    "passed": true
+  },
+  {
+    "check": "/: fragment /#services",
+    "passed": true
+  },
+  {
+    "check": "/: internal destination /#approach",
+    "passed": true
+  },
+  {
+    "check": "/: fragment /#approach",
+    "passed": true
+  },
+  {
+    "check": "/: internal destination /#process",
+    "passed": true
+  },
+  {
+    "check": "/: fragment /#process",
+    "passed": true
+  },
+  {
+    "check": "/: internal destination /#faq",
+    "passed": true
+  },
+  {
+    "check": "/: fragment /#faq",
+    "passed": true
+  },
+  {
+    "check": "/: internal destination /contact/",
+    "passed": true
+  },
+  {
+    "check": "/: internal destination /pricing/",
+    "passed": true
+  },
+  {
+    "check": "/: image attributes /images/hero/studio-conversation.webp",
+    "passed": true
+  },
+  {
+    "check": "/: image attributes /images/hero/studio-making.webp",
+    "passed": true
+  },
+  {
+    "check": "/: image attributes /images/hero/studio-space.webp",
+    "passed": true
+  },
+  {
+    "check": "/: internal destination /contact/",
+    "passed": true
+  },
+  {
+    "check": "/: internal destination #works",
+    "passed": true
+  },
+  {
+    "check": "/: fragment #works",
+    "passed": true
+  },
+  {
+    "check": "/: internal destination /pricing/#landing",
+    "passed": true
+  },
+  {
+    "check": "/: fragment /pricing/#landing",
+    "passed": true
+  },
+  {
+    "check": "/: internal destination /contact/",
+    "passed": true
+  },
+  {
+    "check": "/: image attributes /logos/designluka-wordmark.png",
+    "passed": true
+  },
+  {
+    "check": "/: image attributes /logos/dcare.png",
+    "passed": true
+  },
+  {
+    "check": "/: image attributes /logos/gritlab.png",
+    "passed": true
+  },
+  {
+    "check": "/: image attributes /logos/mavs.svg",
+    "passed": true
+  },
+  {
+    "check": "/: image attributes /logos/hoopnote.png",
+    "passed": true
+  },
+  {
+    "check": "/: image attributes /logos/designluka-wordmark.png",
+    "passed": true
+  },
+  {
+    "check": "/: image attributes /logos/dcare.png",
+    "passed": true
+  },
+  {
+    "check": "/: image attributes /logos/gritlab.png",
+    "passed": true
+  },
+  {
+    "check": "/: image attributes /logos/mavs.svg",
+    "passed": true
+  },
+  {
+    "check": "/: image attributes /logos/hoopnote.png",
+    "passed": true
+  },
+  {
+    "check": "/: image attributes /works/designluka.png",
+    "passed": true
+  },
+  {
+    "check": "/: internal destination /homepage-production/",
+    "passed": true
+  },
+  {
+    "check": "/: image attributes /works/dcare.png",
+    "passed": true
+  },
+  {
+    "check": "/: internal destination /homepage-production/",
+    "passed": true
+  },
+  {
+    "check": "/: image attributes /works/mavs.png",
+    "passed": true
+  },
+  {
+    "check": "/: internal destination /homepage-production/",
+    "passed": true
+  },
+  {
+    "check": "/: image attributes /works/sdngazer.png",
+    "passed": true
+  },
+  {
+    "check": "/: internal destination /homepage-production/",
+    "passed": true
+  },
+  {
+    "check": "/: image attributes /works/laf2023.png",
+    "passed": true
+  },
+  {
+    "check": "/: internal destination /homepage-production/",
+    "passed": true
+  },
+  {
+    "check": "/: image attributes /works/gritlab.png",
+    "passed": true
+  },
+  {
+    "check": "/: internal destination /homepage-production/",
+    "passed": true
+  },
+  {
+    "check": "/: image attributes /works/hoopnote.png",
+    "passed": true
+  },
+  {
+    "check": "/: internal destination /homepage-production/",
+    "passed": true
+  },
+  {
+    "check": "/: internal destination /homepage-production/",
+    "passed": true
+  },
+  {
+    "check": "/: internal destination #works",
+    "passed": true
+  },
+  {
+    "check": "/: fragment #works",
+    "passed": true
+  },
+  {
+    "check": "/: internal destination /pricing/#revisions",
+    "passed": true
+  },
+  {
+    "check": "/: fragment /pricing/#revisions",
+    "passed": true
+  },
+  {
+    "check": "/: internal destination /pricing/",
+    "passed": true
+  },
+  {
+    "check": "/: internal destination /pricing/#maintenance",
+    "passed": true
+  },
+  {
+    "check": "/: fragment /pricing/#maintenance",
+    "passed": true
+  },
+  {
+    "check": "/: internal destination /pricing/",
+    "passed": true
+  },
+  {
+    "check": "/: internal destination /operations-automation/",
+    "passed": true
+  },
+  {
+    "check": "/: internal destination /contact/",
+    "passed": true
+  },
+  {
+    "check": "/: internal destination /contact/",
+    "passed": true
+  },
+  {
+    "check": "/: internal destination /pricing/",
+    "passed": true
+  },
+  {
+    "check": "/: factual schema type Organization",
+    "passed": true
+  },
+  {
+    "check": "/: shared organization matches public home/contact",
+    "passed": true
+  },
+  {
+    "check": "/: factual schema type WebSite",
+    "passed": true
+  },
+  {
+    "check": "/homepage-production/: unique ids",
+    "passed": true
+  },
+  {
+    "check": "/homepage-production/: one h1",
+    "passed": true
+  },
+  {
+    "check": "/homepage-production/: internal destination #service-main",
+    "passed": true
+  },
+  {
+    "check": "/homepage-production/: fragment #service-main",
+    "passed": true
+  },
+  {
+    "check": "/homepage-production/: internal destination /",
+    "passed": true
+  },
+  {
+    "check": "/homepage-production/: internal destination /#works",
+    "passed": true
+  },
+  {
+    "check": "/homepage-production/: fragment /#works",
+    "passed": true
+  },
+  {
+    "check": "/homepage-production/: internal destination /#services",
+    "passed": true
+  },
+  {
+    "check": "/homepage-production/: fragment /#services",
+    "passed": true
+  },
+  {
+    "check": "/homepage-production/: internal destination /#approach",
+    "passed": true
+  },
+  {
+    "check": "/homepage-production/: fragment /#approach",
+    "passed": true
+  },
+  {
+    "check": "/homepage-production/: internal destination /#process",
+    "passed": true
+  },
+  {
+    "check": "/homepage-production/: fragment /#process",
+    "passed": true
+  },
+  {
+    "check": "/homepage-production/: internal destination /#faq",
+    "passed": true
+  },
+  {
+    "check": "/homepage-production/: fragment /#faq",
+    "passed": true
+  },
+  {
+    "check": "/homepage-production/: internal destination /contact/",
+    "passed": true
+  },
+  {
+    "check": "/homepage-production/: internal destination /pricing/",
+    "passed": true
+  },
+  {
+    "check": "/homepage-production/: internal destination /#works",
+    "passed": true
+  },
+  {
+    "check": "/homepage-production/: fragment /#works",
+    "passed": true
+  },
+  {
+    "check": "/homepage-production/: internal destination /#services",
+    "passed": true
+  },
+  {
+    "check": "/homepage-production/: fragment /#services",
+    "passed": true
+  },
+  {
+    "check": "/homepage-production/: internal destination /#approach",
+    "passed": true
+  },
+  {
+    "check": "/homepage-production/: fragment /#approach",
+    "passed": true
+  },
+  {
+    "check": "/homepage-production/: internal destination /#process",
+    "passed": true
+  },
+  {
+    "check": "/homepage-production/: fragment /#process",
+    "passed": true
+  },
+  {
+    "check": "/homepage-production/: internal destination /#faq",
+    "passed": true
+  },
+  {
+    "check": "/homepage-production/: fragment /#faq",
+    "passed": true
+  },
+  {
+    "check": "/homepage-production/: internal destination /contact/",
+    "passed": true
+  },
+  {
+    "check": "/homepage-production/: internal destination /pricing/",
+    "passed": true
+  },
+  {
+    "check": "/homepage-production/: internal destination /",
+    "passed": true
+  },
+  {
+    "check": "/homepage-production/: internal destination /contact/",
+    "passed": true
+  },
+  {
+    "check": "/homepage-production/: internal destination #service-works",
+    "passed": true
+  },
+  {
+    "check": "/homepage-production/: fragment #service-works",
+    "passed": true
+  },
+  {
+    "check": "/homepage-production/: image attributes /works/designluka.png",
+    "passed": true
+  },
+  {
+    "check": "/homepage-production/: image attributes /works/dcare.png",
+    "passed": true
+  },
+  {
+    "check": "/homepage-production/: image attributes /works/laf2023.png",
+    "passed": true
+  },
+  {
+    "check": "/homepage-production/: internal destination /#works",
+    "passed": true
+  },
+  {
+    "check": "/homepage-production/: fragment /#works",
+    "passed": true
+  },
+  {
+    "check": "/homepage-production/: internal destination /contact/",
+    "passed": true
+  },
+  {
+    "check": "/homepage-production/: internal destination /brand-identity/",
+    "passed": true
+  },
+  {
+    "check": "/homepage-production/: internal destination /operations-automation/",
+    "passed": true
+  },
+  {
+    "check": "/homepage-production/: internal destination /pricing/",
+    "passed": true
+  },
+  {
+    "check": "/homepage-production/: internal destination /",
+    "passed": true
+  },
+  {
+    "check": "/homepage-production/: internal destination /contact/",
+    "passed": true
+  },
+  {
+    "check": "/homepage-production/: factual schema type Organization",
+    "passed": true
+  },
+  {
+    "check": "/homepage-production/: shared organization matches public home/contact",
+    "passed": true
+  },
+  {
+    "check": "/homepage-production/: factual schema type WebSite",
+    "passed": true
+  },
+  {
+    "check": "/homepage-production/: factual schema type Service",
+    "passed": true
+  },
+  {
+    "check": "/homepage-production/: service definition visible",
+    "passed": true
+  },
+  {
+    "check": "/homepage-production/: provider reference",
+    "passed": true
+  },
+  {
+    "check": "/homepage-production/: factual schema type WebPage",
+    "passed": true
+  },
+  {
+    "check": "/homepage-production/: schema URL",
+    "passed": true
+  },
+  {
+    "check": "/homepage-production/: factual schema type BreadcrumbList",
+    "passed": true
+  },
+  {
+    "check": "/homepage-production/: breadcrumb destination",
+    "passed": true
+  },
+  {
+    "check": "/homepage-production/: factual schema type FAQPage",
+    "passed": true
+  },
+  {
+    "check": "/homepage-production/: FAQ matches HTML: 기본 홈페이지의 가격과 제작 일정은 어떻게 되나요?",
+    "passed": true
+  },
+  {
+    "check": "/homepage-production/: FAQ matches HTML: 관리자·DB 추가 견적은 어떻게 받나요?",
+    "passed": true
+  },
+  {
+    "check": "/homepage-production/: FAQ matches HTML: 기업 홈페이지 제작 전에 무엇을 준비하나요?",
+    "passed": true
+  },
+  {
+    "check": "/homepage-production/: FAQ matches HTML: 반응형 홈페이지는 모바일용 사이트를 따로 만드는 건가요?",
+    "passed": true
+  },
+  {
+    "check": "/homepage-production/: FAQ matches HTML: 기존 홈페이지를 개편할 수도 있나요?",
+    "passed": true
+  },
+  {
+    "check": "/homepage-production/: FAQ matches HTML: 검색 최적화에는 무엇이 포함되나요?",
+    "passed": true
+  },
+  {
+    "check": "/homepage-production/: FAQ matches HTML: 완료 후 수정과 관리는 어떻게 하나요?",
+    "passed": true
+  },
+  {
+    "check": "/brand-identity/: unique ids",
+    "passed": true
+  },
+  {
+    "check": "/brand-identity/: one h1",
+    "passed": true
+  },
+  {
+    "check": "/brand-identity/: internal destination #service-main",
+    "passed": true
+  },
+  {
+    "check": "/brand-identity/: fragment #service-main",
+    "passed": true
+  },
+  {
+    "check": "/brand-identity/: internal destination /",
+    "passed": true
+  },
+  {
+    "check": "/brand-identity/: internal destination /#works",
+    "passed": true
+  },
+  {
+    "check": "/brand-identity/: fragment /#works",
+    "passed": true
+  },
+  {
+    "check": "/brand-identity/: internal destination /#services",
+    "passed": true
+  },
+  {
+    "check": "/brand-identity/: fragment /#services",
+    "passed": true
+  },
+  {
+    "check": "/brand-identity/: internal destination /#approach",
+    "passed": true
+  },
+  {
+    "check": "/brand-identity/: fragment /#approach",
+    "passed": true
+  },
+  {
+    "check": "/brand-identity/: internal destination /#process",
+    "passed": true
+  },
+  {
+    "check": "/brand-identity/: fragment /#process",
+    "passed": true
+  },
+  {
+    "check": "/brand-identity/: internal destination /#faq",
+    "passed": true
+  },
+  {
+    "check": "/brand-identity/: fragment /#faq",
+    "passed": true
+  },
+  {
+    "check": "/brand-identity/: internal destination /contact/",
+    "passed": true
+  },
+  {
+    "check": "/brand-identity/: internal destination /pricing/",
+    "passed": true
+  },
+  {
+    "check": "/brand-identity/: internal destination /#works",
+    "passed": true
+  },
+  {
+    "check": "/brand-identity/: fragment /#works",
+    "passed": true
+  },
+  {
+    "check": "/brand-identity/: internal destination /#services",
+    "passed": true
+  },
+  {
+    "check": "/brand-identity/: fragment /#services",
+    "passed": true
+  },
+  {
+    "check": "/brand-identity/: internal destination /#approach",
+    "passed": true
+  },
+  {
+    "check": "/brand-identity/: fragment /#approach",
+    "passed": true
+  },
+  {
+    "check": "/brand-identity/: internal destination /#process",
+    "passed": true
+  },
+  {
+    "check": "/brand-identity/: fragment /#process",
+    "passed": true
+  },
+  {
+    "check": "/brand-identity/: internal destination /#faq",
+    "passed": true
+  },
+  {
+    "check": "/brand-identity/: fragment /#faq",
+    "passed": true
+  },
+  {
+    "check": "/brand-identity/: internal destination /contact/",
+    "passed": true
+  },
+  {
+    "check": "/brand-identity/: internal destination /pricing/",
+    "passed": true
+  },
+  {
+    "check": "/brand-identity/: internal destination /",
+    "passed": true
+  },
+  {
+    "check": "/brand-identity/: internal destination /contact/",
+    "passed": true
+  },
+  {
+    "check": "/brand-identity/: internal destination #service-works",
+    "passed": true
+  },
+  {
+    "check": "/brand-identity/: fragment #service-works",
+    "passed": true
+  },
+  {
+    "check": "/brand-identity/: image attributes /works/laf2023.png",
+    "passed": true
+  },
+  {
+    "check": "/brand-identity/: image attributes /works/sdngazer.png",
+    "passed": true
+  },
+  {
+    "check": "/brand-identity/: internal destination /#works",
+    "passed": true
+  },
+  {
+    "check": "/brand-identity/: fragment /#works",
+    "passed": true
+  },
+  {
+    "check": "/brand-identity/: internal destination /contact/",
+    "passed": true
+  },
+  {
+    "check": "/brand-identity/: internal destination /homepage-production/",
+    "passed": true
+  },
+  {
+    "check": "/brand-identity/: internal destination /operations-automation/",
+    "passed": true
+  },
+  {
+    "check": "/brand-identity/: internal destination /pricing/",
+    "passed": true
+  },
+  {
+    "check": "/brand-identity/: internal destination /",
+    "passed": true
+  },
+  {
+    "check": "/brand-identity/: internal destination /contact/",
+    "passed": true
+  },
+  {
+    "check": "/brand-identity/: factual schema type Organization",
+    "passed": true
+  },
+  {
+    "check": "/brand-identity/: shared organization matches public home/contact",
+    "passed": true
+  },
+  {
+    "check": "/brand-identity/: factual schema type WebSite",
+    "passed": true
+  },
+  {
+    "check": "/brand-identity/: factual schema type Service",
+    "passed": true
+  },
+  {
+    "check": "/brand-identity/: service definition visible",
+    "passed": true
+  },
+  {
+    "check": "/brand-identity/: provider reference",
+    "passed": true
+  },
+  {
+    "check": "/brand-identity/: factual schema type WebPage",
+    "passed": true
+  },
+  {
+    "check": "/brand-identity/: schema URL",
+    "passed": true
+  },
+  {
+    "check": "/brand-identity/: factual schema type BreadcrumbList",
+    "passed": true
+  },
+  {
+    "check": "/brand-identity/: breadcrumb destination",
+    "passed": true
+  },
+  {
+    "check": "/brand-identity/: factual schema type FAQPage",
+    "passed": true
+  },
+  {
+    "check": "/brand-identity/: FAQ matches HTML: 기존 로고를 유지할 수 있나요?",
+    "passed": true
+  },
+  {
+    "check": "/brand-identity/: FAQ matches HTML: 로고 디자인과 홈페이지 제작은 함께 진행하나요?",
+    "passed": true
+  },
+  {
+    "check": "/brand-identity/: FAQ matches HTML: 어떤 파일을 전달받나요?",
+    "passed": true
+  },
+  {
+    "check": "/operations-automation/: unique ids",
+    "passed": true
+  },
+  {
+    "check": "/operations-automation/: one h1",
+    "passed": true
+  },
+  {
+    "check": "/operations-automation/: internal destination #service-main",
+    "passed": true
+  },
+  {
+    "check": "/operations-automation/: fragment #service-main",
+    "passed": true
+  },
+  {
+    "check": "/operations-automation/: internal destination /",
+    "passed": true
+  },
+  {
+    "check": "/operations-automation/: internal destination /#works",
+    "passed": true
+  },
+  {
+    "check": "/operations-automation/: fragment /#works",
+    "passed": true
+  },
+  {
+    "check": "/operations-automation/: internal destination /#services",
+    "passed": true
+  },
+  {
+    "check": "/operations-automation/: fragment /#services",
+    "passed": true
+  },
+  {
+    "check": "/operations-automation/: internal destination /#approach",
+    "passed": true
+  },
+  {
+    "check": "/operations-automation/: fragment /#approach",
+    "passed": true
+  },
+  {
+    "check": "/operations-automation/: internal destination /#process",
+    "passed": true
+  },
+  {
+    "check": "/operations-automation/: fragment /#process",
+    "passed": true
+  },
+  {
+    "check": "/operations-automation/: internal destination /#faq",
+    "passed": true
+  },
+  {
+    "check": "/operations-automation/: fragment /#faq",
+    "passed": true
+  },
+  {
+    "check": "/operations-automation/: internal destination /contact/",
+    "passed": true
+  },
+  {
+    "check": "/operations-automation/: internal destination /pricing/",
+    "passed": true
+  },
+  {
+    "check": "/operations-automation/: internal destination /#works",
+    "passed": true
+  },
+  {
+    "check": "/operations-automation/: fragment /#works",
+    "passed": true
+  },
+  {
+    "check": "/operations-automation/: internal destination /#services",
+    "passed": true
+  },
+  {
+    "check": "/operations-automation/: fragment /#services",
+    "passed": true
+  },
+  {
+    "check": "/operations-automation/: internal destination /#approach",
+    "passed": true
+  },
+  {
+    "check": "/operations-automation/: fragment /#approach",
+    "passed": true
+  },
+  {
+    "check": "/operations-automation/: internal destination /#process",
+    "passed": true
+  },
+  {
+    "check": "/operations-automation/: fragment /#process",
+    "passed": true
+  },
+  {
+    "check": "/operations-automation/: internal destination /#faq",
+    "passed": true
+  },
+  {
+    "check": "/operations-automation/: fragment /#faq",
+    "passed": true
+  },
+  {
+    "check": "/operations-automation/: internal destination /contact/",
+    "passed": true
+  },
+  {
+    "check": "/operations-automation/: internal destination /pricing/",
+    "passed": true
+  },
+  {
+    "check": "/operations-automation/: internal destination /",
+    "passed": true
+  },
+  {
+    "check": "/operations-automation/: internal destination /contact/",
+    "passed": true
+  },
+  {
+    "check": "/operations-automation/: internal destination #service-works",
+    "passed": true
+  },
+  {
+    "check": "/operations-automation/: fragment #service-works",
+    "passed": true
+  },
+  {
+    "check": "/operations-automation/: image attributes /works/designluka.png",
+    "passed": true
+  },
+  {
+    "check": "/operations-automation/: image attributes /works/hoopnote.png",
+    "passed": true
+  },
+  {
+    "check": "/operations-automation/: image attributes /works/mavs.png",
+    "passed": true
+  },
+  {
+    "check": "/operations-automation/: internal destination /#works",
+    "passed": true
+  },
+  {
+    "check": "/operations-automation/: fragment /#works",
+    "passed": true
+  },
+  {
+    "check": "/operations-automation/: internal destination /contact/",
+    "passed": true
+  },
+  {
+    "check": "/operations-automation/: internal destination /homepage-production/",
+    "passed": true
+  },
+  {
+    "check": "/operations-automation/: internal destination /brand-identity/",
+    "passed": true
+  },
+  {
+    "check": "/operations-automation/: internal destination /pricing/",
+    "passed": true
+  },
+  {
+    "check": "/operations-automation/: internal destination /",
+    "passed": true
+  },
+  {
+    "check": "/operations-automation/: internal destination /contact/",
+    "passed": true
+  },
+  {
+    "check": "/operations-automation/: factual schema type Organization",
+    "passed": true
+  },
+  {
+    "check": "/operations-automation/: shared organization matches public home/contact",
+    "passed": true
+  },
+  {
+    "check": "/operations-automation/: factual schema type WebSite",
+    "passed": true
+  },
+  {
+    "check": "/operations-automation/: factual schema type Service",
+    "passed": true
+  },
+  {
+    "check": "/operations-automation/: service definition visible",
+    "passed": true
+  },
+  {
+    "check": "/operations-automation/: provider reference",
+    "passed": true
+  },
+  {
+    "check": "/operations-automation/: factual schema type WebPage",
+    "passed": true
+  },
+  {
+    "check": "/operations-automation/: schema URL",
+    "passed": true
+  },
+  {
+    "check": "/operations-automation/: factual schema type BreadcrumbList",
+    "passed": true
+  },
+  {
+    "check": "/operations-automation/: breadcrumb destination",
+    "passed": true
+  },
+  {
+    "check": "/operations-automation/: factual schema type FAQPage",
+    "passed": true
+  },
+  {
+    "check": "/operations-automation/: FAQ matches HTML: 자동화가 가능한 업무인지 어떻게 판단하나요?",
+    "passed": true
+  },
+  {
+    "check": "/operations-automation/: FAQ matches HTML: AI를 꼭 사용해야 하나요?",
+    "passed": true
+  },
+  {
+    "check": "/operations-automation/: FAQ matches HTML: 자동화가 실패하면 어떻게 하나요?",
+    "passed": true
+  },
+  {
+    "check": "/operations-automation/: FAQ matches HTML: 고객 개인정보를 연결해도 되나요?",
+    "passed": true
+  },
+  {
+    "check": "/operations-automation/: FAQ matches HTML: 자동으로 고객에게 답장을 보내나요?",
+    "passed": true
+  },
+  {
+    "check": "/pricing/: unique ids",
+    "passed": true
+  },
+  {
+    "check": "/pricing/: one h1",
+    "passed": true
+  },
+  {
+    "check": "/pricing/: internal destination #pricing-main",
+    "passed": true
+  },
+  {
+    "check": "/pricing/: fragment #pricing-main",
+    "passed": true
+  },
+  {
+    "check": "/pricing/: internal destination /",
+    "passed": true
+  },
+  {
+    "check": "/pricing/: internal destination /#works",
+    "passed": true
+  },
+  {
+    "check": "/pricing/: fragment /#works",
+    "passed": true
+  },
+  {
+    "check": "/pricing/: internal destination /#services",
+    "passed": true
+  },
+  {
+    "check": "/pricing/: fragment /#services",
+    "passed": true
+  },
+  {
+    "check": "/pricing/: internal destination /#approach",
+    "passed": true
+  },
+  {
+    "check": "/pricing/: fragment /#approach",
+    "passed": true
+  },
+  {
+    "check": "/pricing/: internal destination /#process",
+    "passed": true
+  },
+  {
+    "check": "/pricing/: fragment /#process",
+    "passed": true
+  },
+  {
+    "check": "/pricing/: internal destination /#faq",
+    "passed": true
+  },
+  {
+    "check": "/pricing/: fragment /#faq",
+    "passed": true
+  },
+  {
+    "check": "/pricing/: internal destination /contact/",
+    "passed": true
+  },
+  {
+    "check": "/pricing/: internal destination /pricing/",
+    "passed": true
+  },
+  {
+    "check": "/pricing/: internal destination /#works",
+    "passed": true
+  },
+  {
+    "check": "/pricing/: fragment /#works",
+    "passed": true
+  },
+  {
+    "check": "/pricing/: internal destination /#services",
+    "passed": true
+  },
+  {
+    "check": "/pricing/: fragment /#services",
+    "passed": true
+  },
+  {
+    "check": "/pricing/: internal destination /#approach",
+    "passed": true
+  },
+  {
+    "check": "/pricing/: fragment /#approach",
+    "passed": true
+  },
+  {
+    "check": "/pricing/: internal destination /#process",
+    "passed": true
+  },
+  {
+    "check": "/pricing/: fragment /#process",
+    "passed": true
+  },
+  {
+    "check": "/pricing/: internal destination /#faq",
+    "passed": true
+  },
+  {
+    "check": "/pricing/: fragment /#faq",
+    "passed": true
+  },
+  {
+    "check": "/pricing/: internal destination /contact/",
+    "passed": true
+  },
+  {
+    "check": "/pricing/: internal destination /pricing/",
+    "passed": true
+  },
+  {
+    "check": "/pricing/: internal destination /",
+    "passed": true
+  },
+  {
+    "check": "/pricing/: internal destination #landing",
+    "passed": true
+  },
+  {
+    "check": "/pricing/: fragment #landing",
+    "passed": true
+  },
+  {
+    "check": "/pricing/: internal destination #custom",
+    "passed": true
+  },
+  {
+    "check": "/pricing/: fragment #custom",
+    "passed": true
+  },
+  {
+    "check": "/pricing/: internal destination #revisions",
+    "passed": true
+  },
+  {
+    "check": "/pricing/: fragment #revisions",
+    "passed": true
+  },
+  {
+    "check": "/pricing/: internal destination #reply",
+    "passed": true
+  },
+  {
+    "check": "/pricing/: fragment #reply",
+    "passed": true
+  },
+  {
+    "check": "/pricing/: internal destination #maintenance",
+    "passed": true
+  },
+  {
+    "check": "/pricing/: fragment #maintenance",
+    "passed": true
+  },
+  {
+    "check": "/pricing/: internal destination #terms",
+    "passed": true
+  },
+  {
+    "check": "/pricing/: fragment #terms",
+    "passed": true
+  },
+  {
+    "check": "/pricing/: internal destination #ai",
+    "passed": true
+  },
+  {
+    "check": "/pricing/: fragment #ai",
+    "passed": true
+  },
+  {
+    "check": "/pricing/: internal destination /contact/",
+    "passed": true
+  },
+  {
+    "check": "/pricing/: internal destination #terms",
+    "passed": true
+  },
+  {
+    "check": "/pricing/: fragment #terms",
+    "passed": true
+  },
+  {
+    "check": "/pricing/: internal destination /contact/",
+    "passed": true
+  },
+  {
+    "check": "/pricing/: internal destination /contact/",
+    "passed": true
+  },
+  {
+    "check": "/pricing/: internal destination #ai",
+    "passed": true
+  },
+  {
+    "check": "/pricing/: fragment #ai",
+    "passed": true
+  },
+  {
+    "check": "/pricing/: internal destination /contact/",
+    "passed": true
+  },
+  {
+    "check": "/pricing/: internal destination /contact/",
+    "passed": true
+  },
+  {
+    "check": "/pricing/: internal destination /",
+    "passed": true
+  },
+  {
+    "check": "/pricing/: internal destination /pricing/",
+    "passed": true
+  },
+  {
+    "check": "/pricing/: internal destination /contact/",
+    "passed": true
+  },
+  {
+    "check": "/pricing/: factual schema type Organization",
+    "passed": true
+  },
+  {
+    "check": "/pricing/: shared organization matches public home/contact",
+    "passed": true
+  },
+  {
+    "check": "/pricing/: factual schema type WebSite",
+    "passed": true
+  },
+  {
+    "check": "/contact/: unique ids",
+    "passed": true
+  },
+  {
+    "check": "/contact/: one h1",
+    "passed": true
+  },
+  {
+    "check": "/contact/: internal destination #contact-main",
+    "passed": true
+  },
+  {
+    "check": "/contact/: fragment #contact-main",
+    "passed": true
+  },
+  {
+    "check": "/contact/: internal destination /",
+    "passed": true
+  },
+  {
+    "check": "/contact/: internal destination /#works",
+    "passed": true
+  },
+  {
+    "check": "/contact/: fragment /#works",
+    "passed": true
+  },
+  {
+    "check": "/contact/: internal destination /#services",
+    "passed": true
+  },
+  {
+    "check": "/contact/: fragment /#services",
+    "passed": true
+  },
+  {
+    "check": "/contact/: internal destination /#approach",
+    "passed": true
+  },
+  {
+    "check": "/contact/: fragment /#approach",
+    "passed": true
+  },
+  {
+    "check": "/contact/: internal destination /#process",
+    "passed": true
+  },
+  {
+    "check": "/contact/: fragment /#process",
+    "passed": true
+  },
+  {
+    "check": "/contact/: internal destination /#faq",
+    "passed": true
+  },
+  {
+    "check": "/contact/: fragment /#faq",
+    "passed": true
+  },
+  {
+    "check": "/contact/: internal destination /contact/",
+    "passed": true
+  },
+  {
+    "check": "/contact/: internal destination /pricing/",
+    "passed": true
+  },
+  {
+    "check": "/contact/: internal destination /#works",
+    "passed": true
+  },
+  {
+    "check": "/contact/: fragment /#works",
+    "passed": true
+  },
+  {
+    "check": "/contact/: internal destination /#services",
+    "passed": true
+  },
+  {
+    "check": "/contact/: fragment /#services",
+    "passed": true
+  },
+  {
+    "check": "/contact/: internal destination /#approach",
+    "passed": true
+  },
+  {
+    "check": "/contact/: fragment /#approach",
+    "passed": true
+  },
+  {
+    "check": "/contact/: internal destination /#process",
+    "passed": true
+  },
+  {
+    "check": "/contact/: fragment /#process",
+    "passed": true
+  },
+  {
+    "check": "/contact/: internal destination /#faq",
+    "passed": true
+  },
+  {
+    "check": "/contact/: fragment /#faq",
+    "passed": true
+  },
+  {
+    "check": "/contact/: internal destination /contact/",
+    "passed": true
+  },
+  {
+    "check": "/contact/: internal destination /pricing/",
+    "passed": true
+  },
+  {
+    "check": "/contact/: internal destination /brand-identity/",
+    "passed": true
+  },
+  {
+    "check": "/contact/: internal destination /operations-automation/",
+    "passed": true
+  },
+  {
+    "check": "/contact/: internal destination /homepage-production/",
+    "passed": true
+  },
+  {
+    "check": "/contact/: internal destination /pricing/",
+    "passed": true
+  },
+  {
+    "check": "/contact/: internal destination /pricing/#maintenance",
+    "passed": true
+  },
+  {
+    "check": "/contact/: fragment /pricing/#maintenance",
+    "passed": true
+  },
+  {
+    "check": "/contact/: internal destination /",
+    "passed": true
+  },
+  {
+    "check": "/contact/: factual schema type Organization",
+    "passed": true
+  },
+  {
+    "check": "/contact/: shared organization matches public home/contact",
+    "passed": true
+  },
+  {
+    "check": "/contact/: factual schema type WebSite",
+    "passed": true
+  },
+  {
+    "check": "/about/: unique ids",
+    "passed": true
+  },
+  {
+    "check": "/about/: one h1",
+    "passed": true
+  },
+  {
+    "check": "/about/: internal destination /#approach",
+    "passed": true
+  },
+  {
+    "check": "/about/: fragment /#approach",
+    "passed": true
+  },
+  {
+    "check": "/about/: internal destination /",
+    "passed": true
+  },
+  {
+    "check": "/about/: factual schema type Organization",
+    "passed": true
+  },
+  {
+    "check": "/about/: shared organization matches public home/contact",
+    "passed": true
+  },
+  {
+    "check": "/about/: factual schema type WebSite",
+    "passed": true
+  },
+  {
+    "check": "/portfolio/: unique ids",
+    "passed": true
+  },
+  {
+    "check": "/portfolio/: one h1",
+    "passed": true
+  },
+  {
+    "check": "/portfolio/: internal destination /#works",
+    "passed": true
+  },
+  {
+    "check": "/portfolio/: fragment /#works",
+    "passed": true
+  },
+  {
+    "check": "/portfolio/: internal destination /",
+    "passed": true
+  },
+  {
+    "check": "/portfolio/: factual schema type Organization",
+    "passed": true
+  },
+  {
+    "check": "/portfolio/: shared organization matches public home/contact",
+    "passed": true
+  },
+  {
+    "check": "/portfolio/: factual schema type WebSite",
+    "passed": true
+  },
+  {
+    "check": "/404.html: unique ids",
+    "passed": true
+  },
+  {
+    "check": "/404.html: one h1",
+    "passed": true
+  },
+  {
+    "check": "/404.html: factual schema type Organization",
+    "passed": true
+  },
+  {
+    "check": "/404.html: shared organization matches public home/contact",
+    "passed": true
+  },
+  {
+    "check": "/404.html: factual schema type WebSite",
+    "passed": true
+  },
+  {
+    "check": "sitemap equals six canonical marketing pages",
+    "passed": true
+  },
+  {
+    "check": "/: external inquiry only JS=False",
+    "passed": true
+  },
+  {
+    "check": "/: content JS=False",
+    "passed": true
+  },
+  {
+    "check": "/homepage-production/: external inquiry only JS=False",
+    "passed": true
+  },
+  {
+    "check": "/homepage-production/: content JS=False",
+    "passed": true
+  },
+  {
+    "check": "/brand-identity/: external inquiry only JS=False",
+    "passed": true
+  },
+  {
+    "check": "/brand-identity/: content JS=False",
+    "passed": true
+  },
+  {
+    "check": "/operations-automation/: external inquiry only JS=False",
+    "passed": true
+  },
+  {
+    "check": "/operations-automation/: content JS=False",
+    "passed": true
+  },
+  {
+    "check": "/pricing/: external inquiry only JS=False",
+    "passed": true
+  },
+  {
+    "check": "/pricing/: content JS=False",
+    "passed": true
+  },
+  {
+    "check": "/contact/: external inquiry only JS=False",
+    "passed": true
+  },
+  {
+    "check": "/contact/: content JS=False",
+    "passed": true
+  },
+  {
+    "check": "/: external inquiry only JS=True",
+    "passed": true
+  },
+  {
+    "check": "/: content JS=True",
+    "passed": true
+  },
+  {
+    "check": "/homepage-production/: external inquiry only JS=True",
+    "passed": true
+  },
+  {
+    "check": "/homepage-production/: content JS=True",
+    "passed": true
+  },
+  {
+    "check": "/brand-identity/: external inquiry only JS=True",
+    "passed": true
+  },
+  {
+    "check": "/brand-identity/: content JS=True",
+    "passed": true
+  },
+  {
+    "check": "/operations-automation/: external inquiry only JS=True",
+    "passed": true
+  },
+  {
+    "check": "/operations-automation/: content JS=True",
+    "passed": true
+  },
+  {
+    "check": "/pricing/: external inquiry only JS=True",
+    "passed": true
+  },
+  {
+    "check": "/pricing/: content JS=True",
+    "passed": true
+  },
+  {
+    "check": "/contact/: external inquiry only JS=True",
+    "passed": true
+  },
+  {
+    "check": "/contact/: content JS=True",
+    "passed": true
+  },
+  {
+    "check": "/ 1440: geometry/images",
+    "passed": true
+  },
+  {
+    "check": "/ 768: geometry/images",
+    "passed": true
+  },
+  {
+    "check": "/ 390: geometry/images",
+    "passed": true
+  },
+  {
+    "check": "/ 360: geometry/images",
+    "passed": true
+  },
+  {
+    "check": "/: keyboard menu/focus",
+    "passed": true
+  },
+  {
+    "check": "/homepage-production/ 1440: geometry/images",
+    "passed": true
+  },
+  {
+    "check": "/homepage-production/ 768: geometry/images",
+    "passed": true
+  },
+  {
+    "check": "/homepage-production/ 390: geometry/images",
+    "passed": true
+  },
+  {
+    "check": "/homepage-production/ 360: geometry/images",
+    "passed": true
+  },
+  {
+    "check": "/homepage-production/: keyboard menu/focus",
+    "passed": true
+  },
+  {
+    "check": "/brand-identity/ 1440: geometry/images",
+    "passed": true
+  },
+  {
+    "check": "/brand-identity/ 768: geometry/images",
+    "passed": true
+  },
+  {
+    "check": "/brand-identity/ 390: geometry/images",
+    "passed": true
+  },
+  {
+    "check": "/brand-identity/ 360: geometry/images",
+    "passed": true
+  },
+  {
+    "check": "/brand-identity/: keyboard menu/focus",
+    "passed": true
+  },
+  {
+    "check": "/operations-automation/ 1440: geometry/images",
+    "passed": true
+  },
+  {
+    "check": "/operations-automation/ 768: geometry/images",
+    "passed": true
+  },
+  {
+    "check": "/operations-automation/ 390: geometry/images",
+    "passed": true
+  },
+  {
+    "check": "/operations-automation/ 360: geometry/images",
+    "passed": true
+  },
+  {
+    "check": "/operations-automation/: keyboard menu/focus",
+    "passed": true
+  },
+  {
+    "check": "/pricing/ 1440: geometry/images",
+    "passed": true
+  },
+  {
+    "check": "/pricing/ 768: geometry/images",
+    "passed": true
+  },
+  {
+    "check": "/pricing/ 390: geometry/images",
+    "passed": true
+  },
+  {
+    "check": "/pricing/ 360: geometry/images",
+    "passed": true
+  },
+  {
+    "check": "/pricing/: keyboard menu/focus",
+    "passed": true
+  },
+  {
+    "check": "/contact/ 1440: geometry/images",
+    "passed": true
+  },
+  {
+    "check": "/contact/ 768: geometry/images",
+    "passed": true
+  },
+  {
+    "check": "/contact/ 390: geometry/images",
+    "passed": true
+  },
+  {
+    "check": "/contact/ 360: geometry/images",
+    "passed": true
+  },
+  {
+    "check": "/contact/: keyboard menu/focus",
+    "passed": true
+  },
+  {
+    "check": "/about/ 1440: geometry/images",
+    "passed": true
+  },
+  {
+    "check": "/about/ 768: geometry/images",
+    "passed": true
+  },
+  {
+    "check": "/about/ 390: geometry/images",
+    "passed": true
+  },
+  {
+    "check": "/about/ 360: geometry/images",
+    "passed": true
+  },
+  {
+    "check": "/about/: keyboard menu/focus",
+    "passed": true
+  },
+  {
+    "check": "/portfolio/ 1440: geometry/images",
+    "passed": true
+  },
+  {
+    "check": "/portfolio/ 768: geometry/images",
+    "passed": true
+  },
+  {
+    "check": "/portfolio/ 390: geometry/images",
+    "passed": true
+  },
+  {
+    "check": "/portfolio/ 360: geometry/images",
+    "passed": true
+  },
+  {
+    "check": "/portfolio/: keyboard menu/focus",
+    "passed": true
+  },
+  {
+    "check": "/404.html 1440: geometry/images",
+    "passed": true
+  },
+  {
+    "check": "/404.html 768: geometry/images",
+    "passed": true
+  },
+  {
+    "check": "/404.html 390: geometry/images",
+    "passed": true
+  },
+  {
+    "check": "/404.html 360: geometry/images",
+    "passed": true
+  },
+  {
+    "check": "no browser page errors",
+    "passed": true
+  },
+  {
+    "check": "/: skip link first",
+    "passed": true
+  },
+  {
+    "check": "/: skip focuses main",
+    "passed": true
+  },
+  {
+    "check": "/: menu navigates and closes",
+    "passed": true
+  },
+  {
+    "check": "/homepage-production/: skip link first",
+    "passed": true
+  },
+  {
+    "check": "/homepage-production/: skip focuses main",
+    "passed": true
+  },
+  {
+    "check": "/homepage-production/: menu navigates and closes",
+    "passed": true
+  },
+  {
+    "check": "/brand-identity/: skip link first",
+    "passed": true
+  },
+  {
+    "check": "/brand-identity/: skip focuses main",
+    "passed": true
+  },
+  {
+    "check": "/brand-identity/: menu navigates and closes",
+    "passed": true
+  },
+  {
+    "check": "/operations-automation/: skip link first",
+    "passed": true
+  },
+  {
+    "check": "/operations-automation/: skip focuses main",
+    "passed": true
+  },
+  {
+    "check": "/operations-automation/: menu navigates and closes",
+    "passed": true
+  },
+  {
+    "check": "/pricing/: skip link first",
+    "passed": true
+  },
+  {
+    "check": "/pricing/: skip focuses main",
+    "passed": true
+  },
+  {
+    "check": "/pricing/: menu navigates and closes",
+    "passed": true
+  },
+  {
+    "check": "/contact/: skip link first",
+    "passed": true
+  },
+  {
+    "check": "/contact/: skip focuses main",
+    "passed": true
+  },
+  {
+    "check": "/contact/: menu navigates and closes",
+    "passed": true
+  },
+  {
+    "check": "/homepage-production/: FAQ keyboard opens",
+    "passed": true
+  },
+  {
+    "check": "/homepage-production/: inquiry reaches contact with original mail/chat",
+    "passed": true
+  },
+  {
+    "check": "/brand-identity/: FAQ keyboard opens",
+    "passed": true
+  },
+  {
+    "check": "/brand-identity/: inquiry reaches contact with original mail/chat",
+    "passed": true
+  },
+  {
+    "check": "/operations-automation/: FAQ keyboard opens",
+    "passed": true
+  },
+  {
+    "check": "/operations-automation/: inquiry reaches contact with original mail/chat",
+    "passed": true
+  },
+  {
+    "check": "no console errors during interactions",
+    "passed": true
+  },
+  {
+    "check": "interaction request failures limited to navigation aborts (retained in audit)",
+    "passed": true
+  },
+  {
+    "check": "six unique titles",
+    "passed": true
+  },
+  {
+    "check": "six unique descriptions",
+    "passed": true
+  },
+  {
+    "check": "/: export matches served initial HTML",
+    "passed": true
+  },
+  {
+    "check": "/homepage-production/: export matches served initial HTML",
+    "passed": true
+  },
+  {
+    "check": "/brand-identity/: export matches served initial HTML",
+    "passed": true
+  },
+  {
+    "check": "/operations-automation/: export matches served initial HTML",
+    "passed": true
+  },
+  {
+    "check": "/pricing/: export matches served initial HTML",
+    "passed": true
+  },
+  {
+    "check": "/contact/: export matches served initial HTML",
+    "passed": true
+  },
+  {
+    "check": "robots.txt: policy/resource preserved",
+    "passed": true
+  },
+  {
+    "check": "sitemap.xml: policy/resource preserved",
+    "passed": true
+  },
+  {
+    "check": "llms.txt: policy/resource preserved",
+    "passed": true
+  }
+]

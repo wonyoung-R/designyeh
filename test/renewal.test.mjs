@@ -390,6 +390,26 @@ function responsiveServiceFixture(works) {
   }
 }
 
+test("service inquiries retain their subject and preparation without implying website package terms", () => {
+  for (const [slug, name, cta, preparation] of [
+    ["homepage-production", "홈페이지 제작", "홈페이지 제작 문의하기", "필요한 페이지·기능"],
+    ["brand-identity", "브랜드 아이덴티티", "브랜드 디자인 상담하기", "기존 로고와 사용 권한"],
+    ["operations-automation", "운영 자동화", "운영 자동화 상담하기", "익명화한 예시"],
+  ]) {
+    const fixture = { ...responsiveServiceFixture(FALLBACK_WORKS), slug, name }
+    const tree = renderResponsivePortfolio(service, "ServicePage", { service: fixture }, "")
+    const text = node => Array.isArray(node) ? node.map(text).join("") : typeof node === "object" && node ? text(node.children ?? []) : String(node ?? "")
+    const inquiries = portfolioElements(tree, "a").filter(node => node.attributes.className === "cta cta-primary")
+    assert.equal(inquiries.length, 2)
+    for (const link of inquiries) {
+      assert.equal(link.attributes.href, "/contact/")
+      assert.ok(text(link).includes(cta))
+    }
+    assert.ok(text(tree).includes(preparation))
+    if (slug !== "homepage-production") assert.ok(!text(tree).includes("홈페이지 제작 문의하기"))
+  }
+})
+
 test("home and service pictures resolve both WebP candidates and retain original image attributes", () => {
   for (const basePath of ["", "/designyeh"]) {
     const fixture = responsiveServiceFixture(FALLBACK_WORKS)

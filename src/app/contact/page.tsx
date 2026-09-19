@@ -37,6 +37,7 @@ export default function ContactPage() {
               <p className="section-kicker">START WITH A NOTE</p>
               <h1 id="contact-title" className="contact-title">홈페이지 제작 <em>문의하기</em></h1>
               <p>어떤 일을 하는 곳인지, 홈페이지에 무엇을 담고 싶은지 알려주세요. 필요한 페이지와 기능을 함께 정리합니다.</p>
+              <p>로고·브랜드 디자인이나 운영 자동화 상담은 문의 첫머리에 원하는 서비스를 적어주세요. 준비 범위는 <Link className="service-link" href="/brand-identity/">브랜드 디자인 안내</Link>와 <Link className="service-link" href="/operations-automation/">운영 자동화 안내</Link>에서 확인할 수 있습니다. 아래 기본 랜딩페이지 가격·일정은 해당 서비스에 적용되지 않습니다.</p>
               <p><strong>약 15분 무료 상담</strong>으로 사업 규모와 필요한 기능을 확인하고 견적을 드립니다. 기본 랜딩페이지는 30만원이며, 자료·범위 확정 후 합의한 착수 시점부터 12시간 내 완성본을 전달합니다.</p>
               <p>관리자·DB 등 추가 개발은 시간당 75,000원을 시작 기준으로 규모·기간에 따라 단가를 낮춰 협의합니다. 고객 사이트의 유료 서비스 비용은 전액 고객 부담이며, 월 구독료 실비는 관리 작업비와 합산해 안내합니다.</p>
               <div className="contact-service-list" aria-label="홈페이지 제작 안내">

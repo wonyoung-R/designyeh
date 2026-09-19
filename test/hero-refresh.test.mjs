@@ -182,7 +182,12 @@ test("project logos link to five sites with one accessible set before all seven 
       assert.ok(normalized(cards[index]).includes(value), `${work.id}: preserved ${value}`)
     }
     const links = nodes(cards[index], node => node.type === "a")
-    for (const link of links) {
+    const serviceLinks = links.filter(link => link.attributes.href === "/homepage-production/")
+    assert.equal(serviceLinks.length, 1)
+    assert.match(normalized(serviceLinks[0]), /제작 범위·과정/)
+    const externalLinks = links.filter(link => link.attributes.href !== "/homepage-production/")
+    assert.equal(externalLinks.length, 2)
+    for (const link of externalLinks) {
       assert.equal(link.attributes.href, work.url)
       assert.equal(link.attributes.target, "_blank")
       assert.equal(link.attributes.rel, "noopener noreferrer")
