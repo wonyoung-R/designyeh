@@ -296,13 +296,13 @@ test("mobile main prose and pricing long text remain readable after typography o
 
 test("all seven original local assets and public URLs remain", () => {
   const expected = [
-    ["designluka", "https://designluka.co.kr"],
-    ["dcare", "https://dcarecenter.kr"],
-    ["mavs", "https://mavs.kr"],
+    ["hoopnote", "https://hoopnote.kr"],
     ["sdngazer", "https://sdngazer.art"],
     ["laf2023", "https://laf2023.com"],
+    ["mavs", "https://mavs.kr"],
     ["gritlab", "https://grit-lab.kr"],
-    ["hoopnote", "https://hoopnote.kr"],
+    ["designluka", "https://designluka.co.kr"],
+    ["dcare", "https://dcarecenter.kr"],
   ]
   assert.equal(FALLBACK_WORKS.length, expected.length)
   expected.forEach(([id, url], index) => {
@@ -651,8 +651,8 @@ test("imported image paths cannot escape local PNG assets", () => {
     localImage(work.image)
   }
   assert.equal(toWork({ image: "/works/new_site-2.png" }, 0).image, "/works/new_site-2.png")
-  assert.equal(toWork({}, 4).image, "/works/laf2023.png")
-  assert.equal(toWork({}, -1).image, "/works/designluka.png")
+  assert.equal(toWork({}, 4).image, "/works/gritlab.png")
+  assert.equal(toWork({}, -1).image, "/works/hoopnote.png")
 })
 
 test("untrusted scalar fields never reach React as objects or invalid numbers", () => {
@@ -674,7 +674,7 @@ test("untrusted scalar fields never reach React as objects or invalid numbers", 
   assert.equal(toWork({ year: 2025 }, 0).year, "2025")
   assert.equal(toWork({ year: NaN }, 0).year, "")
   assert.equal(toWork({ created_at: "2025-12-31T23:00:00Z" }, 0).year, "2025")
-  assert.equal(toWork({ url: "https://www.designluka.co.kr/" }, 0).note, FALLBACK_WORKS[0].note)
+  assert.equal(toWork({ url: "https://www.designluka.co.kr/" }, 0).note, FALLBACK_WORKS.find(work => work.id === "designluka").note)
   assert.equal(toWork({ note: "", url: "https://designluka.co.kr" }, 0).note, "")
   assert.equal(toWork({ title: "<script>alert(1)</script>" }, 0).title, "<script>alert(1)</script>")
   assert.doesNotMatch(home + contact, /dangerouslySetInnerHTML|innerHTML/)

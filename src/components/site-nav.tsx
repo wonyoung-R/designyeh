@@ -4,8 +4,7 @@ import Link from "next/link"
 
 const NAV_ITEMS = [
   ["Works", "/#works"],
-  ["Services", "/#services"],
-  ["Approach", "/#approach"],
+  ["Services", "/website-ax/"],
   ["Process", "/#process"],
   ["FAQ", "/#faq"],
   ["Contact", "/contact/"],

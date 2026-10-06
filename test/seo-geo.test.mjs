@@ -61,7 +61,7 @@ test("robots allows crawling and sitemap lists the supplied public routes", () =
   assert.match(sitemap, /xmlns="http:\/\/www\.sitemaps\.org\/schemas\/sitemap\/0\.9"/)
   const urls = [...sitemap.matchAll(/<loc>([^<]+)<\/loc>/g)].map(([, url]) => url)
   const slugs = [...services.matchAll(/\bslug: "([^"]+)"/g)].map(([, slug]) => slug)
-  assert.deepEqual(urls, [`${origin}/`, ...slugs.map(slug => `${origin}/${slug}/`), `${origin}/contact/`, `${origin}/pricing/`])
+  assert.deepEqual(urls, [`${origin}/`, ...slugs.map(slug => `${origin}/${slug}/`), `${origin}/contact/`, `${origin}/pricing/`, `${origin}/website-ax/`])
   for (const route of ["about", "portfolio"]) {
     assert.ok(!urls.includes(`${origin}/${route}/`))
   }

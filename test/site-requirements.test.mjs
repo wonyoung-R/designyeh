@@ -25,13 +25,15 @@ const homeWithoutHeroBreaks = heroH1
   ? home.replace(heroH1, heroH1.replace(/<br\s*\/>/g, " "))
   : home
 
-const navItems = ["Services", "Approach", "Works", "Process", "FAQ", "Contact"]
+const navItems = ["Services", "Works", "Process", "FAQ", "Contact"]
 const sectionIds = ["services", "approach", "works", "process", "faq", "contact"]
 
 test("home provides the complete conversion path", () => {
   for (const label of navItems) assert.ok(navigation.includes(`"${label}"`))
   for (const id of sectionIds) {
-    assert.ok(navigation.includes(id === "contact" ? '"/contact/"' : `"/#${id}"`))
+    if (id === "services") assert.ok(navigation.includes('"/website-ax/"'))
+    else if (id === "approach") assert.doesNotMatch(navigation, /"Approach"|"\/#approach"/)
+    else assert.ok(navigation.includes(id === "contact" ? '"/contact/"' : `"/#${id}"`))
     assert.match(home, new RegExp(`id=["']${id}["']`))
   }
   assert.equal(normalizeHtmlText(heroH1), "당신이 쌓아온 일에, 필요한 다음을 만듭니다.")
@@ -132,7 +134,7 @@ test("studio typography uses local Korean sans fallbacks and accessible emphasis
 const slugs = ["homepage-production", "brand-identity", "operations-automation"]
 const serviceData = read("src/lib/services.ts")
 const servicePage = read("src/components/service-page.tsx")
-const urls = ["https://dsgnyeh.art/", ...slugs.map(slug => `https://dsgnyeh.art/${slug}/`), "https://dsgnyeh.art/contact/", "https://dsgnyeh.art/pricing/"]
+const urls = ["https://dsgnyeh.art/", ...slugs.map(slug => `https://dsgnyeh.art/${slug}/`), "https://dsgnyeh.art/contact/", "https://dsgnyeh.art/pricing/", "https://dsgnyeh.art/website-ax/"]
 
 test("three static service routes share metadata and visible schema content", () => {
   slugs.forEach((slug, index) => {
@@ -151,7 +153,7 @@ test("three static service routes share metadata and visible schema content", ()
   for (const phrase of ["홈페이지 제작", "기업 홈페이지 제작", "반응형 홈페이지 제작", "개인정보", "사람의 승인", "fallback"]) assert.ok(serviceData.includes(phrase))
 })
 
-test("sitemap contains exactly six canonical real pages", () => {
+test("sitemap contains exactly seven canonical real pages", () => {
   const sitemap = read("public/sitemap.xml")
   assert.deepEqual([...sitemap.matchAll(/<loc>(.*?)<\/loc>/g)].map(match => match[1]), urls)
   assert.doesNotMatch(sitemap, /\/about\/|\/portfolio\/|<lastmod>/)

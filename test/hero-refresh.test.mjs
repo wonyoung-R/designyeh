@@ -75,13 +75,13 @@ const hero = byClass(tree, "agency-hero")[0]
 
 test("shared menus follow homepage order and keep Pricing last on every page", () => {
   const expected = [
-    ["Works", "/#works"], ["Services", "/#services"], ["Approach", "/#approach"],
+    ["Works", "/#works"], ["Services", "/website-ax/"],
     ["Process", "/#process"], ["FAQ", "/#faq"], ["Contact", "/contact/"], ["Pricing", "/pricing/"],
   ]
   const sections = nodes(tree, node => node.type === "section").map(node => node.attributes.id)
-  const positions = expected.slice(0, 6).map(([, href]) => sections.indexOf(href === "/contact/" ? "contact" : href.split("#")[1]))
+  const positions = ["works", "services", "process", "faq", "contact"].map(id => sections.indexOf(id))
   assert.ok(positions.every((position, i) => position >= 0 && (i === 0 || position > positions[i - 1])))
-  for (const currentPage of [undefined, "/contact/", "/pricing/"]) {
+  for (const currentPage of [undefined, "/contact/", "/pricing/", "/website-ax/"]) {
     const nav = navigation.SiteNav({ currentPage })
     const menus = nodes(nav, node => node.type === "nav")
     assert.equal(menus.length, 2)
@@ -141,7 +141,7 @@ test("hero retains approved copy with decorative local backgrounds and a qualifi
   }
 })
 
-test("project logos link to five sites with one accessible set before all seven cases", () => {
+test("project strip links to all seven sites in the approved order with one accessible set", () => {
   const strip = byClass(tree, "project-strip")[0]
   assert.ok(strip)
   assert.equal(normalized(nodes(strip, node => node.type === "h2")[0]), "프로젝트명")
@@ -153,7 +153,7 @@ test("project logos link to five sites with one accessible set before all seven 
   assert.equal(sets.length, 2)
   assert.equal(sets[0].attributes["aria-hidden"], undefined)
   assert.equal(sets[1].attributes["aria-hidden"], true)
-  const expected = ["designluka", "dcare", "gritlab", "mavs", "hoopnote"]
+  const expected = ["hoopnote", "sdngazer", "laf2023", "mavs", "gritlab", "designluka", "dcare"]
   for (const [copy, set] of sets.entries()) {
     const links = nodes(set, node => node.type === "a")
     assert.equal(links.length, expected.length)
@@ -163,8 +163,13 @@ test("project logos link to five sites with one accessible set before all seven 
       assert.equal(links[index].attributes["aria-label"], `${work.title} 사이트 방문 (새 창)`)
       assert.equal(links[index].attributes.tabIndex, copy === 1 ? -1 : undefined)
       const logo = nodes(links[index], node => node.type === "img")[0]
-      assert.ok(logo.attributes.src.startsWith("/logos/"))
-      assert.ok(readFileSync(new URL(`../public${logo.attributes.src}`, import.meta.url)).length > 0)
+      if (["sdngazer", "laf2023"].includes(id)) {
+        assert.equal(logo, undefined)
+        assert.equal(normalized(links[index]), id === "sdngazer" ? "sdngazer.art" : work.title)
+      } else {
+        assert.ok(logo.attributes.src.startsWith("/logos/"))
+        assert.ok(readFileSync(new URL(`../public${logo.attributes.src}`, import.meta.url)).length > 0)
+      }
     }
   }
   assert.equal(nodes(strip, node => node.type === "button").length, 0)

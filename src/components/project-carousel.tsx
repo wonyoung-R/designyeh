@@ -3,9 +3,10 @@
 import { asset } from "@/lib/assets"
 import type { Work } from "@/lib/works"
 
-const PROJECT_IDS = ["designluka", "dcare", "gritlab", "mavs", "hoopnote"]
-
 function ProjectLogo({ work }: { work: Work }) {
+  if (work.id === "sdngazer" || work.id === "laf2023") {
+    return <span style={{ fontSize: "24px", fontWeight: 700, letterSpacing: "-.045em" }}>{work.id === "sdngazer" ? "sdngazer.art" : work.title}</span>
+  }
   if (work.id === "hoopnote") {
     return <span className="project-logo-hoopnote"><img src={asset("/logos/hoopnote.png")} alt="" width={42} height={42} /><span>hoopnote</span></span>
   }
@@ -14,7 +15,7 @@ function ProjectLogo({ work }: { work: Work }) {
 }
 
 export function ProjectCarousel({ works }: { works: Work[] }) {
-  const projects = PROJECT_IDS.flatMap(id => works.filter(work => work.id === id))
+  const projects = works
 
   return (
     <div className="project-strip-inner">
