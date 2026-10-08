@@ -77,7 +77,7 @@ export default function WebsiteAxPage() {
           <div className={styles.heroCopy}>
             <p className={styles.eyebrow}><span className={styles.dot} /> 홈페이지 제작 · AX 컨설팅 & 구축</p>
             <h1 id="hero-title">브랜드를 보여주는<br />홈페이지,<br /><span>반복 업무를 줄이는 AI.</span></h1>
-            <p className={styles.heroLead}>사업의 가치는 고객에게 더 선명하게.<br />매일 반복되는 일은 더 가볍게.<br />디자인과 기술로 다음 단계를 함께 만듭니다.</p>
+            <p className={styles.heroLead}>3일 안에 시안을 받아보고,<br />그 시안부터 시작해보세요.</p>
             <ContactLinks />
             <p className={styles.contactHint}>만들고 싶은 사이트나 줄이고 싶은 업무를 알려주세요.</p>
             <Link className={styles.priceLink} href="/pricing/">기본 랜딩페이지 30만원 · 가격 및 이용 안내 ↗</Link>

@@ -42,8 +42,8 @@ function WorkCard({ work, index }: { work: Work; index: number }) {
   )
 }
 
-function SectionTag({ no, name, meta }: { no: string; name: string; meta: string }) {
-  return <div className="room-tag"><span className="tag-no">{no}</span><span className="tag-name">{name}</span><span className="tag-meta">{meta}</span></div>
+function SectionTag({ name, meta }: { name: string; meta: string }) {
+  return <div className="room-tag"><span className="tag-name">{name}</span><span className="tag-meta">{meta}</span></div>
 }
 
 export default function StudioHome() {
@@ -81,13 +81,13 @@ export default function StudioHome() {
         </section>
 
         <section id="works" className="room room-websites" aria-labelledby="works-title">
-          <SectionTag no="02" name="SELECTED WORK" meta="websites · details · decisions" />
+          <SectionTag name="SELECTED WORK" meta="websites · details · decisions" />
           <div className="section-intro works-intro"><h2 id="works-title">홈페이지 제작 사례</h2><p>사업을 소개하는 홈페이지부터, 운영에 필요한 관리 기능까지.</p><p className="portfolio-scope">DB 연동, 관리자 페이지, 대회 운영 기능은 별도 구축 범위이며 기본 랜딩 패키지에는 포함되지 않습니다.</p></div>
           <div className="salon-wall salon-grid">{works.map((work, index) => <WorkCard key={work.id} work={work} index={index} />)}</div>
         </section>
 
         <section id="services" className="room room-services" aria-labelledby="services-title">
-          <SectionTag no="03" name="SERVICES" meta="what we make" />
+          <SectionTag name="SERVICES" meta="what we make" />
           <div className="section-intro">
             <p className="section-kicker">WEBSITE PRODUCTION</p>
             <h2 id="services-title">기획부터 인계까지, 홈페이지에 필요한 일.</h2>
@@ -122,7 +122,7 @@ export default function StudioHome() {
         </section>
 
         <section id="process" className="room room-process" aria-labelledby="process-title">
-          <SectionTag no="04" name="PROCESS" meta="from first note to handoff" />
+          <SectionTag name="PROCESS" meta="from first note to handoff" />
           <div className="section-intro split-intro"><h2 id="process-title">상담부터 홈페이지 인계까지.</h2><p>필요한 페이지와 기능을 확인하고, 단계마다 내용을 함께 검토합니다.</p></div>
           <ol className="process-list">
             <li className="process-item"><span>01</span><div><h3>약 15분 무료 상담</h3><p>사업과 대상 고객, 필요한 홈페이지와 관리 기능을 듣고 제작 범위·일정·견적을 안내합니다.</p></div></li>
@@ -135,7 +135,7 @@ export default function StudioHome() {
         </section>
 
         <section id="faq" className="room room-faq" aria-labelledby="faq-title">
-          <SectionTag no="05" name="FAQ" meta="before you send a note" />
+          <SectionTag name="FAQ" meta="before you send a note" />
           <div className="faq-layout">
             <div className="section-intro"><p className="section-kicker">COMMON QUESTIONS</p><h2 id="faq-title">상담 전에 자주 묻는 것.</h2></div>
             <div className="faq-list">
@@ -152,7 +152,7 @@ export default function StudioHome() {
         </section>
 
         <section id="contact" className="room room-final" aria-labelledby="final-title">
-          <SectionTag no="06" name="CONTACT" meta="start a conversation" />
+          <SectionTag name="CONTACT" meta="start a conversation" />
           <div className="final-plaque">
             <p className="section-kicker">YOUR NEXT PROJECT</p>
             <h2 id="final-title">우리 사업을 소개할 <em>홈페이지가 필요하신가요?</em></h2>
